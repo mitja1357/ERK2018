@@ -39,7 +39,7 @@ Distortion of sine and cosine values, used for angle determination with the atan
 Dandanes je potreba po kakovostni regulaciji elektromotorskih pogonov neizogibna in tako prisotna v številnih aplikacijah. Za kakovostno nadzorovanje rotirajočega pogona, se v povratnih zankah uporablja senzorje zasuka \cite{uporaba_senzorjev}. Zasuk se meri na različne principe, inkrementalni dajalnik, resolver, enkoder \cite{inkrementalni}\cite{resolver}\cite{enkoder}... Izhoda enkoderja ali resolverja, sta signala sinus in kosinus. Za izračun informacije o zasuku se uporabi funkcijo inverz tangensa \cite{mat1}. V aplikacijah se običajno uporablja funkcija atan2, katere zaloga vrednosti je $[-\pi, \pi]$ \cite{atan}. 
 
 
-Senzorji niso idealni in posledično je iluzorno pričakovati delovanje povsem brez napake. Primer napake je popačena oblika, zajetih signalov sinus in kosinus. Različne literature \cite{RLS1}, \cite{RLS2}, \cite{RLS3} opisujejo, kako popačenje vhodnih signalov vpliva na napako. Napako so izrazili le z najočitnejšimi harmoniki. V napaki nastopajo tudi višji harmoniki, katere se lahko predstavi kot napako v obliki neskončne vrste. V raznih aplokacijah je možen dostop le do izhodnega podatka o zasuku. Z referenčnim dajalnikom, se lahko določi napako, njen izvor ostaja neznan.
+Senzorji niso idealni in posledično je iluzorno pričakovati delovanje povsem brez napake. Primer napake je popačena oblika, zajetih signalov sinus in kosinus. Različne literature \cite{RLS1}, \cite{RLS2}, \cite{RLS3} opisujejo, kako popačenje vhodnih signalov vpliva na napako. Napako so izrazili le z najočitnejšimi harmoniki. V napaki nastopajo tudi višji harmoniki, katere se lahko predstavi kot napako v obliki neskončne vrste. V raznih aplikacijah je možen dostop le do izhodnega podatka o zasuku. Z referenčnim dajalnikom, se lahko določi napako, njen izvor ostaja neznan.
 
 S poznavanjem vplivov popačenja signalov sinus in kosinus na napako, se lahko kasneje iz napake oceni kaj nanjo vpliva in kako jo zmanjšati.
 V tem delu, bom predstavil, kako se pri popačenih vhodnih signalih sinusa in kosinusa  izraža napaka izračunanega kota v obliki neskončne vrste.
@@ -110,7 +110,7 @@ Ob povečanju $k$ proti neskončnosti, se pojavi napaka (slika \ref{fig:lim_amp}
 \begin{figure}[!htb]
 	\begin{center}
 		\includegraphics[width=\linewidth]{./Slike/lim_amp.eps}
-		\caption{Napaka $\varepsilon$ ob limiti k} \label{fig:lim_amp}
+		\caption{Napaka $\varepsilon$ ob limiti $k$ proti neskončnosti} \label{fig:lim_amp}
 	\end{center}
 \end{figure}
 
@@ -123,7 +123,7 @@ Največji vpliv ima drugi harmonik, njegov potek v odvisnoti od $k$ je predstavl
 \begin{figure}[!htb]
 	\begin{center}
 		\includegraphics[width=\linewidth]{./Slike/amp.eps}
-		\caption{Potek drugega harmonika v odvistnosti od k} \label{fig:amp}
+		\caption{Potek drugega harmonika v odvistnosti od $k$} \label{fig:amp}
 	\end{center}
 \end{figure}
 
@@ -162,26 +162,23 @@ Potek napake $\varepsilon$ s slike \ref{fig:lim_sin_fis} predstavi vrsta (\ref{e
 \begin{figure}[!htb]
     \begin{center}
         \includegraphics[width=\linewidth]{./Slike/lim_sinfaza.eps}
-        \caption{Napaka $\varepsilon$ ob limiti $\varphi_{s} = 90^\circ$} \label{fig:lim_sin_fis}
+        \caption{Napaka $\varepsilon$ ob limiti $\varphi_{s} \rightarrow 90^\circ$} \label{fig:lim_sin_fis}
     \end{center}
 \end{figure}
 \begin{equation}
 \label{equ:lim_fis_vrsta}
 \varepsilon = 45^\circ - \frac{180}{\pi}\sum_{n=1}^{\infty}\frac{1}{n} \sin (2n \theta)
 \end{equation} 
-Iz  izraza je vidno nastopanje enosmerne komponente in sodih harmonikov. Na sliki \ref{fig:fis} so prikazani: potek enosmerne komponente $C_0$, potek amplitude drugega harmonika $C_1$, in $\varphi_1$ kot fazni zamik drugega harmonika glede na kosinusno obliko. Za predstavitev poteka s sinusi, je potrebno prišteti še $90^\circ$. Ordinatna skala grafa na sliki \ref{fig:fis} je v stopinjah. Pri $C_0$ in $C_1$, stopinje predstavljajo amplitudo napake, pri $\varphi_{1}$ je na skali fazni zamik v stopinjah.
+Iz  izraza je vidno nastopanje enosmerne komponente in sodih harmonikov. Na sliki \ref{fig:fis} so prikazani: potek enosmerne komponente $C_0$, potek amplitude drugega harmonika $C_1$, in $\varphi_1$ fazni zamik drugega harmonika glede na kosinusno obliko. Za predstavitev poteka s sinusi, je potrebno prišteti še $90^\circ$. Ordinatna skala grafa na sliki \ref{fig:fis} je v stopinjah. Pri $C_0$ in $C_1$, stopinje predstavljajo amplitudo napake, pri $\varphi_{1}$ skala prikazuje fazni zamik v stopinjah.
 \begin{figure}[!htb]
 	\begin{center}
 		\includegraphics[width=\linewidth]{./Slike/fis.eps}
 		\caption{Potek enosmerne komponente napake $C_0$, amplitude drugega harmonika $C_1$ in faznega zamika $\varphi_1$ glede na kosinus, v odvistnisti od faznega zamika sinusa $\varphi_{s}$} \label{fig:fis}
 	\end{center}
 \end{figure}
-
 Poteku enosmerne komponte se najbolje prilega funkcija premice.
 Potek amplitude drugega harmonika napake ima obliko funkcije tangens.
-
 Fazni zamik drugega harmonika narašča linearno, vendar je za predstavitev s sinusi potrebno prišteti še $90^\circ$. Enako se lahko ponovi za fazni zamik kosinus signala.
-
 Enačba končnega poteka se glasi:
 \begin{multline}
 \label{equ:fis_err}
@@ -192,10 +189,10 @@ $$ \varphi_{s}-\varphi_{c} \in [ -90^\circ , 90^\circ ] $$
 
 \subsection{Določanje napake ob spremembi enosmerne komponente}
 Amplitudi sigalov sinus in kosinus sta enaki 1.
-Z limito $A_0$ in razvojem napake v Fourierovo vrsto je napaka:
+Z limito $A_0$ in razvojem napake v Fourierovo vrsto napako izrazimo z:
 \begin{equation}
 \label{equ:off_lim_vrsta}
-\varepsilon = \frac{180}{\pi}\sum_{n=1}^{\infty}\frac{2}{n} \sin (n \theta+ 90^\circ n)
+\varepsilon = \frac{180}{\pi}\sum_{n=1}^{\infty}\frac{2}{n} \sin (n \theta+ 90^\circ n).
 \end{equation}
 Enosmerne komponente ni,  največji je prvi harmonik.
 \begin{figure}[!htb]
@@ -239,13 +236,13 @@ Enako se lahko stori tudi za $B_0$ (\ref{equ:offs_err}) in za aproksimacijo napa
 
 \subsection{Različni amplitudi in fazi v odvistnosti od enega parametra}
 
-Fourierova vrsta limite (\ref{equ:def_err}) pri upoštevanju (\ref{equ:def_eks_sin}) in (\ref{equ:def_eks_cos}), ko gre $\Delta_c$ v neskončnost, pri amplitudah je
+Fourierova vrsta limite (\ref{equ:def_err}) pri upoštevanju (\ref{equ:def_eks_sin}) in (\ref{equ:def_eks_cos}), ko gre $\Delta_c$ v neskončnost je
 \begin{equation}
 \label{equ:lim_dc_vrsta}
-\varepsilon = 45^\circ -\frac{180}{\pi}\sum_{n=1}^{\infty}\frac{1}{n} \sin( 2 n \theta)
+\varepsilon = 45^\circ -\frac{180}{\pi}\sum_{n=1}^{\infty}\frac{1}{n} \sin( 2 n \theta).
 \end{equation}
 
-Drugi harmonik je predstavljen kot vsota sinusa in kosinusa.
+Potek drugega harmonika od $\Delta_c$ se lahko zapiše kot vsota sinusa in kosinusa.
 \begin{equation}
 C_{1s} \cdot\sin(2\theta)+C_{1c} \cdot\cos(2\theta)
 \end{equation}
@@ -253,20 +250,20 @@ Poteki enosmerne komponente ter drugega harmonika predstavljenega kot seštevek 
 \begin{figure}[!htb]
 	\begin{center}
 		\includegraphics[width=\linewidth]{./Slike/dc.eps}
-		\caption{Potek drugega harmonika napake, v odvistnisti od $\Delta_{c}$} \label{fig:dc}
+		\caption{Potek enosmerne komponente in drugega harmonika napake, v odvistnisti od $\Delta_{c}$} \label{fig:dc}
 	\end{center}
 \end{figure}
 
 Enosmerna komponenta ima obliko racionalne funkcije v funkciji atan.
-$C_1s$ in $C_1c$ sti racionalni funkciji. Amplituda je geometrijska vsota členov $C_n = \sqrt{C_{ns}^2+C_{nc}^2}$, faza za sinusni potek napake je $\varphi_{n} = atan(\frac{C_{ns}}{C_{nc}})$. Končna enačba z upoštevanjem amplitude osnovnega signala sinus in kosinus se glasi:
+$C_1s$ in $C_1c$ sti racionalni funkciji. Amplituda je geometrijska vsota členov $C_n = \sqrt{C_{ns}^2+C_{nc}^2}$, faza za sinusni potek napake je $\varphi_{n} = atan(\frac{C_{nc}}{C_{ns}})$. Končna enačba z upoštevanjem amplitude osnovnega signala sinus in kosinus se glasi:
 
 \begin{multline}
 \label{equ:dc_err}
-\varepsilon(\Delta_c) =\\ \mathrm{atand}\frac{\Delta_c}{\Delta_c+2 A_1}+\frac{180}{\pi} \sum_{n=1}^{\infty}\frac{1}{n} (\frac{\Delta_c}{\sqrt{\Delta_c^2+2 A_1 \Delta_c+2 A_1}})^n\\ \sin (2n \theta+n (90^\circ+ \mathrm{ atan}(\frac{\Delta_c+1}{A_1})))
+\varepsilon(\Delta_c) =\\ \mathrm{atand}\frac{\Delta_c}{\Delta_c+2 A_1}+\frac{180}{\pi} \sum_{n=1}^{\infty}\frac{1}{n} (\frac{\Delta_c}{\sqrt{\Delta_c^2+2 A_1 \Delta_c+2 A_1}})^n\\ \sin (2n \theta+n (90^\circ+ \mathrm{ atan}(\frac{\Delta_c+A_1}{A_1})))
 \end{multline}
 \begin{multline}
 \label{equ:ds_err}
-\varepsilon(\Delta_s) =\\ \mathrm{atand}\frac{-\Delta_s}{\Delta_s+2 A_1}+\frac{180}{\pi} \sum_{n=1}^{\infty}\frac{1}{n} (\frac{\Delta_s}{\sqrt{\Delta_s^2+2 A_1 \Delta_s+2A_1}})^n\\ \sin (2n \theta+n (90^\circ+ \mathrm{ atan}(\frac{\Delta_s+1}{A_1}))))
+\varepsilon(\Delta_s) =\\ \mathrm{atand}\frac{-\Delta_s}{\Delta_s+2 A_1}+\frac{180}{\pi} \sum_{n=1}^{\infty}\frac{1}{n} (\frac{\Delta_s}{\sqrt{\Delta_s^2+2 A_1 \Delta_s+2A_1}})^n\\ \sin (2n \theta+n (90^\circ+ \mathrm{ atan}(\frac{\Delta_s+A_1}{A_1})))
 \end{multline}
 \begin{equation*}
 \Delta_s, \Delta_c > -A_1
@@ -275,13 +272,11 @@ $C_1s$ in $C_1c$ sti racionalni funkciji. Amplituda je geometrijska vsota členo
 
 
 \section{Komentar rezultatov}
-
-Pri modeliranju potekov, je bilo uporabljeno prvih 15 členov potenčne vrste. Razlika med dejansko napako in predvideno napako je le numerična (slika \ref{fig:razlika}). Opravil sem fft predvidene in dejanske napake. Razlika med posameznima amplitudama harmonika je le numerična. V primeru, da parameter dosega večje vrednosti, dejanska napaka postane nezvezna in je s 15 členi ni mogoče povsem določiti, saj so odstopanja na nezveznih območjih. Omenti je še potrebno, da so kljub izpeljavam vrste s katerimi so predstavljene napake posameznih deformacij med seboj odvisne.
-
+Pri modeliranju potekov, je bilo uporabljeno prvih 15 členov potenčne vrste. Razlika med dejansko napako in predvideno napako je le numerična (slika \ref{fig:razlika}). Opravil sem fft predvidene in dejanske napake. Razlika med posameznima amplitudama harmonika je le numerična. V primeru, da parameter dosega večje vrednosti, ali se približuje robnim pogojem, dejanska napaka postane nezvezna in je s 15 členi ni mogoče povsem določiti. Omenti je potrebno, da so kljub izpeljavam predstavljene vrste napake posameznih deformacij med seboj odvisne.
 \begin{figure}[!htb]
 	\begin{center}
 		\includegraphics[width=\linewidth]{./Slike/razlika_amp.eps}
-		\caption{Razlika med predvideno napako (\ref{equ:amp_err}) in dejansko napako pri $k=1.1$} \label{fig:razlika}
+		\caption{Razlika med predvideno (\ref{equ:amp_err}) in dejansko napako pri $k=1.1$} \label{fig:razlika}
 	\end{center}
 \end{figure}
 
@@ -290,7 +285,7 @@ Pri modeliranju potekov, je bilo uporabljeno prvih 15 členov potenčne vrste. R
 
 \section{Zaključek}
 
-V članku so predstavljeni poteki napake v odvisnosti od različnih amplitud, enosmernih komponent, faznih zamikov in kombinacije različnih amplitud ter faznih zamikov signalov sinusa in kosinusa. Napaka vsebuje tudi višje harmonike, ki ob večjih razlikah med sinusom in kosinusom niso več zanemarljivi. Za majhna popačenja vhodnih signalov, zadostuje napako izraziti z enosmerno komponento in prvim členom potenčne vrste. Napako izraženo z enosmerno komponento in prvim členom potenčne vrste je potrdila tudi druga literatura \cite{RLS1}. Izraze se lahko uporabi za ugotovitev nepravilne montaže resolverja ali enkoderja, v vgrajenih aplikacijah, kjer ni dostopa do signalov sinus in kosinus. V signalih sinus in kosinus se lahko pojavijo tudi višji harmoniki, ki prav tako vplivajo na napako. Vpliv višjih harmonikov v vhodnih signalih funkcije atan2 na izhodno napako, ponuja še veliko izzivov za nadaljne delo.
+V članku so predstavljeni poteki napake v odvisnosti od različnih amplitud, enosmernih komponent, faznih zamikov in kombinacije različnih amplitud ter faznih zamikov signalov sinusa in kosinusa. Napaka vsebuje tudi višje harmonike, ki ob večjih razlikah med sinusom in kosinusom niso več zanemarljivi. Za majhna popačenja vhodnih signalov, zadostuje napako izraziti z enosmerno komponento in prvim členom potenčne vrste. Napako izraženo z enosmerno komponento in prvim členom potenčne vrste je potrdila tudi druga literatura \cite{RLS1}. Izraze se lahko uporabi za ugotovitev nepravilne montaže resolverja ali enkoderja, v vgrajenih aplikacijah, kjer ni dostopa do signalov sinus in kosinus. V signalih sinus in kosinus se lahko pojavijo tudi višji harmoniki, ki prav tako vplivajo na napako. Vpliv popačenj vhodnih signalov v  funkcijo atan2 na izhodno napako, ponuja še veliko izzivov za nadaljne delo.
 
 
 \small
