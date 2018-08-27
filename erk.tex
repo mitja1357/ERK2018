@@ -173,10 +173,10 @@ Iz  izraza je vidno nastopanje enosmerne komponente in sodih harmonikov. Na slik
 \begin{figure}[!htb]
 	\begin{center}
 		\includegraphics[width=\linewidth]{./Slike/fis.eps}
-		\caption{Potek enosmerne komponente napake $C_0$, amplitude drugega harmonika $C_1$ in faznega zamika $\varphi_1$ glede na kosinus, v odvistnisti od faznega zamika sinusa $\varphi_{s}$} \label{fig:fis}
+		\caption{Potek enosmerne komponente napake $C_0$, amplitude drugega harmonika $C_1$ in faznega zamika $\varphi_1$ glede na kosinus, v odvisnosti od faznega zamika sinusa $\varphi_{s}$} \label{fig:fis}
 	\end{center}
 \end{figure}
-Poteku enosmerne komponte se najbolje prilega funkcija premice.
+Poteku enosmerne komponente se najbolje prilega funkcija premice.
 Potek amplitude drugega harmonika napake ima obliko funkcije tangens.
 Fazni zamik drugega harmonika narašča linearno, vendar je za predstavitev s sinusi potrebno prišteti še $90^\circ$. Enako se lahko ponovi za fazni zamik kosinus signala.
 Enačba končnega poteka se glasi:
@@ -188,7 +188,7 @@ pri čemer, (\ref{equ:fis_err}) velja za :
 $$ \varphi_{s}-\varphi_{c} \in [ -90^\circ , 90^\circ ] $$
 
 \subsection{Določanje napake ob spremembi enosmerne komponente}
-Amplitudi sigalov sinus in kosinus sta enaki 1.
+Amplitudi signalov sinus in kosinus sta enaki 1.
 Z limito $A_0$ in razvojem napake v Fourierovo vrsto napako izrazimo z:
 \begin{equation}
 \label{equ:off_lim_vrsta}
@@ -250,12 +250,12 @@ Poteki enosmerne komponente ter drugega harmonika, predstavljenega kot seštevek
 \begin{figure}[!htb]
 	\begin{center}
 		\includegraphics[width=\linewidth]{./Slike/dc.eps}
-		\caption{Potek enosmerne komponente in drugega harmonika napake, v odvistnisti od $\Delta_{c}$} \label{fig:dc}
+		\caption{Potek enosmerne komponente in drugega harmonika napake, v odvisnosti od $\Delta_{c}$} \label{fig:dc}
 	\end{center}
 \end{figure}
 
 Enosmerna komponenta ima obliko racionalne funkcije v funkciji atan.
-$C_1s$ in $C_1c$ sta racionalni funkciji. Amplituda je geometrijska vsota členov $C_n = \sqrt{C_{ns}^2+C_{nc}^2}$, faza za sinusni potek napake je $\varphi_{n} = atan(\frac{C_{nc}}{C_{ns}})$. Končna enačba z upoštevanjem amplitude osnovnega signala sinus in kosinus se glasi:
+$C_{1s}$ in $C_{1c}$ sta racionalni funkciji. Amplituda je geometrijska vsota členov $C_n = \sqrt{C_{ns}^2+C_{nc}^2}$, faza za sinusni potek napake je $\varphi_{n} = atan(\frac{C_{nc}}{C_{ns}})$. Končna enačba z upoštevanjem amplitude osnovnega signala sinus in kosinus se glasi:
 
 \begin{multline}
 \label{equ:dc_err}
@@ -272,7 +272,7 @@ $C_1s$ in $C_1c$ sta racionalni funkciji. Amplituda je geometrijska vsota členo
 
 
 \section{Komentar rezultatov}
-Pri modeliranju potekov je bilo uporabljeno prvih 15 členov potenčne vrste. Razlika med dejansko napako in predvideno napako je le numerična (slika \ref{fig:razlika}). Opravil sem FFT predvidene in dejanske napake. Razlika med posameznima amplitudama harmonika je le numerična. V primeru, da parameter dosega večje vrednosti, ali se približuje robnim pogojem, dejanska napaka postane nezvezna in je s 15 členi ni mogoče povsem določiti. Omenti je potrebno, da so kljub izpeljavam, predstavljene vrste napake posameznih deformacij med seboj odvisne.
+Pri modeliranju potekov je bilo uporabljeno prvih 15 členov potenčne vrste. Razlika med dejansko napako in predvideno napako je le numerična (slika \ref{fig:razlika}). Opravil sem FFT predvidene in dejanske napake. Razlika med posameznima amplitudama harmonika je le numerična. V primeru, da parameter dosega večje vrednosti, ali se približuje robnim pogojem, dejanska napaka postane nezvezna in je s 15 členi ni mogoče povsem določiti. Omeniti je potrebno, da so kljub izpeljavam, predstavljene vrste napake posameznih deformacij med seboj odvisne.
 \begin{figure}[!htb]
 	\begin{center}
 		\includegraphics[width=\linewidth]{./Slike/razlika_amp.eps}
@@ -318,11 +318,11 @@ Electronics, vol.37, no.6, pp.556-561, Dec. 1990
 Application for Absolute Angular Position Measurements”, PhD. thesis,
 pp. 152-161, Federal Polytechnic School of Lausanne, Switzerland, 2003
 
-\bibitem{mat1} Dolinar G. "Matematika 1", Fakulteta za elektrotehniko, Založba FE in FRI, pp. ,2010
+\bibitem{mat1} Dolinar G. "Matematika 1", Fakulteta za elektrotehniko, Založba FE in FRI, 2010
 
 \bibitem{atan} https://www.mathworks.com/help/matlab/ref/atan2.html, dostop junij 2018
 \bibitem{atand} https://www.mathworks.com/help/matlab/ref/atan2d.html, dostop junij 2018
-\bibitem{fourier} https://sl.wikipedia.org/wiki/Fourierova\_vrsta, dostop junij 2018
+
 
 
 \end{thebibliography}
