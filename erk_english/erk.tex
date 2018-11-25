@@ -92,16 +92,16 @@ Error is transformed to Fourier series. From transform can be decided which harm
 
 The following are the principles of error determination at different amplitudes, phase displacements, offsets and a combination of different amplitudes and phases due to one parameter.
 
-\subsection{Določanje napake ob različnih amplitudah}
+\subsection{Defining of error at different amplitudes}
 
-Definirajmo razmerje amplitude sinusa in kosinusa s $k$. Sprememba obeh amplitud za določen faktor ne bo ustvarila dodatne napake.
+If both input signals are multiplied by same coefficient, output signal will not  be changed. Multiply both signals with $\frac{1}{A_1}$ and ratio $\frac{B_1}{A_1}$ define as $k$. Setting offsets and phases to zero, the input signals are defined as:
 	\begin{eqnarray}
 	\label{equ:def_sin_ama}
 	&Sin = k \sin(\theta)\\
 	\label{equ:def_cos_amp}
-	&Cos =\cos(\theta)
+	&Cos =\cos(\theta).
 	\end{eqnarray}
-Ob povečanju $k$ proti neskončnosti se pojavi napaka (slika \ref{fig:lim_amp}),
+Limiting $k$ to infinity and calculate of error get result (Figure \ref{fig:lim_amp}),
 \begin{equation}
 \label{equ:amp_lim}
 \lim_{k \rightarrow \infty} (\mathrm{atan2}(k \sin{\theta},\cos{\theta})-\mathrm{atan2}(\sin{\theta},\cos{\theta}))
@@ -109,16 +109,17 @@ Ob povečanju $k$ proti neskončnosti se pojavi napaka (slika \ref{fig:lim_amp})
 \begin{figure}[!htb]
 	\begin{center}
 		\includegraphics[width=\linewidth]{./Slike/lim_amp.eps}
-		\caption{Napaka $\varepsilon$ ob limiti $k$ proti neskončnosti} \label{fig:lim_amp}
+		\caption{Error $\varepsilon$ of limiting $k$ to infinity} \label{fig:lim_amp}
 	\end{center}
 \end{figure}
 
-ki se v Fourierovi vrsti izrazi kot:
+that can be transformed to Fourier series:
 \begin{equation}
 \label{equ:lim_amp_vrsta}
 \varepsilon = \frac{180}{\pi}\sum_{n=1}^{\infty}\frac{1}{n} \sin 2 n \theta.
 \end{equation}
-Največji vpliv ima drugi harmonik, njegov potek v odvisnosti od $k$ je predstavljen na sliki \ref{fig:amp} kot $C_1$, saj nastopajo le sodi harmoniki.
+By calculating Fourier series of error we get only even harmonics, of which the second harmonics is the largest.
+Because of number 2 in argument of sine in (\ref{equ:lim_amp_vrsta}), $C_1$ presents function of amplitude for second harmonic. 
 \begin{figure}[!htb]
 	\begin{center}
 		\includegraphics[width=\linewidth]{./Slike/amp.eps}
@@ -126,14 +127,13 @@ Največji vpliv ima drugi harmonik, njegov potek v odvisnosti od $k$ je predstav
 	\end{center}
 \end{figure}
 
-Z uporabo Curve Fitting Toolbox se poteku najbolje prilega  racionalna funkcija. Napaka se izrazi s potenčno vrsto:
-
+Using Curve Fitting Toolbox, best fit is rational function. Error can be expressed as:
 \begin{equation}
 \label{equ:amp_err}
 \varepsilon(k) =\frac{180}{\pi}\sum_{n=1}^{\infty}\frac{1}{n}(\frac{k-1}{k+1})^n \sin 2 n \theta
 \end{equation}
 
-in velja, če je $k$ večji od 0.$$k \geq 0$$
+Expression is valid for  $k$ bigger than 0.$$k \geq 0$$
 
 V (\ref{equ:amp_err}) namesto $k$ vstavimo razmerje amplitud:
 \begin{equation}
@@ -142,7 +142,7 @@ V (\ref{equ:amp_err}) namesto $k$ vstavimo razmerje amplitud:
 \end{equation}
 kar velja pri pogoju: $$\frac{B_1}{A_1} \geq 0.$$
 
-\subsection{Določanje napake ob spremembi faznega zamika}
+\subsection{Defining of error at non-orthogonality}
 
 
 Vhodna signala imata naslednjo obliko:
@@ -186,7 +186,7 @@ Enačba končnega poteka se glasi:
 pri čemer, (\ref{equ:fis_err}) velja za :
 $$ \varphi_{s}-\varphi_{c} \in [ -90^\circ , 90^\circ ] $$
 
-\subsection{Določanje napake ob spremembi enosmerne komponente}
+\subsection{Defining of error at offsets}
 Amplitudi signalov sinus in kosinus sta enaki 1.
 Z limito $A_0$ in razvojem napake v Fourierovo vrsto napako izrazimo z:
 \begin{equation}
@@ -233,7 +233,7 @@ Enako se lahko stori tudi za $B_0$ (\ref{equ:offs_err}) in za aproksimacijo napa
 \end{cases}
 \end{multline}
 
-\subsection{Različni amplitudi in fazi v odvistnosti od enega parametra}
+\subsection{Impact of different amplitude and phase due to one parameter}
 
 Fourierova vrsta limite (\ref{equ:def_err}) pri upoštevanju (\ref{equ:def_eks_sin}) in (\ref{equ:def_eks_cos}), ko gre $\Delta_c$ v neskončnost, je
 \begin{equation}
