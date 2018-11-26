@@ -81,7 +81,7 @@ Here is presented approach to determinate error. One parameter ($A_0$, $B_0$, $A
 In limit error is expressed as example:
 \begin{equation}
 \label{equ:def_err_inf}
-\varepsilon=
+\varepsilon(\theta)=
 \begin{cases}
 90^\circ-\theta, & \theta \in \{0^\circ,180^\circ\}\\
 270^\circ-\theta, & \theta \in \{180^\circ,360^\circ\}
@@ -123,7 +123,7 @@ Because of number 2 in argument of sine in (\ref{equ:lim_amp_vrsta}), $C_1$ pres
 \begin{figure}[!htb]
 	\begin{center}
 		\includegraphics[width=\linewidth]{./Slike/amp.eps}
-		\caption{Potek drugega harmonika v odvistnosti od $k$} \label{fig:amp}
+		\caption{The course of the second accordion depending on $k$} \label{fig:amp}
 	\end{center}
 \end{figure}
 
@@ -135,72 +135,68 @@ Using Curve Fitting Toolbox, best fit is rational function. Error can be express
 
 Expression is valid for  $k$ bigger than 0.$$k \geq 0$$
 
-V (\ref{equ:amp_err}) namesto $k$ vstavimo razmerje amplitud:
+instead of  $k$  (\ref{equ:amp_err})  inserts the ratio of amplitude:
 \begin{equation}
 \label{equ:amp_err2}
 \varepsilon(k) =\frac{180}{\pi}\sum_{n=1}^{\infty}\frac{1}{n}(\frac{B_1-A_1}{B_1+A_1})^n \sin 2 n \theta
 \end{equation}
-kar velja pri pogoju: $$\frac{B_1}{A_1} \geq 0.$$
+(\ref{equ:amp_err2}) is valid for: $$\frac{B_1}{A_1} \geq 0.$$
 
 \subsection{Defining of error at non-orthogonality}
 
-
-Vhodna signala imata naslednjo obliko:
+Inpust signals are defined as:
 \begin{eqnarray}
 \label{equ:def_sin_fis}
 &Sin = \sin(\theta + \varphi_{s})\\
 \label{equ:def_cos_fis}
 &Cos =\cos(\theta+\varphi_{c})
 \end{eqnarray}
-Napako se določi posamično za vsakega od parametrov. Drugi je takrat enak 0. Na koncu se enačbi združi. Za določanje limite ni potrebno iti proti neskončnosti, ampak le do najslabše možnosti, ki je pri $\pm 90^\circ$:
+Error is determinate for each parameter separately. Other paramether is set to zero. At the end of equations are merged. For limitation of equation is not obligatory limit to infinity, just to the worst case. Limit is at $\pm 90^\circ$:
+
 \begin{equation}
 \label{equ:fis_lim}
 \varepsilon = \lim_{\varphi_{s} \rightarrow 90^\circ} \mathrm{atan2}(Sin ,Cos)- \mathrm{atan2d}(\sin(\theta),\cos(\theta))
 \end{equation}
-Potek napake $\varepsilon$ s slike \ref{fig:lim_sin_fis} predstavi vrsta (\ref{equ:lim_fis_vrsta}).
 \begin{figure}[!htb]
     \begin{center}
         \includegraphics[width=\linewidth]{./Slike/lim_sinfaza.eps}
-        \caption{Napaka $\varepsilon$ ob limiti $\varphi_{s} \rightarrow 90^\circ$} \label{fig:lim_sin_fis}
+        \caption{Error $\varepsilon$ of limiting $\varphi_{s} \rightarrow 90^\circ$} \label{fig:lim_sin_fis}
     \end{center}
 \end{figure}
+Error can be transform and presented in Fourier series.
 \begin{equation}
 \label{equ:lim_fis_vrsta}
 \varepsilon = 45^\circ - \frac{180}{\pi}\sum_{n=1}^{\infty}\frac{1}{n} \sin (2n \theta)
-\end{equation} 
-Iz  izraza je vidno nastopanje enosmerne komponente in sodih harmonikov. Na sliki \ref{fig:fis} so prikazani: potek enosmerne komponente $C_0$, potek amplitude drugega harmonika $C_1$, in $\varphi_1$ fazni zamik drugega harmonika glede na kosinusno obliko. Za predstavitev poteka s sinusi je potrebno prišteti še $90^\circ$. Ordinatna skala grafa na sliki \ref{fig:fis} je v stopinjah. Pri $C_0$ in $C_1$ stopinje predstavljajo amplitudo napake, pri $\varphi_{1}$ skala prikazuje fazni zamik v stopinjah.
+\end{equation}
+
+Transform includes offset and even harmonics only. Figure  \ref{fig:fis} presents course of offset $C_0$, amplitude of second harmonic $C_1$ and phase    of second harmonic $\varphi_{1}$ due to $\varphi_s$. y axis is in degrees. For $C_0$ and $C_1$ degrees presents amplitude of error harmonics, for $\varphi_{1}$ degrees presents phase. Offset is best fitted by linear function. Second harmonic is tangent function. Phase of second harmonic increases linear but for presentation with sine form must be added $90^\circ$. Same derivation can be done for phase of cosine signal. Equations can be marged and result is presented (\ref{equ:fis_err}).
 \begin{figure}[!htb]
 	\begin{center}
 		\includegraphics[width=\linewidth]{./Slike/fis.eps}
-		\caption{Potek enosmerne komponente napake $C_0$, amplitude drugega harmonika $C_1$ in faznega zamika $\varphi_1$ glede na kosinus, v odvisnosti od faznega zamika sinusa $\varphi_{s}$} \label{fig:fis}
+		\caption{The course of offset component $C_0$, amplitude of second harmonic  $C_1$ and phase $\varphi_1$ depend of ideal cosine signal,due to phase shift $\varphi_{s}$} \label{fig:fis}
 	\end{center}
 \end{figure}
-Poteku enosmerne komponente se najbolje prilega funkcija premice.
-Potek amplitude drugega harmonika napake ima obliko funkcije tangens.
-Fazni zamik drugega harmonika narašča linearno, vendar je za predstavitev s sinusi potrebno prišteti še $90^\circ$. Enako se lahko ponovi za fazni zamik kosinus signala.
-Enačba končnega poteka se glasi:
 \begin{multline}
 \label{equ:fis_err}
 \varepsilon(\varphi_{s},\varphi_{c}) = \frac{\varphi_{s}+\varphi_{c}}{2}+\\ \frac{180}{\pi}\sum_{n=1}^{\infty}\frac{1}{n} (\mathrm{tan}\frac{\varphi_{s}-\varphi_{c}}{2})^n \sin (2n \theta+n(90^\circ +\varphi_{s}+\varphi_{c}))
 \end{multline}
-pri čemer, (\ref{equ:fis_err}) velja za :
+Expression is valid only for:
 $$ \varphi_{s}-\varphi_{c} \in [ -90^\circ , 90^\circ ] $$
 
 \subsection{Defining of error at offsets}
-Amplitudi signalov sinus in kosinus sta enaki 1.
-Z limito $A_0$ in razvojem napake v Fourierovo vrsto napako izrazimo z:
+Define amplitudes of input signals to 1, phase shift is set to zero. Let limit parameter $A_0$ to infinity, error is transformed to Fourier series and expressed as:
 \begin{equation}
 \label{equ:off_lim_vrsta}
 \varepsilon = \frac{180}{\pi}\sum_{n=1}^{\infty}\frac{2}{n} \sin (n \theta+ 90^\circ n).
 \end{equation}
-Enosmerne komponente ni,  največji je prvi harmonik.
+Error does not include offset component, highest amplitude has first harmonic.
 \begin{figure}[!htb]
 	\begin{center}
 		\includegraphics[width=\linewidth]{./Slike/off.eps}
-		\caption{Potek amplitude prvega harmonika od enosmerne komponente kosinus signala, pri amplitudah enakih 1} \label{fig:off}
+		\caption{The course of amplitude of first harmonic due to offset  $A_0$, where input signals have amplitude of 1 } \label{fig:off}
 	\end{center}
 \end{figure}
-Potek s slike \ref{fig:off} se razdeli na 3 dele in aproksimira napako z naslednjim izrazom, upoštevajoč tudi enakosti amplitud:
+The course from figure \ref{fig:off} it is split to 3 parts and expression that best fit the curve is:
 \begin{multline}
 \label{equ:offc_err}
 \varepsilon(A_0)=\\
@@ -211,7 +207,7 @@ Potek s slike \ref{fig:off} se razdeli na 3 dele in aproksimira napako z nasledn
 \end{cases}
 \end{multline}
 
-Enako se lahko stori tudi za $B_0$ (\ref{equ:offs_err}) in za aproksimacijo napake, ko imata sinus in kosinus enako enosmerno komponento (\ref{equ:offsc_err}).
+Same derivation can be done for $B_0$ (\ref{equ:offs_err}) and for fitting error, when sine and cosine include same offset ($A_0 = B_0$) (\ref{equ:offsc_err}).
 
 \begin{multline}
 \label{equ:offs_err}
@@ -234,27 +230,27 @@ Enako se lahko stori tudi za $B_0$ (\ref{equ:offs_err}) in za aproksimacijo napa
 \end{multline}
 
 \subsection{Impact of different amplitude and phase due to one parameter}
-
-Fourierova vrsta limite (\ref{equ:def_err}) pri upoštevanju (\ref{equ:def_eks_sin}) in (\ref{equ:def_eks_cos}), ko gre $\Delta_c$ v neskončnost, je
+Transform to Fourier series  of limit (\ref{equ:def_err}) to infinity of  $\Delta_c$, where inputs are  (\ref{equ:def_eks_sin}) and (\ref{equ:def_eks_cos}) is
 \begin{equation}
 \label{equ:lim_dc_vrsta}
 \varepsilon = 45^\circ -\frac{180}{\pi}\sum_{n=1}^{\infty}\frac{1}{n} \sin( 2 n \theta).
 \end{equation}
 
-Potek drugega harmonika od $\Delta_c$ se lahko zapiše kot vsota sinusa in kosinusa.
+The course of second harmonic due to $\Delta_c$, can be express as sum of sine and cosine signal. Each signal is presented in figure  \ref{fig:dc}.
+
 \begin{equation}
-C_{1s} \cdot\sin(2\theta)+C_{1c} \cdot\cos(2\theta)
+C_{1s}(\Delta_c) \cdot\sin(2\theta)+C_{1c}(\Delta_c) \cdot\cos(2\theta)
 \end{equation}
-Poteki enosmerne komponente ter drugega harmonika, predstavljenega kot seštevek sinusa in kosinusa, so prikazani na sliki \ref{fig:dc}.
+
 \begin{figure}[!htb]
 	\begin{center}
 		\includegraphics[width=\linewidth]{./Slike/dc.eps}
-		\caption{Potek enosmerne komponente in drugega harmonika napake, v odvisnosti od $\Delta_{c}$} \label{fig:dc}
+		\caption{The course of offset and amplitude of second harmonic of error due to $\Delta_{c}$} \label{fig:dc}
 	\end{center}
 \end{figure}
 
-Enosmerna komponenta ima obliko racionalne funkcije v funkciji atan.
-$C_{1s}$ in $C_{1c}$ sta racionalni funkciji. Amplituda je geometrijska vsota členov $C_n = \sqrt{C_{ns}^2+C_{nc}^2}$, faza za sinusni potek napake je $\varphi_{n} = atan(\frac{C_{nc}}{C_{ns}})$. Končna enačba z upoštevanjem amplitude osnovnega signala sinus in kosinus se glasi:
+Offset of error is fitted to invert tangent function. $C_{1s}$ and $C_{1c}$ are best fitted to rational function. Total amplitude is geometrical summation $C_n = \sqrt{C_{ns}^2+C_{nc}^2}$, phase fitted to sine signal is calculated by  $\varphi_{n} = atan(\frac{C_{nc}}{C_{ns}})$.
+Final equation due to $\Delta_c$ and $\Delta_s$is expressed in (\ref{equ:dc_err}) and (\ref{equ:ds_err})
 
 \begin{multline}
 \label{equ:dc_err}
@@ -271,21 +267,25 @@ $C_{1s}$ in $C_{1c}$ sta racionalni funkciji. Amplituda je geometrijska vsota č
 
 
 \section{Comment on results}
-Pri modeliranju potekov je bilo uporabljeno prvih 15 členov potenčne vrste. Razlika med dejansko napako in predvideno napako je le numerična (slika \ref{fig:razlika}). Opravil sem FFT predvidene in dejanske napake. Razlika med posameznima amplitudama harmonika je le numerična. V primeru, da parameter dosega večje vrednosti, ali se približuje robnim pogojem, dejanska napaka postane nezvezna in je s 15 členi ni mogoče povsem določiti. Omeniti je potrebno, da so kljub izpeljavam, predstavljene vrste napake posameznih deformacij med seboj odvisne.
+
+In test were used first 15  components of potency series. Difference between error predicted by results and actual error is only numeric (Figure \ref{fig:razlika}).
+I made FFT of predicted error and actual error. Difference between amplitude of harmonics is numeric only. By increasing parameter error, actual error limit to discretion (nezveznosti). Error can not be fitted using first 15 components only. It is necessary to mention that despite the derivation, the presented types of errors of individual deformations still depends on each other.
+
 \begin{figure}[!htb]
 	\begin{center}
 		\includegraphics[width=\linewidth]{./Slike/razlika_amp.eps}
-		\caption{Razlika med predvideno (\ref{equ:amp_err}) in dejansko napako pri $k=1.1$} \label{fig:razlika}
+		\caption{Difference between predicted (\ref{equ:amp_err}) and actual error ati $k=1.1$} \label{fig:razlika}
 	\end{center}
 \end{figure}
 
-
-
-
 \section{Conclusion}
 
-V članku so predstavljeni poteki napake v odvisnosti od različnih amplitud, enosmernih komponent, faznih zamikov in kombinacije različnih amplitud ter faznih zamikov signalov sinusa in kosinusa. Napaka vsebuje tudi višje harmonike, ki ob večjih razlikah med sinusom in kosinusom niso več zanemarljivi. Za majhna popačenja vhodnih signalov zadostuje napako izraziti z enosmerno komponento in prvim členom potenčne vrste. Napako, izraženo z enosmerno komponento in prvim členom potenčne vrste, je potrdila tudi druga literatura \cite{RLS1}. Izraze se lahko uporabi za ugotovitev nepravilne montaže resolverja ali enkoderja, v vgrajenih aplikacijah, kjer ni dostopa do signalov sinus in kosinus. V signalih sinus in kosinus se lahko pojavijo tudi višji harmoniki, ki prav tako vplivajo na napako. Vpliv popačenj vhodnih signalov v  funkcijo atan2 na izhodno napako ponuja še veliko izzivov za nadaljne delo.
+This paper presents courses of error due to different amplitudes, different offsets, phase shifts and combination of parameters in input signals.
+Error includes higher harmonics, which become non-negligible at bigger distortion. For low distortion approximation, linear function can be adequatable.
+Literature confirmed results that was calculated at low distortion \cite{RLS1}. With those expression can be found reason of inappropriate installation of position sensor or actuator. Expressions can be used in applications where user do not have access to measured signals as are sine and cosine. Input signals can include higher harmonics too. Higher harmonics in input signals have impact to output signal and error.  The influence of the distortion of the input signals in the atan2 function to the output error offers many challenges for further work. 
 
+\section*{Acknowledgment}
+This paper could not be possible without the help of some of my mentor and my professional colleagues. I am deeply grateful to their generous help in the design and experiment.
 
 \small
 \begin{thebibliography}{1}
