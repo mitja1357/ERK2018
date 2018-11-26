@@ -1,0 +1,329 @@
+% !TEX encoding = UTF-8 Unicode
+\documentclass[a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{erk}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage[top=22.5mm, bottom=22.5mm, left=22.5mm, right=22.5mm]{geometry}
+
+\usepackage[slovene,english]{babel}
+
+% local definitions
+\def\footnotemark{}%  to avoid footnote on cover page
+
+\begin{document}
+%make title
+\title{The course of error due to distortion of input signal to the atan2 function}
+
+\author{Mitja Alič} % use ^1, ^2 for author(s) from different institutions
+
+\affiliation{Faculty of Electrical Enginering, University of Ljubljana, Tržaška cesta 25, 1000 Ljubljana}
+
+\email{E-pošta: mitja1357@gmail.com}
+
+\maketitle
+
+
+\begin{abstract}{ }
+Distortion of sine and cosine values, used for angle determination with the atan2 function, can result in numerical error. According to the performed review of literature, error is normally presented by taking only the basic harmonic into account. This paper however presents determination of error by taking into account also higher harmonics, which are non-negligible at larger distortion of sine or cosine. Error is going to be expressed with infinite series, which expand the domain of distortion parameter. 
+\end{abstract}
+
+
+\selectlanguage{english}
+
+\section{Introduction}
+
+High efficient regulation of motor drives this days is presented in many applications. For quality regulated motor drives, position sensors are used\cite{uporaba_senzorjev}. Angular position is measured by incremental based sensors, resolvers, encoders \cite{inkrementalni}\cite{resolver}\cite{enkoder}... Outputs from resolvers or encoders are signals of sine and cosine form. For angle  needs to be calculated inverse of tangent. In applications is normally used function atan2, which returns value in range $[-\pi, \pi]$ \cite{atan}.
+
+Position sensors are not ideal. Signals from resolvers are not ideal form of sine and cosine. Nevertheless function atan2 calculate angle. Output of atan2 includes error, because of distorted sine and cosine signals. Literature \cite{RLS1}, \cite{RLS2}, \cite{RLS3}   analyzed the effect of distorted sine and cosine signals evaluate to angle error. Error was described by the harmonic with highest amplitude. Nevertheless error includes higher harmonics too. In this paper angle error is presented by infinite series. Many applications have accessible angular position only. By reference encoder, error can be detected, reason for it stays unknown.
+
+By knowing reasons, how distorted inputs signals of atan2 function impact to error, eventually from error cause can be recognized. This paper presents impact of distorted input signals of atan2 to error presented in infinite series.
+\section{Methodology and results}
+
+Base input signals to atan2 have form of sine and cosine. They can be distorted by offsets, different amplitude, or phase shift(\ref{equ:def_sin})(\ref{equ:def_cos})
+\begin{eqnarray}
+\label{equ:def_sin}
+&Sin = B_{0} + B_1 \sin(\theta + \varphi_{s})\\
+\label{equ:def_cos}
+&Cos = A_{0} + A_1 \cos(\theta + \varphi_{c})
+\end{eqnarray}
+Ideal case is when offsets ($B_0$ and $A_0$) and phase shifts $\varphi_0$ and $\varphi_0$  are equal to zero, amplitude are same ($B_1 = A_1$). Signals can be distorted in amplitude and phase by only one parameter ($\Delta_c$ or $\Delta_s$) (\ref{equ:def_eks_sin})(\ref{equ:def_eks_cos})
+
+\begin{eqnarray}
+\label{equ:def_eks_sin}
+&Sin = \sin(\theta)+\Delta_c \cos(\theta)+\Delta_s \sin(\theta)\\
+\label{equ:def_eks_cos}
+&Cos =\cos(\theta)+\Delta_c \cos(\theta)+\Delta_s \sin(\theta)
+\end{eqnarray}
+
+Definition of outupt signal $\varphi$ and error $\varepsilon$ is:
+
+\begin{eqnarray}
+\label{equ:def_kot}
+&\varphi = \mathrm{atan2d}(Sin,Cos)\\
+\label{equ:def_err}
+&\varepsilon =\varphi - \mathrm{atan2d}(\sin(\theta),\cos(\theta))
+\end{eqnarray}
+where $\theta$ presents reference angle. In MATLAB is defined function atan2d(), for purpose of calculation of invert tangent in four quadrant plane. Output is in range of $[-180^\circ,180^\circ]$\cite{atand}. Error is presented by infinite series (\ref{equ:potek_napake}).
+
+\begin{equation}
+\label{equ:potek_napake}
+\varepsilon(x) = C_0(x) + \sum_{n=1}^{\infty} C_n(x) \sin(n \Theta+ \varphi_n(x))
+\end{equation}
+
+Parameter $x$ presents independent variable, which distort input signals (\ref{equ:def_sin}) and (\ref{equ:def_cos}). 
+ $C_0$ presents offset of error, $C_n$ amplitude of individual harmonic and $\varphi_n$ presents phase of individual harmonic of error. All functions depend on $x$.
+
+Here is presented approach to determinate error. One parameter ($A_0$, $B_0$, $A_1$, $B_1$, $\varphi_{s}$, $\varphi_{c}$, $\Delta_s$, $\Delta_c$), used in calculation separately has been limited to infinity.
+In limit error is expressed as example:
+\begin{equation}
+\label{equ:def_err_inf}
+\varepsilon=
+\begin{cases}
+90^\circ-\theta, & \theta \in \{0^\circ,180^\circ\}\\
+270^\circ-\theta, & \theta \in \{180^\circ,360^\circ\}
+\end{cases}
+\end{equation}
+
+Error is transformed to Fourier series. From transform can be decided which harmonics are changing and to where they converge. Next step is finding analytic function, that describes the course of the harmonics amplitude and the phase shift of an individual harmonic when the parameter changes. Knowing the convergence of function is helpful. This study has shown that higher harmonies are potency depend on the basic harmonic of the error. The error is expressed as a potency series.
+
+The following are the principles of error determination at different amplitudes, phase displacements, offsets and a combination of different amplitudes and phases due to one parameter.
+
+\subsection{Defining of error at different amplitudes}
+
+If both input signals are multiplied by same coefficient, output signal will not  be changed. Multiply both signals with $\frac{1}{A_1}$ and ratio $\frac{B_1}{A_1}$ define as $k$. Setting offsets and phases to zero, the input signals are defined as:
+	\begin{eqnarray}
+	\label{equ:def_sin_ama}
+	&Sin = k \sin(\theta)\\
+	\label{equ:def_cos_amp}
+	&Cos =\cos(\theta).
+	\end{eqnarray}
+Limiting $k$ to infinity and calculate of error get result (Figure \ref{fig:lim_amp}),
+\begin{equation}
+\label{equ:amp_lim}
+\lim_{k \rightarrow \infty} (\mathrm{atan2}(k \sin{\theta},\cos{\theta})-\mathrm{atan2}(\sin{\theta},\cos{\theta}))
+\end{equation}
+\begin{figure}[!htb]
+	\begin{center}
+		\includegraphics[width=\linewidth]{./Slike/lim_amp.eps}
+		\caption{Error $\varepsilon$ of limiting $k$ to infinity} \label{fig:lim_amp}
+	\end{center}
+\end{figure}
+
+that can be transformed to Fourier series:
+\begin{equation}
+\label{equ:lim_amp_vrsta}
+\varepsilon = \frac{180}{\pi}\sum_{n=1}^{\infty}\frac{1}{n} \sin 2 n \theta.
+\end{equation}
+By calculating Fourier series of error we get only even harmonics, of which the second harmonics is the largest.
+Because of number 2 in argument of sine in (\ref{equ:lim_amp_vrsta}), $C_1$ presents function of amplitude for second harmonic. 
+\begin{figure}[!htb]
+	\begin{center}
+		\includegraphics[width=\linewidth]{./Slike/amp.eps}
+		\caption{Potek drugega harmonika v odvistnosti od $k$} \label{fig:amp}
+	\end{center}
+\end{figure}
+
+Using Curve Fitting Toolbox, best fit is rational function. Error can be expressed as:
+\begin{equation}
+\label{equ:amp_err}
+\varepsilon(k) =\frac{180}{\pi}\sum_{n=1}^{\infty}\frac{1}{n}(\frac{k-1}{k+1})^n \sin 2 n \theta
+\end{equation}
+
+Expression is valid for  $k$ bigger than 0.$$k \geq 0$$
+
+V (\ref{equ:amp_err}) namesto $k$ vstavimo razmerje amplitud:
+\begin{equation}
+\label{equ:amp_err2}
+\varepsilon(k) =\frac{180}{\pi}\sum_{n=1}^{\infty}\frac{1}{n}(\frac{B_1-A_1}{B_1+A_1})^n \sin 2 n \theta
+\end{equation}
+kar velja pri pogoju: $$\frac{B_1}{A_1} \geq 0.$$
+
+\subsection{Defining of error at non-orthogonality}
+
+
+Vhodna signala imata naslednjo obliko:
+\begin{eqnarray}
+\label{equ:def_sin_fis}
+&Sin = \sin(\theta + \varphi_{s})\\
+\label{equ:def_cos_fis}
+&Cos =\cos(\theta+\varphi_{c})
+\end{eqnarray}
+Napako se določi posamično za vsakega od parametrov. Drugi je takrat enak 0. Na koncu se enačbi združi. Za določanje limite ni potrebno iti proti neskončnosti, ampak le do najslabše možnosti, ki je pri $\pm 90^\circ$:
+\begin{equation}
+\label{equ:fis_lim}
+\varepsilon = \lim_{\varphi_{s} \rightarrow 90^\circ} \mathrm{atan2}(Sin ,Cos)- \mathrm{atan2d}(\sin(\theta),\cos(\theta))
+\end{equation}
+Potek napake $\varepsilon$ s slike \ref{fig:lim_sin_fis} predstavi vrsta (\ref{equ:lim_fis_vrsta}).
+\begin{figure}[!htb]
+    \begin{center}
+        \includegraphics[width=\linewidth]{./Slike/lim_sinfaza.eps}
+        \caption{Napaka $\varepsilon$ ob limiti $\varphi_{s} \rightarrow 90^\circ$} \label{fig:lim_sin_fis}
+    \end{center}
+\end{figure}
+\begin{equation}
+\label{equ:lim_fis_vrsta}
+\varepsilon = 45^\circ - \frac{180}{\pi}\sum_{n=1}^{\infty}\frac{1}{n} \sin (2n \theta)
+\end{equation} 
+Iz  izraza je vidno nastopanje enosmerne komponente in sodih harmonikov. Na sliki \ref{fig:fis} so prikazani: potek enosmerne komponente $C_0$, potek amplitude drugega harmonika $C_1$, in $\varphi_1$ fazni zamik drugega harmonika glede na kosinusno obliko. Za predstavitev poteka s sinusi je potrebno prišteti še $90^\circ$. Ordinatna skala grafa na sliki \ref{fig:fis} je v stopinjah. Pri $C_0$ in $C_1$ stopinje predstavljajo amplitudo napake, pri $\varphi_{1}$ skala prikazuje fazni zamik v stopinjah.
+\begin{figure}[!htb]
+	\begin{center}
+		\includegraphics[width=\linewidth]{./Slike/fis.eps}
+		\caption{Potek enosmerne komponente napake $C_0$, amplitude drugega harmonika $C_1$ in faznega zamika $\varphi_1$ glede na kosinus, v odvisnosti od faznega zamika sinusa $\varphi_{s}$} \label{fig:fis}
+	\end{center}
+\end{figure}
+Poteku enosmerne komponente se najbolje prilega funkcija premice.
+Potek amplitude drugega harmonika napake ima obliko funkcije tangens.
+Fazni zamik drugega harmonika narašča linearno, vendar je za predstavitev s sinusi potrebno prišteti še $90^\circ$. Enako se lahko ponovi za fazni zamik kosinus signala.
+Enačba končnega poteka se glasi:
+\begin{multline}
+\label{equ:fis_err}
+\varepsilon(\varphi_{s},\varphi_{c}) = \frac{\varphi_{s}+\varphi_{c}}{2}+\\ \frac{180}{\pi}\sum_{n=1}^{\infty}\frac{1}{n} (\mathrm{tan}\frac{\varphi_{s}-\varphi_{c}}{2})^n \sin (2n \theta+n(90^\circ +\varphi_{s}+\varphi_{c}))
+\end{multline}
+pri čemer, (\ref{equ:fis_err}) velja za :
+$$ \varphi_{s}-\varphi_{c} \in [ -90^\circ , 90^\circ ] $$
+
+\subsection{Defining of error at offsets}
+Amplitudi signalov sinus in kosinus sta enaki 1.
+Z limito $A_0$ in razvojem napake v Fourierovo vrsto napako izrazimo z:
+\begin{equation}
+\label{equ:off_lim_vrsta}
+\varepsilon = \frac{180}{\pi}\sum_{n=1}^{\infty}\frac{2}{n} \sin (n \theta+ 90^\circ n).
+\end{equation}
+Enosmerne komponente ni,  največji je prvi harmonik.
+\begin{figure}[!htb]
+	\begin{center}
+		\includegraphics[width=\linewidth]{./Slike/off.eps}
+		\caption{Potek amplitude prvega harmonika od enosmerne komponente kosinus signala, pri amplitudah enakih 1} \label{fig:off}
+	\end{center}
+\end{figure}
+Potek s slike \ref{fig:off} se razdeli na 3 dele in aproksimira napako z naslednjim izrazom, upoštevajoč tudi enakosti amplitud:
+\begin{multline}
+\label{equ:offc_err}
+\varepsilon(A_0)=\\
+\begin{cases}
+\frac{180}{\pi}\sum_{n=1}^{\infty}(-1)^n\frac{1}{n}(2-|\frac{A_0}{A_1}|^{-n}) \sin (n \theta ), & \frac{A_0}{A_1}\leq -1 \\
+\frac{180}{\pi}\sum_{n=1}^{\infty}(-1)^n\frac{1}{n}(\frac{A_0}{A_1})^n \sin (n \theta ), & |\frac{A_0}{A_1}|\leq 1 \\
+\frac{180}{\pi}\sum_{n=1}^{\infty}(-1)^n\frac{1}{n}(2-(\frac{A_0}{A_1})^{-n}) \sin (n \theta ), & \frac{A_0}{A_1}\geq 1
+\end{cases}
+\end{multline}
+
+Enako se lahko stori tudi za $B_0$ (\ref{equ:offs_err}) in za aproksimacijo napake, ko imata sinus in kosinus enako enosmerno komponento (\ref{equ:offsc_err}).
+
+\begin{multline}
+\label{equ:offs_err}
+\varepsilon(B_0)=\\
+\begin{cases}
+\frac{180}{\pi}\sum_{n=1}^{\infty}\frac{1}{n}(2-|\frac{B_0}{B_1}|^{-n}) \sin (n \theta -  90^\circ n), & \frac{B_0}{B_1}\leq -1 \\
+\frac{180}{\pi}\sum_{n=1}^{\infty}\frac{1}{n}(\frac{B_0}{B_1})^n \sin (n \theta + 90^\circ n), & |\frac{B_0}{B_1}|\leq 1 \\
+\frac{180}{\pi}\sum_{n=1}^{\infty}\frac{1}{n}(2-(\frac{B_0}{B_1})^{-n}) \sin (n \theta^\circ + 90 n), & \frac{B_0}{B_1}\geq 1
+\end{cases}
+\end{multline}
+
+\begin{multline}
+\label{equ:offsc_err}
+\varepsilon(A_0,B_0=A_0)=\\
+\begin{cases}
+\frac{180}{\pi}\sum_{n=1}^{\infty}\frac{1}{n}(2-|\sqrt{2}\frac{A_0}{A_1}|^{-n}) \sin (n \theta + 90^\circ n), & \frac{A_0}{A_1}\leq -\frac{\sqrt{2}}{2} \\
+\frac{180}{\pi}\sum_{n=1}^{\infty}\frac{1}{n}(\sqrt{2}\frac{A_0}{A_1})^n \sin (n \theta - 90^\circ n), & |\frac{A_0}{A_1}|\leq \frac{\sqrt{2}}{2} \\
+\frac{180}{\pi}\sum_{n=1}^{\infty}\frac{1}{n}(2-(\sqrt{2}\frac{A_0}{A_1})^{-n}) \sin (n \theta - 90^\circ n), & \frac{A_0}{A_1}\geq \frac{\sqrt{2}}{2}
+\end{cases}
+\end{multline}
+
+\subsection{Impact of different amplitude and phase due to one parameter}
+
+Fourierova vrsta limite (\ref{equ:def_err}) pri upoštevanju (\ref{equ:def_eks_sin}) in (\ref{equ:def_eks_cos}), ko gre $\Delta_c$ v neskončnost, je
+\begin{equation}
+\label{equ:lim_dc_vrsta}
+\varepsilon = 45^\circ -\frac{180}{\pi}\sum_{n=1}^{\infty}\frac{1}{n} \sin( 2 n \theta).
+\end{equation}
+
+Potek drugega harmonika od $\Delta_c$ se lahko zapiše kot vsota sinusa in kosinusa.
+\begin{equation}
+C_{1s} \cdot\sin(2\theta)+C_{1c} \cdot\cos(2\theta)
+\end{equation}
+Poteki enosmerne komponente ter drugega harmonika, predstavljenega kot seštevek sinusa in kosinusa, so prikazani na sliki \ref{fig:dc}.
+\begin{figure}[!htb]
+	\begin{center}
+		\includegraphics[width=\linewidth]{./Slike/dc.eps}
+		\caption{Potek enosmerne komponente in drugega harmonika napake, v odvisnosti od $\Delta_{c}$} \label{fig:dc}
+	\end{center}
+\end{figure}
+
+Enosmerna komponenta ima obliko racionalne funkcije v funkciji atan.
+$C_{1s}$ in $C_{1c}$ sta racionalni funkciji. Amplituda je geometrijska vsota členov $C_n = \sqrt{C_{ns}^2+C_{nc}^2}$, faza za sinusni potek napake je $\varphi_{n} = atan(\frac{C_{nc}}{C_{ns}})$. Končna enačba z upoštevanjem amplitude osnovnega signala sinus in kosinus se glasi:
+
+\begin{multline}
+\label{equ:dc_err}
+\varepsilon(\Delta_c) =\\ \mathrm{atand}\frac{\Delta_c}{\Delta_c+2 A_1}+\frac{180}{\pi} \sum_{n=1}^{\infty}\frac{1}{n} (\frac{\Delta_c}{\sqrt{\Delta_c^2+2 A_1 \Delta_c+2 A_1}})^n\\ \sin (2n \theta+n (90^\circ+ \mathrm{ atan}(\frac{\Delta_c+A_1}{A_1})))
+\end{multline}
+\begin{multline}
+\label{equ:ds_err}
+\varepsilon(\Delta_s) =\\ \mathrm{atand}\frac{-\Delta_s}{\Delta_s+2 A_1}+\frac{180}{\pi} \sum_{n=1}^{\infty}\frac{1}{n} (\frac{\Delta_s}{\sqrt{\Delta_s^2+2 A_1 \Delta_s+2A_1}})^n\\ \sin (2n \theta+n (90^\circ+ \mathrm{ atan}(\frac{\Delta_s+A_1}{A_1})))
+\end{multline}
+\begin{equation*}
+\Delta_s, \Delta_c > -A_1
+\end{equation*}
+
+
+
+\section{Comment on results}
+Pri modeliranju potekov je bilo uporabljeno prvih 15 členov potenčne vrste. Razlika med dejansko napako in predvideno napako je le numerična (slika \ref{fig:razlika}). Opravil sem FFT predvidene in dejanske napake. Razlika med posameznima amplitudama harmonika je le numerična. V primeru, da parameter dosega večje vrednosti, ali se približuje robnim pogojem, dejanska napaka postane nezvezna in je s 15 členi ni mogoče povsem določiti. Omeniti je potrebno, da so kljub izpeljavam, predstavljene vrste napake posameznih deformacij med seboj odvisne.
+\begin{figure}[!htb]
+	\begin{center}
+		\includegraphics[width=\linewidth]{./Slike/razlika_amp.eps}
+		\caption{Razlika med predvideno (\ref{equ:amp_err}) in dejansko napako pri $k=1.1$} \label{fig:razlika}
+	\end{center}
+\end{figure}
+
+
+
+
+\section{Conclusion}
+
+V članku so predstavljeni poteki napake v odvisnosti od različnih amplitud, enosmernih komponent, faznih zamikov in kombinacije različnih amplitud ter faznih zamikov signalov sinusa in kosinusa. Napaka vsebuje tudi višje harmonike, ki ob večjih razlikah med sinusom in kosinusom niso več zanemarljivi. Za majhna popačenja vhodnih signalov zadostuje napako izraziti z enosmerno komponento in prvim členom potenčne vrste. Napako, izraženo z enosmerno komponento in prvim členom potenčne vrste, je potrdila tudi druga literatura \cite{RLS1}. Izraze se lahko uporabi za ugotovitev nepravilne montaže resolverja ali enkoderja, v vgrajenih aplikacijah, kjer ni dostopa do signalov sinus in kosinus. V signalih sinus in kosinus se lahko pojavijo tudi višji harmoniki, ki prav tako vplivajo na napako. Vpliv popačenj vhodnih signalov v  funkcijo atan2 na izhodno napako ponuja še veliko izzivov za nadaljne delo.
+
+
+\small
+\begin{thebibliography}{1}
+\bibitem{uporaba_senzorjev} Gachter J., Hirz M.,Seebacher R., "Impact of Rotor Position Sensor Errors on Speed
+Controlled Permanent Magnetized Synchronous
+Machines", IEEE 12th International Conference on Power Electronics and Drive Systems (PEDS), pp.822-830, 12-15 Dec. 2017
+
+\bibitem{inkrementalni} Brugnano F., Concari C., Imamovic E., Savi F., Toscani  A., Zanichelli R., "A simple and accurate algorithm for speed measurement in electric drives using incremental encoder",
+IECON 2017 - 43rd Annual Conference of the IEEE Industrial Electronics Society, pp. 8551-8556, 29 Oct.-1 Nov. 2017
+
+
+\bibitem{resolver} Reddy B.P., Murali A., Shaga G., "Low Cost Planar Coil Structure for Inductive Sensors to Measure Absolute Angular
+Position", 2017 2nd International Conference on Frontiers of Sensors Technologies (ICFST), pp.14-18, 14-16 April 2017
+
+
+
+
+\bibitem{enkoder} Zhang Z., Ni F., Liu H., Jin M., "Theory analysis of a new absolute position sensor based on electromagnetism", International Conference on Automatic Control and Artificial Intelligence, pp.2204-208, 3-5 Mar. 2012
+
+	
+	
+\bibitem{RLS1} Qi Lin, T. Li, Z. Zhou, "Error Analysis and Compensation
+of the Orthogonal Magnetic Encoder", Proceedings of IEEE ICMCC
+Conference, pp.11-14, 21-23 Oct. 2011
+\bibitem{RLS2} Hanselman D.C., "Resolver Signal Requirements for High Accuracy
+Resolver-to-Digital Conversion", IEEE Transactions on Industrial
+Electronics, vol.37, no.6, pp.556-561, Dec. 1990 
+\bibitem{RLS3} Demierre M., “Improvements of CMOS Hall Microsystems and
+Application for Absolute Angular Position Measurements”, PhD. thesis,
+pp. 152-161, Federal Polytechnic School of Lausanne, Switzerland, 2003
+
+\bibitem{mat1} Dolinar G. "Matematika 1", Fakulteta za elektrotehniko, Založba FE in FRI, 2010
+
+\bibitem{atan} https://www.mathworks.com/help/matlab/ref/atan2.html, dostop junij 2018
+\bibitem{atand} https://www.mathworks.com/help/matlab/ref/atan2d.html, dostop junij 2018
+
+
+
+\end{thebibliography}
+
+\end{document}
