@@ -36,21 +36,23 @@ Distortion of sine and cosine values, used for angle determination with the atan
 
 \section{Introduction}
 
-High efficient regulation of motor drives this days is presented in many applications. For quality regulated motor drives, position sensors are used\cite{uporaba_senzorjev}. Angular position is measured by incremental based sensors, resolvers, encoders \cite{inkrementalni}\cite{resolver}\cite{enkoder}... Outputs from resolvers or encoders are signals of sine and cosine form. For angle  needs to be calculated inverse of tangent. In applications is normally used function atan2, which returns value in range $[-\pi, \pi]$ \cite{atan}.
+High efficient regulation of motor drives this days is presented in many applications. For quality regulated motor drives, position sensors are used\cite{uporaba_senzorjev}. Angular position is measured by incremental based sensors, resolvers, encoders \cite{inkrementalni}\cite{resolver}\cite{enkoder}... Outputs of resolvers or encoders have sine and cosine form. For angle  needs to be calculated inverse of tangent. In applications is normally used function atan2, which returns value in range $[-\pi, \pi]$ \cite{atan}.
 
-Position sensors are not ideal. Signals from resolvers are not ideal form of sine and cosine. Nevertheless function atan2 calculate angle. Output of atan2 includes error, because of distorted sine and cosine signals. Literature \cite{RLS1}, \cite{RLS2}, \cite{RLS3}   analyzed the effect of distorted sine and cosine signals evaluate to angle error. Error was described by the harmonic with highest amplitude. Nevertheless error includes higher harmonics too. In this paper angle error is presented by infinite series. Many applications have accessible angular position only. By reference encoder, error can be detected, reason for it stays unknown.
+Position sensors are not ideal. Signals from resolvers are not ideal form of sine and cosine. Nevertheless function atan2 calculate angle. Because of distorted sine and cosine signals, output of atan2 includes error. Literature \cite{RLS1}, \cite{RLS2}, \cite{RLS3}   analyzed the effect of distorted sine and cosine signals evaluate to angle error. Error was described by the harmonic with highest amplitude. Nevertheless error includes higher harmonics too. In this paper angle error is presented by infinite series of harmonics. Many applications have access to angular position only. By reference encoder, error can be detected, but reason for it stays unknown.
 
 By knowing reasons, how distorted inputs signals of atan2 function impact to error, eventually from error cause can be recognized. This paper presents impact of distorted input signals of atan2 to error presented in infinite series.
 \section{Methodology and results}
 
-Base input signals to atan2 have form of sine and cosine. They can be distorted by offsets, different amplitude, or phase shift(\ref{equ:def_sin})(\ref{equ:def_cos})
+Base input signals to atan2 have form of sine and cosine. They can be distorted by offsets, different amplitude or phase shift(\ref{equ:def_sin})(\ref{equ:def_cos})
 \begin{eqnarray}
 \label{equ:def_sin}
 &Sin = B_{0} + B_1 \sin(\theta + \varphi_{s})\\
 \label{equ:def_cos}
 &Cos = A_{0} + A_1 \cos(\theta + \varphi_{c})
 \end{eqnarray}
-Ideal case is when offsets ($B_0$ and $A_0$) and phase shifts $\varphi_0$ and $\varphi_0$  are equal to zero, amplitude are same ($B_1 = A_1$). Signals can be distorted in amplitude and phase by only one parameter ($\Delta_c$ or $\Delta_s$) (\ref{equ:def_eks_sin})(\ref{equ:def_eks_cos})
+Ideal case is when offsets ($B_0$ and $A_0$) and phase shifts $\varphi_s$ and $\varphi_c$  are equal to zero. In ideal case amplitudes are same ($B_1 = A_1$). Here is presented cause of error for each parameter separately.
+
+Signals can be distorted in amplitude and phase by only one parameter ($\Delta_c$ or $\Delta_s$) (\ref{equ:def_eks_sin})(\ref{equ:def_eks_cos})
 
 \begin{eqnarray}
 \label{equ:def_eks_sin}
@@ -59,15 +61,15 @@ Ideal case is when offsets ($B_0$ and $A_0$) and phase shifts $\varphi_0$ and $\
 &Cos =\cos(\theta)+\Delta_c \cos(\theta)+\Delta_s \sin(\theta)
 \end{eqnarray}
 
-Definition of outupt signal $\varphi$ and error $\varepsilon$ is:
+Definition of output signal $\varphi$ and error $\varepsilon$ is:
 
 \begin{eqnarray}
 \label{equ:def_kot}
 &\varphi = \mathrm{atan2d}(Sin,Cos)\\
 \label{equ:def_err}
-&\varepsilon =\varphi - \mathrm{atan2d}(\sin(\theta),\cos(\theta))
+&\varepsilon =\varphi - \mathrm{atan2d}(\sin(\theta),\cos(\theta)),
 \end{eqnarray}
-where $\theta$ presents reference angle. In MATLAB is defined function atan2d(), for purpose of calculation of invert tangent in four quadrant plane. Output is in range of $[-180^\circ,180^\circ]$\cite{atand}. Error is presented by infinite series (\ref{equ:potek_napake}).
+where $\theta$ presents reference angle. In MATLAB is defined atan2d(), function for calculation of inverse tangent in four quadrant plane. Output is in range of $[-180^\circ,180^\circ]$\cite{atand}. Error is presented by infinite series of harmonics (\ref{equ:potek_napake}).
 
 \begin{equation}
 \label{equ:potek_napake}
