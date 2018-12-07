@@ -36,23 +36,24 @@ Distortion of sine and cosine values, used for angle determination with the atan
 
 \section{Introduction}
 
-High efficient regulation of motor drives this days is presented in many applications. For quality regulated motor drives, position sensors are used\cite{uporaba_senzorjev}. Angular position is measured by incremental based sensors, resolvers, encoders \cite{inkrementalni}\cite{resolver}\cite{enkoder}... Outputs of resolvers or encoders have sine and cosine form. For angle  needs to be calculated inverse of tangent. In applications is normally used function atan2, which returns value in range $[-\pi, \pi]$ \cite{atan}.
 
-Position sensors are not ideal. Signals from resolvers are not ideal form of sine and cosine. Nevertheless function atan2 calculate angle. Because of distorted sine and cosine signals, output of atan2 includes error. Literature \cite{RLS1}, \cite{RLS2}, \cite{RLS3}   analyzed the effect of distorted sine and cosine signals evaluate to angle error. Error was described by the harmonic with highest amplitude. Nevertheless error includes higher harmonics too. In this paper angle error is presented by infinite series of harmonics. Many applications have access to angular position only. By reference encoder, error can be detected, but reason for it stays unknown.
+These days the need for high quality motor regulation is present in numerous applications and has as a result become unavoidable. For a consistent and reliable measurement of rotation, position sensors are used \cite{uporaba_senzorjev}, such as  encoders and resolvers \cite{inkrementalni}\cite{resolver}\cite{enkoder}. However, the output of which is a pair of quadrature sine and cosine signals. Angle information must first be calculated. The easiest way of doing so is by directly calculating with atan2 that returns a value between $[-\pi, \pi]$ \cite{atan}.
 
-By knowing reasons, how distorted inputs signals of atan2 function impact to error, eventually from error cause can be recognized. This paper presents impact of distorted input signals of atan2 to error presented in infinite series.
+Quadrature sine and cosine signals have not perfect form of mathematical functions sine and cosine. Quadrature sine and cosine signals can contain  non-equal amplitudes, offsets or phase shifts. Despite non-perfect quadrature signals, angle is still calculated. Because of incorrect signal inputs of function atan2, calculated angel includes error.
+
+Literature  \cite{RLS1}, \cite{RLS2}, \cite{RLS3} analyzed the effect of incorrect input signals of atan2 function. However, angel error has been presented by most outstanding harmonic only. The course of error has been presented  by linear function only. Results of literature are valid for relatively small incorrectness of input signals only. During  research was noticed that error contains  higher harmonics too. This paper presents angle error by infinite series. Amplitude and phase of harmonics depends on parameter, that describes incorrect quadrature sine and cosine signals which are inputs of atan2.
+
 \section{Methodology and results}
-
-Base input signals to atan2 have form of sine and cosine. They can be distorted by offsets, different amplitude or phase shift(\ref{equ:def_sin})(\ref{equ:def_cos})
+Iinput signals to atan2 have form of sine and cosine. Nevertheless  input signals could contain different amplitude, offsets or phase shifts(\ref{equ:def_sin})(\ref{equ:def_cos})
 \begin{eqnarray}
 \label{equ:def_sin}
 &Sin = B_{0} + B_1 \sin(\theta + \varphi_{s})\\
 \label{equ:def_cos}
 &Cos = A_{0} + A_1 \cos(\theta + \varphi_{c})
 \end{eqnarray}
-Ideal case is when offsets ($B_0$ and $A_0$) and phase shifts $\varphi_s$ and $\varphi_c$  are equal to zero. In ideal case amplitudes are same ($B_1 = A_1$). Here is presented cause of error for each parameter separately.
-
-Signals can be distorted in amplitude and phase by only one parameter ($\Delta_c$ or $\Delta_s$) (\ref{equ:def_eks_sin})(\ref{equ:def_eks_cos})
+Ideal case is when offsets ($B_0$ and $A_0$) and phase shifts $\varphi_s$ and $\varphi_c$  are equal to zero. In ideal case amplitudes are same ($B_1 = A_1$).
+In this case error is zero. This research analyzed, course of error for each parmeter of (\ref{equ:def_sin}) and (\ref{equ:def_cos}) seperatly.
+Amplitude and phase can be depended on one parameter only. To input signals can be added signal with same frequency ($\Delta_c$ or $\Delta_s$) (\ref{equ:def_eks_sin})(\ref{equ:def_eks_cos}). Research was done for $\Delta_s$ and $\Delta_c$ separately too. 
 
 \begin{eqnarray}
 \label{equ:def_eks_sin}
@@ -61,26 +62,22 @@ Signals can be distorted in amplitude and phase by only one parameter ($\Delta_c
 &Cos =\cos(\theta)+\Delta_c \cos(\theta)+\Delta_s \sin(\theta)
 \end{eqnarray}
 
-Definition of output signal $\varphi$ and error $\varepsilon$ is:
-
+Definition of output from atan2d $\varphi$ and error $\varepsilon$ is:
 \begin{eqnarray}
 \label{equ:def_kot}
 &\varphi = \mathrm{atan2d}(Sin,Cos)\\
 \label{equ:def_err}
 &\varepsilon =\varphi - \mathrm{atan2d}(\sin(\theta),\cos(\theta)),
 \end{eqnarray}
-where $\theta$ presents reference angle. In MATLAB is defined atan2d(), function for calculation of inverse tangent in four quadrant plane. Output is in range of $[-180^\circ,180^\circ]$\cite{atand}. Error is presented by infinite series of harmonics (\ref{equ:potek_napake}).
-
+where $\theta$ presents reference angle. In MATLAB is defined atan2d(), function for calculation of inverse tangent in four quadrant plane. Output is between $[-180^\circ,180^\circ]$\cite{atand}. Error is presented by infinite series of harmonics (\ref{equ:potek_napake}).
 \begin{equation}
 \label{equ:potek_napake}
 \varepsilon(x) = C_0(x) + \sum_{n=1}^{\infty} C_n(x) \sin(n \Theta+ \varphi_n(x))
 \end{equation}
-
-Parameter $x$ presents independent variable, which distort input signals (\ref{equ:def_sin}) and (\ref{equ:def_cos}). 
+Parameter $x$ presents independent variable, that presents incorrectness of  input signals (\ref{equ:def_sin}) and (\ref{equ:def_cos}). 
  $C_0$ presents offset of error, $C_n$ amplitude of individual harmonic and $\varphi_n$ presents phase of individual harmonic of error. All functions depend on $x$.
 
-Here is presented approach to determinate error. One parameter ($A_0$, $B_0$, $A_1$, $B_1$, $\varphi_{s}$, $\varphi_{c}$, $\Delta_s$, $\Delta_c$), used in calculation separately has been limited to infinity.
-In limit error is expressed as example:
+Error is determinate with following approach. Limit of error is made of one parameter from (\ref{equ:def_sin}), (\ref{equ:def_cos}), (\ref{equ:def_eks_sin}), (\ref{equ:def_eks_cos}) to infinity or to the worst case. Output of atan2d $\varphi$ become constant, error $\varepsilon$  could be expressed as is described in (\ref{equ:def_err_inf}).
 \begin{equation}
 \label{equ:def_err_inf}
 \varepsilon(\theta)=
@@ -90,20 +87,19 @@ In limit error is expressed as example:
 \end{cases}
 \end{equation}
 
-Error is transformed to Fourier series. From transform can be decided which harmonics are changing and to where they converge. Next step is finding analytic function, that describes the course of the harmonics amplitude and the phase shift of an individual harmonic when the parameter changes. Knowing the convergence of function is helpful. This study has shown that higher harmonies are potency depend on the basic harmonic of the error. The error is expressed as a potency series.
+Error is transformed to Fourier series. Transform shows to which harmonics parameter effect and shows convergence of amplitude and phase for each harmonic. Next step is finding analytic function, that describes the course of the harmonics amplitude and the phase shift of an individual harmonic when the parameter changes. This research has shown that higher harmonies are potency depend on the basic harmonic of the error. Functions $C_0(x)$, $C_n(x)$, $\varphi_n(x)$ were analyzed with least square method. Sum squared error for functions that included parameters form (\ref{equ:def_sin}) and (\ref{equ:def_cos})was less than $1,21 \cdot 10^{-7}\operatorname{degree}$. 
+Sum squared error for functions that included parameters form (\ref{equ:def_eks_sin}) and (\ref{equ:def_eks_cos})was less than $1,92 \cdot 10^{-5}\operatorname{degree}$. 
 
-The following are the principles of error determination at different amplitudes, phase displacements, offsets and a combination of different amplitudes and phases due to one parameter.
 
 \subsection{Defining of error at different amplitudes}
-
-If both input signals are multiplied by same coefficient, output signal will not  be changed. Multiply both signals with $\frac{1}{A_1}$ and ratio $\frac{B_1}{A_1}$ define as $k$. Setting offsets and phases to zero, the input signals are defined as:
+If both input signals are multiplied by same coefficient, $\varphi$ will not  be changed. Multiply both signals with $\frac{1}{A_1}$ and ratio $\frac{B_1}{A_1}$ define as $k$. Setting offsets and phases to zero, the input signals are defined as:
 	\begin{eqnarray}
 	\label{equ:def_sin_ama}
 	&Sin = k \sin(\theta)\\
 	\label{equ:def_cos_amp}
 	&Cos =\cos(\theta).
 	\end{eqnarray}
-Limiting $k$ to infinity and calculate of error get result (Figure \ref{fig:lim_amp}),
+Limiting error where $k$ goes to infinity, error is shown in figure \ref{fig:lim_amp}.
 \begin{equation}
 \label{equ:amp_lim}
 \lim_{k \rightarrow \infty} (\mathrm{atan2}(k \sin{\theta},\cos{\theta})-\mathrm{atan2}(\sin{\theta},\cos{\theta}))
@@ -111,21 +107,20 @@ Limiting $k$ to infinity and calculate of error get result (Figure \ref{fig:lim_
 \begin{figure}[!htb]
 	\begin{center}
 		\includegraphics[width=\linewidth]{./Slike/lim_amp.eps}
-		\caption{Error $\varepsilon$ of limiting $k$ to infinity} \label{fig:lim_amp}
+		\caption{Limit of $\varepsilon$ at $k$ goes to infinity} \label{fig:lim_amp}
 	\end{center}
 \end{figure}
-
-that can be transformed to Fourier series:
+Error  can be transformed to Fourier series:
 \begin{equation}
 \label{equ:lim_amp_vrsta}
 \varepsilon = \frac{180}{\pi}\sum_{n=1}^{\infty}\frac{1}{n} \sin 2 n \theta.
 \end{equation}
-By calculating Fourier series of error we get only even harmonics, of which the second harmonics is the largest.
+By calculating Fourier series of error from figure \ref{fig:lim_amp}, is presented by even harmonics, of which the second harmonics is the largest.
 Because of number 2 in argument of sine in (\ref{equ:lim_amp_vrsta}), $C_1$ presents function of amplitude for second harmonic. 
 \begin{figure}[!htb]
 	\begin{center}
 		\includegraphics[width=\linewidth]{./Slike/amp.eps}
-		\caption{The course of the second accordion depending on $k$} \label{fig:amp}
+		\caption{The course of the second harmonic depending on $k$} \label{fig:amp}
 	\end{center}
 \end{figure}
 
@@ -134,15 +129,13 @@ Using Curve Fitting Toolbox, best fit is rational function. Error can be express
 \label{equ:amp_err}
 \varepsilon(k) =\frac{180}{\pi}\sum_{n=1}^{\infty}\frac{1}{n}(\frac{k-1}{k+1})^n \sin 2 n \theta
 \end{equation}
-
 Expression is valid for  $k$ bigger than 0.$$k \geq 0$$
-
-instead of  $k$  (\ref{equ:amp_err})  inserts the ratio of amplitude:
+Instead of  $k$, in (\ref{equ:amp_err2}) is  inserted the ratio of amplitudes
 \begin{equation}
 \label{equ:amp_err2}
 \varepsilon(k) =\frac{180}{\pi}\sum_{n=1}^{\infty}\frac{1}{n}(\frac{B_1-A_1}{B_1+A_1})^n \sin 2 n \theta
 \end{equation}
-(\ref{equ:amp_err2}) is valid for: $$\frac{B_1}{A_1} \geq 0.$$
+where (\ref{equ:amp_err2}) is valid for: $$\frac{B_1}{A_1} \geq 0.$$
 
 \subsection{Defining of error at non-orthogonality}
 
@@ -319,7 +312,7 @@ Electronics, vol.37, no.6, pp.556-561, Dec. 1990
 Application for Absolute Angular Position Measurements”, PhD. thesis,
 pp. 152-161, Federal Polytechnic School of Lausanne, Switzerland, 2003
 
-\bibitem{mat1} Dolinar G. "Matematika 1", Fakulteta za elektrotehniko, Založba FE in FRI, 2010
+%\bibitem{mat1} Dolinar G. "Matematika 1", Fakulteta za elektrotehniko, Založba FE in FRI, 2010
 
 \bibitem{atan} https://www.mathworks.com/help/matlab/ref/atan2.html, dostop junij 2018
 \bibitem{atand} https://www.mathworks.com/help/matlab/ref/atan2d.html, dostop junij 2018
