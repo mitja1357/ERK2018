@@ -61,11 +61,10 @@ Where $B_0$ and $A_0$ represent DC offset, $B_1$ and $A_1$ signal amplitude, $\v
 \label{equ:def_eks_cos}
 &Cos =\cos(\theta)+\Delta_c \cos(\theta)+\Delta_s \sin(\theta)
 \end{eqnarray}
-
-Definition of output from atan2d $\varphi$ and error $\varepsilon$ is:
+Definition of output from atan2 $\varphi$ is:
 \begin{eqnarray}
 \label{equ:def_kot}
-&\varphi = \mathrm{atan2d}(Sin,Cos)
+&\varphi = \mathrm{atan2}(Sin,Cos)
 %\\
 %&\theta = \mathrm{atan2d}(\sin(\theta),\cos(\theta))
 %\label{equ:def_err}
@@ -74,8 +73,15 @@ Definition of output from atan2d $\varphi$ and error $\varepsilon$ is:
 
 
 In this case error is defined as the difference between altered signal (\ref{equ:def_kot}) and reference $\theta$.
+\begin{equation}
+\label{equ:def_err}
+\varepsilon =\varphi - \mathrm{atan2}(\sin(\theta),\cos(\theta))
+\end{equation}
+By varying each parameter from eq. (\ref{equ:def_sin})(\ref{equ:def_cos})(\ref{equ:def_eks_sin})(\ref{equ:def_eks_cos}) individually and calculating its FFT, we get numeric values of amplitudes and phases  for first n harmonics.
+Sledi fitanje poteka posameznega harmonika na poljubno funkcijo, ki bo čim bolje opisala potek amplitude na posamezen parameter iz (1234).
 
-By varying each parameter in eq. (\ref{equ:def_sin})(\ref{equ:def_cos})(\ref{equ:def_eks_sin})(\ref{equ:def_eks_cos}) individually and calculating its Fourier series.
+
+Error can be presented by eq. (\ref{equ:potek_napake}), where $C_0$ represents offset of error, $C_n$ amplitude of individual harmonic and $\varphi_n$ represents phase of individual harmonic of error. All functions depend on $x$.
 
 
 
@@ -87,7 +93,7 @@ where $\theta$ presents reference angle. In MATLAB is defined atan2(), function 
 Parameter $x$ presents independent variable, that presents incorrectness of  input signals (\ref{equ:def_sin}) and (\ref{equ:def_cos}). 
  $C_0$ presents offset of error, $C_n$ amplitude of individual harmonic and $\varphi_n$ presents phase of individual harmonic of error. All functions depend on $x$.
 
-Error is determinate with following approach. Limit of error is made of one parameter from (\ref{equ:def_sin}), (\ref{equ:def_cos}), (\ref{equ:def_eks_sin}), (\ref{equ:def_eks_cos}) to infinity or to the worst case. Output of atan2$\varphi$ become constant, error $\varepsilon$  could be expressed as is described in (\ref{equ:def_err_inf}).
+Error(\ref{equ:potek_napake}) is determinate with following approach. Limit of error is made of one parameter from (\ref{equ:def_sin}), (\ref{equ:def_cos}), (\ref{equ:def_eks_sin}), (\ref{equ:def_eks_cos}) to infinity or to the worst case. Output of atan2$\varphi$ become constant, error $\varepsilon$  could be expressed as is described in (\ref{equ:def_err_inf}).
 \begin{equation}
 \label{equ:def_err_inf}
 \varepsilon(\theta)=
