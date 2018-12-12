@@ -48,50 +48,36 @@ Literature  \cite{orbis}, \cite{RLS1}, \cite{RLS2} and \cite{RLS3} analyses the 
 Output from a position sensor can be represented with
 \begin{eqnarray}
 \label{equ:def_sin}
-&Sin = B_{0} + B_1 \sin(\theta + \varphi_{s})\\
+&Sin = B_{0} + B_1 \sin(\theta + \varphi_{s}) + CCM\\
 \label{equ:def_cos}
-&Cos = A_{0} + A_1 \cos(\theta + \varphi_{c})
+&Cos = A_{0} + A_1 \cos(\theta + \varphi_{c}) + CCM
 \end{eqnarray}
 
-Where $B_0$ and $A_0$ represent DC offset, $B_1$ and $A_1$ signal amplitude, $\varphi_s$ and $\varphi_c$  phase shift and $\theta$ reference angle. Signal (\ref{equ:def_sin}) and (\ref{equ:def_cos}) can also have a common superimposed AC signal  ($\Delta_c$ or $\Delta_s$) which is presented as:
+Where $B_0$ and $A_0$ represent DC offset, $B_1$ and $A_1$ signal amplitude, $\varphi_s$ and $\varphi_c$  phase shift and $\theta$ reference angle. Signals (\ref{equ:def_sin}) and (\ref{equ:def_cos}) can also have a common superimposed AC signal  represented as CCM. CCM can be of cosine or sine form with $\Delta_c$ and $\Delta_s$ as amplitude.
 
-\begin{eqnarray}
-\label{equ:def_eks_sin}
-&Sin = \sin(\theta)+\Delta_c \cos(\theta)+\Delta_s \sin(\theta)\\
-\label{equ:def_eks_cos}
-&Cos =\cos(\theta)+\Delta_c \cos(\theta)+\Delta_s \sin(\theta)
-\end{eqnarray}
-Definition of output from atan2 $\varphi$ is:
-\begin{eqnarray}
+\begin{equation}
+\label{equ:CCM}
+CCM = \Delta_c \cos(\theta)+\Delta_s \sin(\theta)
+\end{equation}
+By calculating atan2 for eq. (\ref{equ:def_sin}) and (\ref{equ:def_cos})
+\begin{equation}
 \label{equ:def_kot}
-&\varphi = \mathrm{atan2}(Sin,Cos)
-%\\
-%&\theta = \mathrm{atan2d}(\sin(\theta),\cos(\theta))
-%\label{equ:def_err}
-%&\varepsilon =\varphi - \mathrm{atan2d}(\sin(\theta),\cos(\theta)),
-\end{eqnarray}
-
-
-In this case error is defined as the difference between altered signal (\ref{equ:def_kot}) and reference $\theta$.
+\varphi = \mathrm{atan2}(Sin,Cos)
+\end{equation}
+and then subtracting it with an unaltered signal
 \begin{equation}
 \label{equ:def_err}
 \varepsilon =\varphi - \mathrm{atan2}(\sin(\theta),\cos(\theta))
 \end{equation}
-By varying each parameter from eq. (\ref{equ:def_sin})(\ref{equ:def_cos})(\ref{equ:def_eks_sin})(\ref{equ:def_eks_cos}) individually and calculating its FFT, we get numeric values of amplitudes and phases  for first n harmonics.
-Sledi fitanje poteka posameznega harmonika na poljubno funkcijo, ki bo čim bolje opisala potek amplitude na posamezen parameter iz (1234).
+We get error based on deformation. Because  AC signal analysis is simpler in frequency domain we converted it with Fast Fourier Transform(FFT). By varying each parameter individually we examined the impact of the parameter in question on specter of error. Output of atan2 was examined by sending each parameter in eq. (\ref{equ:def_sin}) and (\ref{equ:def_cos}) to infinity or worst case with phase shift.
+In this case amplitude and phase of each harmonic approaches to a limit value.
 
+
+\newpage
 
 Error can be presented by eq. (\ref{equ:potek_napake}), where $C_0$ represents offset of error, $C_n$ amplitude of individual harmonic and $\varphi_n$ represents phase of individual harmonic of error. All functions depend on $x$.
 
 
-
-where $\theta$ presents reference angle. In MATLAB is defined atan2(), function for calculation of inverse tangent in four quadrant plane. Output is between $[-180^\circ,180^\circ]$\cite{atand}. Error is presented by infinite series of harmonics (\ref{equ:potek_napake}).
-\begin{equation}
-\label{equ:potek_napake}
-\varepsilon(x) = C_0(x) + \sum_{n=1}^{\infty} C_n(x) \sin(n \Theta+ \varphi_n(x))
-\end{equation}
-Parameter $x$ presents independent variable, that presents incorrectness of  input signals (\ref{equ:def_sin}) and (\ref{equ:def_cos}). 
- $C_0$ presents offset of error, $C_n$ amplitude of individual harmonic and $\varphi_n$ presents phase of individual harmonic of error. All functions depend on $x$.
 
 Error(\ref{equ:potek_napake}) is determinate with following approach. Limit of error is made of one parameter from (\ref{equ:def_sin}), (\ref{equ:def_cos}), (\ref{equ:def_eks_sin}), (\ref{equ:def_eks_cos}) to infinity or to the worst case. Output of atan2$\varphi$ become constant, error $\varepsilon$  could be expressed as is described in (\ref{equ:def_err_inf}).
 \begin{equation}
