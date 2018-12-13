@@ -71,101 +71,65 @@ and then subtracting it with an unaltered signal
 \end{equation}
 We get error based on deformation. Because  AC signal analysis is simpler in frequency domain we converted it with Fast Fourier Transform(FFT). By varying each parameter individually we examined the impact of the parameter in question on specter of error. Output of atan2 was examined by sending each parameter in eq. (\ref{equ:def_sin}) and (\ref{equ:def_cos}) to infinity or worst case with phase shift.
 In this case amplitude and phase of each harmonic approaches to a limit value.
-\\ \\
+\\ \\ \\ \\ \\
 Potek amplitude in faze v odvistnosti od spreminjajočega parametra, se je želelo aproksimirati s funkcijo, ki bi se najbolje prilegala numeričnim vrednsotim dobljenih s FFT napake.
 
-\newpage
-
-Error can be presented by eq. (\ref{equ:potek_napake}), where $C_0$ represents offset of error, $C_n$ amplitude of individual harmonic and $\varphi_n$ represents phase of individual harmonic of error. All functions depend on $x$.
-
-
-
-Error(\ref{equ:potek_napake}) is determinate with following approach. Limit of error is made of one parameter from (\ref{equ:def_sin}), (\ref{equ:def_cos}), (\ref{equ:def_eks_sin}), (\ref{equ:def_eks_cos}) to infinity or to the worst case. Output of atan2$\varphi$ become constant, error $\varepsilon$  could be expressed as is described in (\ref{equ:def_err_inf}).
-\begin{equation}
-\label{equ:def_err_inf}
-\varepsilon(\theta)=
-\begin{cases}
-90^\circ-\theta, & \theta \in \{0^\circ,180^\circ\}\\
-270^\circ-\theta, & \theta \in \{180^\circ,360^\circ\}
-\end{cases}
-\end{equation}
-
-Error is transformed to Fourier series. Transform shows to which harmonics parameter effect and shows convergence of amplitude and phase for each harmonic. Next step is finding analytic function, that describes the course of the harmonics amplitude and the phase shift of an individual harmonic when the parameter changes. This research has shown that higher harmonies are potency depend on the basic harmonic of the error. Functions $C_0(x)$, $C_n(x)$, $\varphi_n(x)$ were analyzed with least square method. Sum squared error for functions that included parameters form (\ref{equ:def_sin}) and (\ref{equ:def_cos})was less than $1,21 \cdot 10^{-7}\operatorname{degree}$. 
-Sum squared error for functions that included parameters form (\ref{equ:def_eks_sin}) and (\ref{equ:def_eks_cos})was less than $1,92 \cdot 10^{-5}\operatorname{degree}$. 
-
-
 \subsection{Defining of error at different amplitudes}
-If both input signals are multiplied by same coefficient, $\varphi$ will not  be changed. Multiply both signals with $\frac{1}{A_1}$ and ratio $\frac{B_1}{A_1}$ define as $k$. Setting offsets and phases to zero, the input signals are defined as:
+Prvi primer predstavlja odvisnost napake od različnih amplitud vhodnih signalov. Izhod funkcije atan2 je določen preko razmerja vhodnih signalov. Ker je potrebno ohraniti le razmerje amplitud vhodnih signalov sem oba signala pomnožil z 1/A1. RAzmerje med amplitudama vhodnih signalov se s tem ni spremenilo. Izraz B1/A1 je predstavljen kot k. Z poštevanjem le amplitud v (1) in (2) sta vhodna signala:
 	\begin{eqnarray}
 	\label{equ:def_sin_ama}
 	&Sin = k \sin(\theta)\\
 	\label{equ:def_cos_amp}
 	&Cos =\cos(\theta).
 	\end{eqnarray}
-Limiting error where $k$ goes to infinity, error is shown in figure \ref{fig:lim_amp}.
-\begin{equation}
-\label{equ:amp_lim}
-\lim_{k \rightarrow \infty} (\mathrm{atan2}(k \sin{\theta},\cos{\theta})-\mathrm{atan2}(\sin{\theta},\cos{\theta}))
-\end{equation}
-\begin{figure}[!htb]
-	\begin{center}
-		\includegraphics[width=\linewidth]{./Slike/lim_amp.eps}
-		\caption{Limit of $\varepsilon$ at $k$ goes to infinity} \label{fig:lim_amp}
-	\end{center}
-\end{figure}
-Error  can be transformed to Fourier series:
-\begin{equation}
+S spreminjanjem parametra k od 0 do neskončno, opazovanjem napake in njegovega spektra je bilo ugotovljeno da napako ene periode sestavljajo le sodi harmoniki. Fazni zamik harmonikov je konstanten 90 degrees in je lahko predstavljen s sinusnim signalom. Amplituda posameznika harmonika se z višanjem parametra k približuje vrednosti 2/n za sode in 0 za lihe harmonike. 
+\begin{eqnarray}
 \label{equ:lim_amp_vrsta}
-\varepsilon = \frac{180}{\pi}\sum_{n=1}^{\infty}\frac{1}{n} \sin 2 n \theta.
-\end{equation}
-By calculating Fourier series of error from figure \ref{fig:lim_amp}, is presented by even harmonics, of which the second harmonics is the largest.
-Because of number 2 in argument of sine in (\ref{equ:lim_amp_vrsta}), $C_1$ presents function of amplitude for second harmonic. 
+&\varepsilon(k \rightarrow \infty) = \frac{180}{\pi}\sum_{n=1}^{\infty}\frac{1}{n} \sin 2 n \theta\\
+&\varepsilon(k \rightarrow 0) = -\frac{180}{\pi}\sum_{n=1}^{\infty}\frac{1}{n} \sin 2 n \theta
+\end{eqnarray}
+Naj izstopajočejši harmonik je drugi harmonik zato je bilo njemu namenjeno največ pozornosti.
+S poznanimi skrajnimi točkami in točko kjer je napaka nič, je potek harmonika z SSE 1,18e-10 opisala racionalna funkcija (\ref{equ:drugi_har})
+
 \begin{figure}[!htb]
 	\begin{center}
 		\includegraphics[width=\linewidth]{./Slike/amp.eps}
 		\caption{The course of the second harmonic depending on $k$} \label{fig:amp}
 	\end{center}
 \end{figure}
+\begin{eqnarray}
+\label{equ:drugi_har}
+C_2(k)=\frac{180}{\pi}\cdot\frac{k-1}{k+1}
+\end{eqnarray}
 
-Using Curve Fitting Toolbox, best fit is rational function. Error can be expressed as:
+Predvideval sem da so višji harmoniki v korelaciji s najdeno funkcijo. Napako, ki se pojavi zaradi različnih amplitud sem zapisal v izraz  Fourierove vrste (\ref{equ:amp_err})
 \begin{equation}
 \label{equ:amp_err}
 \varepsilon(k) =\frac{180}{\pi}\sum_{n=1}^{\infty}\frac{1}{n}(\frac{k-1}{k+1})^n \sin 2 n \theta
 \end{equation}
-Expression is valid for  $k$ bigger than 0.$$k \geq 0$$
-Instead of  $k$, in (\ref{equ:amp_err2}) is  inserted the ratio of amplitudes
+Z vstavljanjem namesto k razmerje amplitud in množenju števca in imenovalca s A1 se končni izraz glasi:
 \begin{equation}
 \label{equ:amp_err2}
 \varepsilon(k) =\frac{180}{\pi}\sum_{n=1}^{\infty}\frac{1}{n}(\frac{B_1-A_1}{B_1+A_1})^n \sin 2 n \theta
 \end{equation}
-where (\ref{equ:amp_err2}) is valid for: $$\frac{B_1}{A_1} \geq 0.$$
+Izraz za napako velja le ko sta A1 in B1 enakega predznaka oz je njuno razmerje večje ali enako 0.
+ $$\frac{B_1}{A_1} \geq 0.$$
 
 \subsection{Defining of error at non-orthogonality}
-
-Inpust signals are defined as:
+Sledilo je spreminjanje parametra faz vhodnih signalov. Amplitudi se je nastavilo na 1, vhodna signala sta bila odvisna le od fs in fc(\ref{equ:def_sin_fis})(\ref{equ:def_cos_fis}).
 \begin{eqnarray}
 \label{equ:def_sin_fis}
 &Sin = \sin(\theta + \varphi_{s})\\
 \label{equ:def_cos_fis}
 &Cos =\cos(\theta+\varphi_{c})
 \end{eqnarray}
-Error is determinate for each parameter separately. Other paramether is set to zero. At the end of equations are merged. For limitation of equation is not obligatory limit to infinity, just to the worst case. Limit is at $\pm 90^\circ$:
 
-\begin{equation}
-\label{equ:fis_lim}
-\varepsilon = \lim_{\varphi_{s} \rightarrow 90^\circ} \mathrm{atan2}(Sin ,Cos)- \mathrm{atan2d}(\sin(\theta),\cos(\theta))
-\end{equation}
-\begin{figure}[!htb]
-    \begin{center}
-        \includegraphics[width=\linewidth]{./Slike/lim_sinfaza.eps}
-        \caption{Error $\varepsilon$ of limiting $\varphi_{s} \rightarrow 90^\circ$} \label{fig:lim_sin_fis}
-    \end{center}
-\end{figure}
 Error can be transform and presented in Fourier series.
-\begin{equation}
+\begin{eqnarray}
 \label{equ:lim_fis_vrsta}
-\varepsilon = 45^\circ - \frac{180}{\pi}\sum_{n=1}^{\infty}\frac{1}{n} \sin (2n \theta)
-\end{equation}
+&\varepsilon(\varphi_{s} \rightarrow 90^\circ) = 45^\circ - \frac{180}{\pi}\sum_{n=1}^{\infty}\frac{1}{n} \sin (2n \theta)\\
+&\varepsilon(\varphi_{s} \rightarrow -90^\circ) = -45^\circ - \frac{180}{\pi}\sum_{n=1}^{\infty}\frac{1}{n} \sin (2n \theta)
+\end{eqnarray}
 
 Transform includes offset and even harmonics only. Figure  \ref{fig:fis} presents course of offset $C_0$, amplitude of second harmonic $C_1$ and phase    of second harmonic $\varphi_{1}$ due to $\varphi_s$. y axis is in degrees. For $C_0$ and $C_1$ degrees presents amplitude of error harmonics, for $\varphi_{1}$ degrees presents phase. Offset is best fitted by linear function. Second harmonic is tangent function. Phase of second harmonic increases linear but for presentation with sine form must be added $90^\circ$. Same derivation can be done for phase of cosine signal. Equations can be marged and result is presented (\ref{equ:fis_err}).
 \begin{figure}[!htb]
@@ -185,7 +149,7 @@ $$ \varphi_{s}-\varphi_{c} \in [ -90^\circ , 90^\circ ] $$
 Define amplitudes of input signals to 1, phase shift is set to zero. Let limit parameter $A_0$ to infinity, error is transformed to Fourier series and expressed as:
 \begin{equation}
 \label{equ:off_lim_vrsta}
-\varepsilon = \frac{180}{\pi}\sum_{n=1}^{\infty}\frac{2}{n} \sin (n \theta+ 90^\circ n).
+\varepsilon (A_0 \rightarrow \infty) = \frac{180}{\pi}\sum_{n=1}^{\infty}\frac{2}{n} \sin (n \theta+ 90^\circ n).
 \end{equation}
 Error does not include offset component, highest amplitude has first harmonic.
 \begin{figure}[!htb]
