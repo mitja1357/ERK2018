@@ -48,16 +48,16 @@ Literature  \cite{orbis}, \cite{RLS1}, \cite{RLS2} and \cite{RLS3} analyses the 
 Output from a position sensor can be represented with
 \begin{eqnarray}
 \label{equ:def_sin}
-&Sin = B_{0} + B_1 \sin(\theta + \varphi_{s}) + CCM\\
+&Sin = B_{0} + B_1 \sin(\theta + \varphi_{s}) + CMM\\
 \label{equ:def_cos}
-&Cos = A_{0} + A_1 \cos(\theta + \varphi_{c}) + CCM
+&Cos = A_{0} + A_1 \cos(\theta + \varphi_{c}) + CMM
 \end{eqnarray}
 
-Where $B_0$ and $A_0$ represent DC offset, $B_1$ and $A_1$ signal amplitude, $\varphi_s$ and $\varphi_c$  phase shift and $\theta$ reference angle. Signals (\ref{equ:def_sin}) and (\ref{equ:def_cos}) can also have a common superimposed AC signal  represented as CCM. CCM can be of cosine or sine form with $\Delta_c$ and $\Delta_s$ as amplitude.
+Where $B_0$ and $A_0$ represent DC offset, $B_1$ and $A_1$ signal amplitude, $\varphi_s$ and $\varphi_c$  phase shift and $\theta$ reference angle. Signals (\ref{equ:def_sin}) and (\ref{equ:def_cos}) can also have a common superimposed AC signal  represented as CMM (\ref{equ:CMM}). CMM can be of cosine or sine form with $\Delta_c$ and $\Delta_s$ as amplitude.
 
 \begin{equation}
-\label{equ:CCM}
-CCM = \Delta_c \cos(\theta)+\Delta_s \sin(\theta)
+\label{equ:CMM}
+CMM = \Delta_c \cos(\theta)+\Delta_s \sin(\theta)
 \end{equation}
 By calculating atan2 for eq. (\ref{equ:def_sin}) and (\ref{equ:def_cos})
 \begin{equation}
@@ -69,19 +69,23 @@ and then subtracting it with an unaltered signal
 \label{equ:def_err}
 \varepsilon =\varphi - \mathrm{atan2}(\sin(\theta),\cos(\theta))
 \end{equation}
-We get error based on deformation. Because  AC signal analysis is simpler in frequency domain we converted it with Fast Fourier Transform(FFT). By varying each parameter individually we examined the impact of the parameter in question on specter of error. Output of atan2 was examined by sending each parameter in eq. (\ref{equ:def_sin}) and (\ref{equ:def_cos}) to infinity or worst case with phase shift.
+we get error based on deformation. Because  AC signal analysis is simpler in frequency domain we converted it with Fast Fourier Transform(FFT). By varying each parameter individually we examined the impact of the parameter in question on specter of error. Output of atan2 was examined by sending each parameter in eq. (\ref{equ:def_sin}) and (\ref{equ:def_cos}) to infinity or worst case with phase shift.
 In this case amplitude and phase of each harmonic approaches to a limit value.
-\\ \\ \\ \\ \\
-Potek amplitude in faze v odvistnosti od spreminjajočega parametra, se je želelo aproksimirati s funkcijo, ki bi se najbolje prilegala numeričnim vrednsotim dobljenih s FFT napake.
+
+The course of the amplitude and phase in dependence on the changing parameter was approximated by a function that best suited numerical waveform obtained from the error spectrum. By knowing the limit value to which each amplitude and phase approaches, the set of functions has decreased. We were searching for the best approximation with polynomials, rational functions, trigonometric and cyclometric functions. The best approximation was sought using the minimum squares method.
 
 \subsection{Defining of error at different amplitudes}
-Prvi primer predstavlja odvisnost napake od različnih amplitud vhodnih signalov. Izhod funkcije atan2 je določen preko razmerja vhodnih signalov. Ker je potrebno ohraniti le razmerje amplitud vhodnih signalov sem oba signala pomnožil z 1/A1. RAzmerje med amplitudama vhodnih signalov se s tem ni spremenilo. Izraz B1/A1 je predstavljen kot k. Z poštevanjem le amplitud v (1) in (2) sta vhodna signala:
+In the first case we observed the dependence of error on the different amplitudes of the input signals. The output of the atan2 function is determined by the eq. (1)  and (2) quotient. Since only the ratio of the amplitudes of the input signals needs to be preserved, we multiplied both signals by 1 / A1. Taking into account only the amplitudes in (1) and (2), inputs are:
 	\begin{eqnarray}
 	\label{equ:def_sin_ama}
-	&Sin = k \sin(\theta)\\
+	&Sin = k \sin(\theta),\\
 	\label{equ:def_cos_amp}
-	&Cos =\cos(\theta).
+	&Cos =\cos(\theta),
 	\end{eqnarray}
+where k represents B1 / A1.
+
+By varying the parameter k from 0 to infinity, we found that the error specter consists of even harmonics only. We also observed that phase shift didn't change. When k approaches infinity, the amplitude of harmonics approaches 180 / pi 2 / n, where n represents n-th harmonic.
+\\ \\ \\ \\
 S spreminjanjem parametra k od 0 do neskončno, opazovanjem napake in njegovega spektra je bilo ugotovljeno da napako ene periode sestavljajo le sodi harmoniki. Fazni zamik harmonikov je konstanten 90 degrees in je lahko predstavljen s sinusnim signalom. Amplituda posameznika harmonika se z višanjem parametra k približuje vrednosti 2/n za sode in 0 za lihe harmonike. 
 \begin{eqnarray}
 \label{equ:lim_amp_vrsta}
@@ -135,7 +139,7 @@ Transform includes offset and even harmonics only. Figure  \ref{fig:fis} present
 \begin{figure}[!htb]
 	\begin{center}
 		\includegraphics[width=\linewidth]{./Slike/fis.eps}
-		\caption{The course of offset component $C_0$, amplitude of second harmonic  $C_1$ and phase $\varphi_1$ depend of ideal cosine signal,due to phase shift $\varphi_{s}$} \label{fig:fis}
+		\caption{The course of offset component $C_0$, amplitude of second harmonic  $C_2$ and phase $\varphi_2$ depend of ideal cosine signal,due to phase shift $\varphi_{s}$} \label{fig:fis}
 	\end{center}
 \end{figure}
 \begin{multline}
