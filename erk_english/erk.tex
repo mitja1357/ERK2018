@@ -84,18 +84,18 @@ In the first case we observed the dependence of error on the different amplitude
 	\end{eqnarray}
 where $k$ represents $\frac{B_1}{A_1}$.
 
-By varying the parameter k from 0 to infinity, we found that the error specter consists of even harmonics only. We also observed that phase shift didn't change. When k approaches infinity, the amplitude of harmonics approaches $\frac{180}{\pi}\frac{2}{n}$, where n represents n-th harmonic. Eq. (\ref{equ:lim_amp_vrsta}) even harmonics only.
+By varying the parameter k from 0 to infinity, we found that the error specter consists of even harmonics only. We also observed that phase shift didn't change. When k approaches infinity, the amplitude of harmonics approaches $\frac{180}{\pi}\frac{2}{n}$, where n represents n-th harmonic. Eq. (\ref{equ:lim_amp_vrsta}) contains even harmonics only.
 \begin{equation}
 \label{equ:lim_amp_vrsta}
 \varepsilon(k \rightarrow \infty) = \frac{180}{\pi}\sum_{n=1}^{\infty}\frac{1}{n} \sin 2 n \theta
 \end{equation}
-Naj izstopajočejši harmonik je drugi harmonik zato je bilo njemu namenjeno največ pozornosti.
-Potek harmonika je z SSE 1,18e-10 opisala racionalna funkcija (\ref{equ:drugi_har})
+Because of highest amplitude of second harmonic, function that best approximate waveform was searched first (Figure \ref{fig:amp}).
+Best approximation with summed squared error (SSE) $1.18 \cdot 10^{-10}$ degrees was rational function (\ref{equ:drugi_har}).
 
 \begin{figure}[!htb]
 	\begin{center}
 		\includegraphics[width=\linewidth]{./Slike/amp.eps}
-		\caption{The course of the second harmonic depending on $k$} \label{fig:amp}
+		\caption{Waveform of the second harmonic depending on $k$} \label{fig:amp}
 	\end{center}
 \end{figure}
 \begin{eqnarray}
@@ -103,54 +103,65 @@ Potek harmonika je z SSE 1,18e-10 opisala racionalna funkcija (\ref{equ:drugi_ha
 C_2(k)=\frac{180}{\pi}\cdot\frac{k-1}{k+1}
 \end{eqnarray}
 
-Predvideval sem da so višji harmoniki v korelaciji s najdeno funkcijo. Napako, ki se pojavi zaradi različnih amplitud sem zapisal v izraz  Fourierove vrste (\ref{equ:amp_err})
+It was assumed, that higher order harmonics were correlated with based harmonic approximation. Function, that describe error  depending on $k$ is presented in Fourier series form (\ref{equ:amp_err}).
 \begin{equation}
 \label{equ:amp_err}
 \varepsilon(k) =\frac{180}{\pi}\sum_{n=1}^{\infty}\frac{1}{n}(\frac{k-1}{k+1})^n \sin 2 n \theta
 \end{equation}
-Z vstavljanjem namesto k razmerje amplitud in množenju števca in imenovalca s A1 se končni izraz glasi:
+Replacement of $k$ for ratio of amplitudes $\frac{B_1}{A_1}$ presents final equation for prediction of error due to known amplitudes of input signals.
 \begin{equation}
 \label{equ:amp_err2}
-\varepsilon(k) =\frac{180}{\pi}\sum_{n=1}^{\infty}\frac{1}{n}(\frac{B_1-A_1}{B_1+A_1})^n \sin 2 n \theta
+\varepsilon(A_1, B_1) =\frac{180}{\pi}\sum_{n=1}^{\infty}\frac{1}{n}(\frac{B_1-A_1}{B_1+A_1})^n \sin 2 n \theta
 \end{equation}
-Izraz za napako velja le ko sta A1 in B1 enakega predznaka oz je njuno razmerje večje ali enako 0.
+(\ref{equ:amp_err2}) is valid only for positive ratio of amplitudes.
  $$\frac{B_1}{A_1} \geq 0.$$
 
 \subsection{Defining of error at non-orthogonality}
-Sledilo je spreminjanje parametra faz vhodnih signalov. Amplitudi se je nastavilo na 1, vhodna signala sta bila odvisna le od fs in fc(\ref{equ:def_sin_fis})(\ref{equ:def_cos_fis}).
+
+Amplitudes was fixed to one, eq. (\ref{equ:def_sin}) and (\ref{equ:def_cos}) were depended to phases only. Input signals are presented as:
 \begin{eqnarray}
 \label{equ:def_sin_fis}
 &Sin = \sin(\theta + \varphi_{s})\\
 \label{equ:def_cos_fis}
 &Cos =\cos(\theta+\varphi_{c})
 \end{eqnarray}
+Error was analyzed for each parameter individually and in the end results have been merged.
 
-Error can be transform and presented in Fourier series.
-\begin{eqnarray}
+First analysis was made for parameter $\varphi_s$.
+Worst case of error is, when phase parameter approaches $90^\circ$. Error can be presented as Fourier series (\ref{equ:lim_fis_vrsta}). Error contains DC component and even harmonics only.
+\begin{equation}
 \label{equ:lim_fis_vrsta}
-&\varepsilon(\varphi_{s} \rightarrow 90^\circ) = 45^\circ - \frac{180}{\pi}\sum_{n=1}^{\infty}\frac{1}{n} \sin (2n \theta)\\
-&\varepsilon(\varphi_{s} \rightarrow -90^\circ) = -45^\circ - \frac{180}{\pi}\sum_{n=1}^{\infty}\frac{1}{n} \sin (2n \theta)
-\end{eqnarray}
+\varepsilon(\varphi_{s} \rightarrow 90^\circ) = 45^\circ - \frac{180}{\pi}\sum_{n=1}^{\infty}\frac{1}{n} \sin (2n \theta)
+\end{equation}
 
-Transform includes offset and even harmonics only. Figure  \ref{fig:fis} presents course of offset $C_0$, amplitude of second harmonic $C_1$ and phase    of second harmonic $\varphi_{1}$ due to $\varphi_s$. y axis is in degrees. For $C_0$ and $C_1$ degrees presents amplitude of error harmonics, for $\varphi_{1}$ degrees presents phase. Offset is best fitted by linear function. Second harmonic is tangent function. Phase of second harmonic increases linear but for presentation with sine form must be added $90^\circ$. Same derivation can be done for phase of cosine signal. Equations can be marged and result is presented (\ref{equ:fis_err}).
+By varying $\varphi_s$ between $0^\circ$ and $90^\circ$ was found correlation of amplitudes of harmonics with tangent function (Figure \ref{fig:fis}). DC component and phase of error were changed linearly. Tangent function approximate second harmonic with SSE of $1.18 \cdot 10^{-10}$ degrees.
 \begin{figure}[!htb]
 	\begin{center}
 		\includegraphics[width=\linewidth]{./Slike/fis.eps}
-		\caption{The course of offset component $C_0$, amplitude of second harmonic  $C_2$ and phase $\varphi_2$ depend of ideal cosine signal,due to phase shift $\varphi_{s}$} \label{fig:fis}
+		\caption{The waveforms of DC component $C_0$, amplitude of second harmonic  $C_2$ and phase of error $\varphi_2$ depend to ideal cosine signal,due to phase shift $\varphi_{s}$} \label{fig:fis}
 	\end{center}
 \end{figure}
+
+Same procedure was made for parameter $\varphi_c$. Function that describes correlation of phase shifts of (\ref{equ:def_sin_fis}) and (\ref{equ:def_cos_fis}) to error is represented by Fourier function form (\ref{equ:fis_err}).
 \begin{multline}
 \label{equ:fis_err}
 \varepsilon(\varphi_{s},\varphi_{c}) = \frac{\varphi_{s}+\varphi_{c}}{2}+\\ \frac{180}{\pi}\sum_{n=1}^{\infty}\frac{1}{n} (\mathrm{tan}\frac{\varphi_{s}-\varphi_{c}}{2})^n \sin (2n \theta+n(90^\circ +\varphi_{s}+\varphi_{c}))
 \end{multline}
-Expression is valid only for:
+Expression (\ref{equ:fis_err}) is valid only for:
 $$ \varphi_{s}-\varphi_{c} \in [ -90^\circ , 90^\circ ] $$
 
-\subsection{Defining of error at offsets}
-Define amplitudes of input signals to 1, phase shift is set to zero. Let limit parameter $A_0$ to infinity, error is transformed to Fourier series and expressed as:
+\subsection{Coure of error for DC component in one input signal only}
+
+Input signals can contain DC component.
+Considering, changing parameters of DC components in (\ref{equ:def_sin}) and (\ref{equ:def_cos}) only, present input signals as:
+\begin{eqnarray}
+&Sin = sin(\theta)+ B_0\\
+&Cos = cos(\theta) + A_0.
+\end{eqnarray}
+First was analyzed offset in $Cos$ signal. 
 \begin{equation}
 \label{equ:off_lim_vrsta}
-\varepsilon (A_0 \rightarrow \infty) = \frac{180}{\pi}\sum_{n=1}^{\infty}\frac{2}{n} \sin (n \theta+ 90^\circ n).
+\varepsilon (A_0 \rightarrow \infty) = \frac{180}{\pi}\sum_{n=1}^{\infty}\frac{2}{n} \sin (n \theta + n 180^\circ).
 \end{equation}
 Error does not include offset component, highest amplitude has first harmonic.
 \begin{figure}[!htb]
@@ -159,7 +170,7 @@ Error does not include offset component, highest amplitude has first harmonic.
 		\caption{The course of amplitude of first harmonic due to offset  $A_0$, where input signals have amplitude of 1 } \label{fig:off}
 	\end{center}
 \end{figure}
-The course from figure \ref{fig:off} it is split to 3 parts and expression that best fit the curve is:
+The waveform from figure \ref{fig:off}, was split to 3 parts. Expression which best approximate waveform of first harmonic of error with SSE of $1.21 \cdot 10^{-7}$ degrees is in exponential and linear form:
 \begin{multline}
 \label{equ:offc_err}
 \varepsilon(A_0)=\\
@@ -170,8 +181,7 @@ The course from figure \ref{fig:off} it is split to 3 parts and expression that 
 \end{cases}
 \end{multline}
 
-Same derivation can be done for $B_0$ (\ref{equ:offs_err}) and for fitting error, when sine and cosine include same offset ($A_0 = B_0$) (\ref{equ:offsc_err}).
-
+Same procedure was done for DC component in $Sin$ signal. Result is eq. (\ref{equ:offs_err}).
 \begin{multline}
 \label{equ:offs_err}
 \varepsilon(B_0)=\\
@@ -182,6 +192,9 @@ Same derivation can be done for $B_0$ (\ref{equ:offs_err}) and for fitting error
 \end{cases}
 \end{multline}
 
+\subsection{Curse of error for same DC component in both input signals}
+
+Signals from encoder or resolver can contain equal DC component. 
 \begin{multline}
 \label{equ:offsc_err}
 \varepsilon(A_0,B_0=A_0)=\\

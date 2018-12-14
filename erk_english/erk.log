@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.10.19)  13 DEC 2018 23:06
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.10.19)  14 DEC 2018 18:24
 entering extended mode
 **./erk.tex
 (erk.tex
@@ -697,27 +697,6 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 28.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 77.
-
-Underfull \hbox (badness 10000) in paragraph at lines 87--90
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 87--90
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 87--90
-
- []
-
-
-Overfull \hbox (29.74509pt too wide) in paragraph at lines 87--90
-\OT1/ptm/m/n/10 lahko pred-stavl-jen s si-nus-nim sig-nalom. Am-pli-tuda posame
-znika
- []
-
 [1{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}
 
 
@@ -731,15 +710,15 @@ Package epstopdf Info: Source file: <./Slike/amp.eps>
 (epstopdf)                    size: 10734 bytes
 (epstopdf)             Command: <epstopdf --outfile=./Slike/amp-eps-converted-t
 o.pdf ./Slike/amp.eps>
-(epstopdf)             \includegraphics on input line 100.
+(epstopdf)             \includegraphics on input line 97.
 Package epstopdf Info: Output file is already uptodate.
 
-<./Slike/amp-eps-converted-to.pdf, id=79, 601.24625pt x 301.125pt>
+<./Slike/amp-eps-converted-to.pdf, id=90, 601.24625pt x 301.125pt>
 File: ./Slike/amp-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./Slike/amp-eps-converted-to.pdf>
-Package pdftex.def Info: ./Slike/amp-eps-converted-to.pdf used on input line 10
-0.
+Package pdftex.def Info: ./Slike/amp-eps-converted-to.pdf used on input line 97
+.
 (pdftex.def)             Requested size: 227.62206pt x 114.00136pt.
 Package epstopdf Info: Source file: <./Slike/fis.eps>
 (epstopdf)                    date: 2018-12-13 22:14:43
@@ -749,18 +728,18 @@ Package epstopdf Info: Source file: <./Slike/fis.eps>
 (epstopdf)                    size: 9269 bytes
 (epstopdf)             Command: <epstopdf --outfile=./Slike/fis-eps-converted-t
 o.pdf ./Slike/fis.eps>
-(epstopdf)             \includegraphics on input line 141.
+(epstopdf)             \includegraphics on input line 140.
 Package epstopdf Info: Output file is already uptodate.
 
-<./Slike/fis-eps-converted-to.pdf, id=85, 578.16pt x 345.29pt>
+<./Slike/fis-eps-converted-to.pdf, id=97, 578.16pt x 345.29pt>
 File: ./Slike/fis-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./Slike/fis-eps-converted-to.pdf>
 Package pdftex.def Info: ./Slike/fis-eps-converted-to.pdf used on input line 14
-1.
+0.
 (pdftex.def)             Requested size: 227.62206pt x 135.93758pt.
 
-Overfull \hbox (1.14017pt too wide) detected at line 148
+Overfull \hbox (1.14017pt too wide) detected at line 149
  []$[][] [] []\OT1/cmr/m/n/10 ([][])[] [](2\OML/cmm/m/it/10 n \OT1/cmr/m/n/10 
 + \OML/cmm/m/it/10 n\OT1/cmr/m/n/10 (90[] + \OML/cmm/m/it/10 '[] \OT1/cmr/m/n/1
 0 + \OML/cmm/m/it/10 '[]\OT1/cmr/m/n/10 ))$ []  
@@ -774,80 +753,69 @@ Package epstopdf Info: Source file: <./Slike/off.eps>
 (epstopdf)                    size: 7784 bytes
 (epstopdf)             Command: <epstopdf --outfile=./Slike/off-eps-converted-t
 o.pdf ./Slike/off.eps>
-(epstopdf)             \includegraphics on input line 161.
+(epstopdf)             \includegraphics on input line 169.
 Package epstopdf Info: Output file is already uptodate.
-<./Slike/off-eps-converted-to.pdf, id=86, 601.24625pt x 301.125pt>
+<./Slike/off-eps-converted-to.pdf, id=104, 601.24625pt x 301.125pt>
 File: ./Slike/off-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./Slike/off-eps-converted-to.pdf>
 Package pdftex.def Info: ./Slike/off-eps-converted-to.pdf used on input line 16
-1.
+9.
 (pdftex.def)             Requested size: 227.62206pt x 114.00136pt.
 
-Overfull \hbox (10.31493pt too wide) detected at line 174
+Overfull \hbox (10.31493pt too wide) detected at line 182
  []$[] []$ []  
  []
 
 [2 <./Slike/amp-eps-converted-to.pdf> <./Slike/fis-eps-converted-to.pdf>]
-Overfull \hbox (2.82767pt too wide) in paragraph at lines 176--177
-\OT1/ptm/m/n/10 ting er-ror, when sine and co-sine in-clude same off-set ($\OML
-/cmm/m/it/10 A[] \OT1/cmr/m/n/10 =
- []
-
-
-Overfull \hbox (18.86096pt too wide) detected at line 186
+Overfull \hbox (18.86096pt too wide) detected at line 193
  []$[] []$ []  
  []
 
 
-Overfull \hbox (40.0933pt too wide) detected at line 196
+Overfull \hbox (40.0933pt too wide) detected at line 206
  []$[] []$ []  
  []
 
 
-LaTeX Warning: Reference `equ:def_eks_sin' on page 3 undefined on input line 19
+LaTeX Warning: Reference `equ:def_eks_sin' on page 3 undefined on input line 20
 9.
 
 
-LaTeX Warning: Reference `equ:def_eks_cos' on page 3 undefined on input line 19
+LaTeX Warning: Reference `equ:def_eks_cos' on page 3 undefined on input line 20
 9.
 
 Package epstopdf Info: Source file: <./Slike/dc.eps>
 (epstopdf)                    date: 2018-12-13 23:06:48
 (epstopdf)                    size: 109469 bytes
 (epstopdf)             Output file: <./Slike/dc-eps-converted-to.pdf>
-(epstopdf)                    date: 2018-07-12 11:04:03
-(epstopdf)                    size: 7738 bytes
+(epstopdf)                    date: 2018-12-13 23:06:53
+(epstopdf)                    size: 7763 bytes
 (epstopdf)             Command: <epstopdf --outfile=./Slike/dc-eps-converted-to
 .pdf ./Slike/dc.eps>
-(epstopdf)             \includegraphics on input line 213.
-runsystem(epstopdf --outfile=./Slike/dc-eps-converted-to.pdf ./Slike/dc.eps)...
-executed (allowed).
-
-Package epstopdf Info: Result file: <./Slike/dc-eps-converted-to.pdf>
-(epstopdf)                    date: 2018-12-13 23:06:53
-(epstopdf)                    size: 7763 bytes.
-<./Slike/dc-eps-converted-to.pdf, id=140, 601.24625pt x 451.6875pt>
+(epstopdf)             \includegraphics on input line 223.
+Package epstopdf Info: Output file is already uptodate.
+<./Slike/dc-eps-converted-to.pdf, id=158, 601.24625pt x 451.6875pt>
 File: ./Slike/dc-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./Slike/dc-eps-converted-to.pdf>
-Package pdftex.def Info: ./Slike/dc-eps-converted-to.pdf used on input line 213
+Package pdftex.def Info: ./Slike/dc-eps-converted-to.pdf used on input line 223
 .
 (pdftex.def)             Requested size: 227.62206pt x 171.00204pt.
 
-Overfull \hbox (8.06767pt too wide) in paragraph at lines 218--220
+Overfull \hbox (8.06767pt too wide) in paragraph at lines 228--230
 \OT1/ptm/m/n/10 phase fit-ted to sine sig-nal is cal-cu-lated by $\OML/cmm/m/it
 /10 '[] \OT1/cmr/m/n/10 = \OML/cmm/m/it/10 atan\OT1/cmr/m/n/10 ([])$\OT1/ptm/m/
 n/10 .
  []
 
 
-Overfull \hbox (2.63956pt too wide) detected at line 224
+Overfull \hbox (2.63956pt too wide) detected at line 234
  []$[][][] \OT1/cmr/m/n/10 + [] [] []([])[]$ 
  []
 
 
-Overfull \hbox (3.04071pt too wide) detected at line 228
+Overfull \hbox (3.04071pt too wide) detected at line 238
  []$[][][] \OT1/cmr/m/n/10 + [] [] []([])[]$ 
  []
 
@@ -859,57 +827,57 @@ Package epstopdf Info: Source file: <./Slike/razlika_amp.eps>
 (epstopdf)                    size: 39268 bytes
 (epstopdf)             Command: <epstopdf --outfile=./Slike/razlika_amp-eps-con
 verted-to.pdf ./Slike/razlika_amp.eps>
-(epstopdf)             \includegraphics on input line 242.
+(epstopdf)             \includegraphics on input line 252.
 Package epstopdf Info: Output file is already uptodate.
-<./Slike/razlika_amp-eps-converted-to.pdf, id=144, 601.24625pt x 301.125pt>
+<./Slike/razlika_amp-eps-converted-to.pdf, id=162, 601.24625pt x 301.125pt>
 File: ./Slike/razlika_amp-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./Slike/razlika_amp-eps-converted-to.pdf>
 Package pdftex.def Info: ./Slike/razlika_amp-eps-converted-to.pdf used on input
- line 242.
+ line 252.
 (pdftex.def)             Requested size: 227.62206pt x 114.00136pt.
  [3 <./Slike/off-eps-converted-to.pdf> <./Slike/dc-eps-converted-to.pdf>]
-Overfull \hbox (2.93527pt too wide) in paragraph at lines 254--255
+Overfull \hbox (2.93527pt too wide) in paragraph at lines 264--265
 \OT1/ptm/m/n/10 of my men-tor and my pro-fes-sional col-leagues. I am deeply
  []
 
 
-Underfull \hbox (badness 1931) in paragraph at lines 258--261
+Underfull \hbox (badness 1931) in paragraph at lines 268--271
 \OT1/ptm/m/n/9 Con-fer-ence on Power Elec-tron-ics and Drive Sys-tems
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 290--291
+Underfull \hbox (badness 10000) in paragraph at lines 300--301
 []\OT1/ptm/m/n/9 https://www.mathworks.com/help/matlab/ref/atan2.html,
  []
 
 
-Overfull \hbox (1.18721pt too wide) in paragraph at lines 291--292
+Overfull \hbox (1.18721pt too wide) in paragraph at lines 301--302
 []\OT1/ptm/m/n/9 https://www.mathworks.com/help/matlab/ref/atan2d.html,
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 297.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 307.
 [4 <./Slike/razlika_amp-eps-converted-to.pdf>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 297.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 307.
  (erk.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 297.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 297.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 307.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 307.
 Package rerunfilecheck Info: File `erk.out' has not changed.
-(rerunfilecheck)             Checksum: 3CFF2ECF6FC000CAFEC20184B59616B3;574.
+(rerunfilecheck)             Checksum: 0BFFEAA0BE23C55A759B619F82B3AB8B;710.
 
 
 LaTeX Warning: There were undefined references.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 297.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 307.
  ) 
 Here is how much of TeX's memory you used:
- 7059 strings out of 493323
- 99907 string characters out of 3139065
- 220350 words of memory out of 3000000
- 10453 multiletter control sequences out of 15000+200000
+ 7062 strings out of 493323
+ 99949 string characters out of 3139065
+ 220468 words of memory out of 3000000
+ 10454 multiletter control sequences out of 15000+200000
  19387 words of font info for 46 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 28i,14n,28p,676b,360s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 28i,14n,28p,587b,344s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc}<C:/Program Files/Mi
 KTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX 2.9
 /fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9/fonts/t
@@ -925,9 +893,9 @@ ublic/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/am
 sfonts/cm/cmsy7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.p
 fb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Program Fi
 les/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
-Output written on erk.pdf (4 pages, 263927 bytes).
+Output written on erk.pdf (4 pages, 267038 bytes).
 PDF statistics:
- 285 PDF objects out of 1000 (max. 8388607)
- 50 named destinations out of 1000 (max. 500000)
- 90 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 302 PDF objects out of 1000 (max. 8388607)
+ 52 named destinations out of 1000 (max. 500000)
+ 98 words of extra memory for PDF output out of 10000 (max. 10000000)
 
