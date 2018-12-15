@@ -16,9 +16,9 @@
 
 \begin{document}
 %make title
-\title{The course of error due to distortion of input signal to the atan2 function}
+\title{The impact of input signal deformation on atan2 angle calculation error}
 
-\author{Mitja Alič} % use ^1, ^2 for author(s) from different institutions
+\author{Mitja Alič}
 
 \affiliation{Faculty of Electrical Enginering, University of Ljubljana, Tržaška cesta 25, 1000 Ljubljana}
 
@@ -27,8 +27,8 @@
 \maketitle
 
 
-\begin{abstract}{ }
-Distortion of sine and cosine values, used for angle determination with the atan2 function, can result in numerical error. According to the performed review of literature, error is normally presented by taking only the basic harmonic into account. This paper however presents determination of error by taking into account also higher harmonics, which are non-negligible at larger distortion of sine or cosine. Error is going to be expressed with infinite series, which expand the domain of distortion parameter. 
+\begin{abstract}{}
+In position sensing encoders and resolvers are used, whose output is a pair of quadrature sine and cosine signals. Angle calculation can be done with atan2 function. Due to improper installation of sensor, sine and cosine signal can be deformed. In that case calculated angle includes error. Error was analyzed for non-equal amplitudes, non-orthogonality, DC offset and common mode signal. Error was analyzed in frequency specter, that yielded a function of error based on input signal deformation. Error is presented in Fourier series form. 	` 
 \end{abstract}
 
 
@@ -39,9 +39,9 @@ Distortion of sine and cosine values, used for angle determination with the atan
 
 These days the need for high quality motor regulation is present in numerous applications and has as a result become unavoidable. For a consistent and reliable measurement of rotation, position sensors are used \cite{uporaba_senzorjev}, such as encoders and resolvers \cite{inkrementalni}\cite{resolver}\cite{enkoder}. Because the output of such sensors is a pair of quadrature sine and cosine signals, angle must first be calculated. The easiest way of doing so is by directly calculating atan2, which returns a value between $[-\pi, \pi]$ \cite{atan}.
 
-Because position sensors aren’t ideal, obtained sine and cosine signal can be deformed, phase shifted and DC offset. All of these imperfections cause the calculated angle to also include error.
+Because position sensors are not ideal, obtained sine and cosine signal can be deformed, phase shifted and DC offset. All of these imperfections cause the calculated angle to also include error.
 
-Literature  \cite{orbis}, \cite{RLS1}, \cite{RLS2} and \cite{RLS3} analyses the impact of such imperfection for lower harmonics only and states that imperfections scale linearly. During our research it was found, that the frequency analysis also contains higher harmonics. The paper examines error waveform dependent on input signal mismatch with Fourier analysis. 
+Literature  \cite{orbis}, \cite{RLS1}, \cite{RLS2} and \cite{RLS3} analyses the impact of such imperfection for lower harmonics only and states that error of imperfections scale linearly. During our research we found, that the error specter also contains higher harmonics. The paper examines error waveform dependent on input signal mismatch with Fourier analysis. 
 
 
 \section{Methodology and results}
@@ -72,10 +72,10 @@ and then subtracting it with an unaltered signal
 we get error based on deformation. Because  AC signal analysis is simpler in frequency domain, error was converted with Fast Fourier Transform(FFT). By varying each parameter individually we examined the impact of the parameter in question on specter of error. Output of atan2 was examined by sending each parameter in eq. (\ref{equ:def_sin}) and (\ref{equ:def_cos}) to infinity or worst case with phase shift.
 In this case amplitude and phase of each harmonic approaches to a limit value.
 
-The course of the amplitude and phase in dependence on the changing parameter was approximated by a function, that best suited numerical waveform obtained from the error spectrum. By knowing the limit value to which each amplitude and phase approaches, the set of functions has decreased. We were searching for the best approximation with polynomials, rational functions, exponential, trigonometric and cyclometric functions. The best approximation was sought using the minimum squares method.
+The course of the amplitude and phase in dependence on the changing parameter was approximated by a function, that best suited numerical waveform obtained from the error spectrum. The set of functions decreases by checking the limit value to which each amplitude and phase approach. We were looking for the best approximation with polynomials, rational functions, exponential, trigonometric and cyclometric functions. The best approximation was sought using the minimum squares method.
 
 \subsection{Defining of error at different amplitudes}
-In the first case was observed the dependence of error on the different amplitudes of the input signals. The output of the atan2 function is determined by the eq. (\ref{equ:def_sin}) and (\ref{equ:def_cos}) quotient. Since only the ratio of the amplitudes of the input signals needs to be preserved, we multiplied both signals by $\frac{1}{A_1}$. Taking into account only the amplitudes in (\ref{equ:def_sin}) and (\ref{equ:def_cos}), inputs are:
+In the first case was observed the impact of different amplitudes on error. The output of the atan2 function is determined by the eq. (\ref{equ:def_sin}) and (\ref{equ:def_cos}) quotient. Since only the ratio of the amplitudes needs to be preserved, we multiplied both signals by $\frac{1}{A_1}$. By changing only the amplitudes in (\ref{equ:def_sin}) and (\ref{equ:def_cos}), input signals are:
 	\begin{eqnarray}
 	\label{equ:def_sin_ama}
 	&Sin = k \sin(\theta),\\
@@ -84,41 +84,40 @@ In the first case was observed the dependence of error on the different amplitud
 	\end{eqnarray}
 where $k$ represents $\frac{B_1}{A_1}$.
 
-By varying the parameter $k$ from 0 to infinity, was found that, the error specter consists of even harmonics only. It was also observed that phase shift didn't change. When $k$ approaches infinity, the amplitude of harmonics approaches $\frac{180}{\pi}\frac{2}{n}$, where n represents n-th harmonic. Eq. (\ref{equ:lim_amp_vrsta}) contains even harmonics only.
+By varying the parameter $k$ from 0 to infinity, it was found that, the error specter consists of even harmonics only. It was also observed that phase shift didn't change. When $k$ approaches infinity, the amplitude of harmonics approaches $\frac{180}{\pi}\frac{2}{n}$, where n represents n-th harmonic. Eq. (\ref{equ:lim_amp_vrsta}) which contains even harmonics only.
 \begin{equation}
 \label{equ:lim_amp_vrsta}
 \varepsilon(k \rightarrow \infty) = \frac{180}{\pi}\sum_{n=1}^{\infty}\frac{1}{n} \sin 2 n \theta
 \end{equation}
-Because of highest amplitude of second harmonic, function, that best approximate waveform of second harmonic was searched first (Figure \ref{fig:amp}).
-Best approximation with summed squared error (SSE) $1.18 \cdot 10^{-10}$ degrees was rational function (\ref{equ:drugi_har}).
-
+Because second harmonic is the largest, we approximated it first (Figure \ref{fig:amp}).
 \begin{figure}[!htb]
 	\begin{center}
 		\includegraphics[width=\linewidth]{./Slike/amp.eps}
 		\caption{Waveform of the second harmonic depending on $k$} \label{fig:amp}
 	\end{center}
 \end{figure}
+
+Best approximation was rational function  (\ref{equ:drugi_har}), with summed squared error (SSE) $1.18 \cdot 10^{-10}$ degrees.
 \begin{eqnarray}
 \label{equ:drugi_har}
 C_2(k)=\frac{180}{\pi}\cdot\frac{k-1}{k+1}
 \end{eqnarray}
 
-It was assumed, that higher order harmonics were correlated with based harmonic approximation. Function, that describe error  depending on $k$ is presented in Fourier series form (\ref{equ:amp_err}).
+It was assumed, that higher order harmonics were correlated with base harmonic. Function, that describes error  depending on $k$ is presented in Fourier series form (\ref{equ:amp_err}).
 \begin{equation}
 \label{equ:amp_err}
 \varepsilon(k) =\frac{180}{\pi}\sum_{n=1}^{\infty}\frac{1}{n}(\frac{k-1}{k+1})^n \sin 2 n \theta
 \end{equation}
-Replacement of $k$ for ratio of amplitudes $\frac{B_1}{A_1}$ presents final equation for prediction of error due to known amplitudes of input signals.
+By replacing $k$ with ratio of amplitudes $\frac{B_1}{A_1}$, we get final equation
 \begin{equation}
 \label{equ:amp_err2}
-\varepsilon(A_1, B_1) =\frac{180}{\pi}\sum_{n=1}^{\infty}\frac{1}{n}(\frac{B_1-A_1}{B_1+A_1})^n \sin 2 n \theta
+\varepsilon(A_1, B_1) =\frac{180}{\pi}\sum_{n=1}^{\infty}\frac{1}{n}(\frac{B_1-A_1}{B_1+A_1})^n \sin 2 n \theta,
 \end{equation}
-(\ref{equ:amp_err2}) is valid only for positive ratio of amplitudes.
+which is valid for positive ratio of amplitudes only.
  $$\frac{B_1}{A_1} \geq 0.$$
 
 \subsection{Defining of error at non-orthogonality}
-
-Amplitudes ware fixed to one, eq. (\ref{equ:def_sin}) and (\ref{equ:def_cos}) were depended to phases only. Input signals are represented as:
+In second case, it was examined the impact of phase deformation. Input signals are represented as:
 \begin{eqnarray}
 \label{equ:def_sin_fis}
 &Sin = \sin(\theta + \varphi_{s})\\
