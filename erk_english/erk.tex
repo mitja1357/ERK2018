@@ -69,13 +69,13 @@ and then subtracting it with an unaltered signal
 \label{equ:def_err}
 \varepsilon =\varphi - \mathrm{atan2}(\sin(\theta),\cos(\theta))
 \end{equation}
-we get error based on deformation. Because  AC signal analysis is simpler in frequency domain we converted it with Fast Fourier Transform(FFT). By varying each parameter individually we examined the impact of the parameter in question on specter of error. Output of atan2 was examined by sending each parameter in eq. (\ref{equ:def_sin}) and (\ref{equ:def_cos}) to infinity or worst case with phase shift.
+we get error based on deformation. Because  AC signal analysis is simpler in frequency domain, error was converted with Fast Fourier Transform(FFT). By varying each parameter individually we examined the impact of the parameter in question on specter of error. Output of atan2 was examined by sending each parameter in eq. (\ref{equ:def_sin}) and (\ref{equ:def_cos}) to infinity or worst case with phase shift.
 In this case amplitude and phase of each harmonic approaches to a limit value.
 
-The course of the amplitude and phase in dependence on the changing parameter was approximated by a function that best suited numerical waveform obtained from the error spectrum. By knowing the limit value to which each amplitude and phase approaches, the set of functions has decreased. We were searching for the best approximation with polynomials, rational functions, trigonometric and cyclometric functions. The best approximation was sought using the minimum squares method.
+The course of the amplitude and phase in dependence on the changing parameter was approximated by a function, that best suited numerical waveform obtained from the error spectrum. By knowing the limit value to which each amplitude and phase approaches, the set of functions has decreased. We were searching for the best approximation with polynomials, rational functions, exponential, trigonometric and cyclometric functions. The best approximation was sought using the minimum squares method.
 
 \subsection{Defining of error at different amplitudes}
-In the first case we observed the dependence of error on the different amplitudes of the input signals. The output of the atan2 function is determined by the eq. (\ref{equ:def_sin}) and (\ref{equ:def_cos}) quotient. Since only the ratio of the amplitudes of the input signals needs to be preserved, we multiplied both signals by $\frac{1}{A_1}$. Taking into account only the amplitudes in (\ref{equ:def_sin}) and (\ref{equ:def_cos}), inputs are:
+In the first case was observed the dependence of error on the different amplitudes of the input signals. The output of the atan2 function is determined by the eq. (\ref{equ:def_sin}) and (\ref{equ:def_cos}) quotient. Since only the ratio of the amplitudes of the input signals needs to be preserved, we multiplied both signals by $\frac{1}{A_1}$. Taking into account only the amplitudes in (\ref{equ:def_sin}) and (\ref{equ:def_cos}), inputs are:
 	\begin{eqnarray}
 	\label{equ:def_sin_ama}
 	&Sin = k \sin(\theta),\\
@@ -84,12 +84,12 @@ In the first case we observed the dependence of error on the different amplitude
 	\end{eqnarray}
 where $k$ represents $\frac{B_1}{A_1}$.
 
-By varying the parameter k from 0 to infinity, we found that the error specter consists of even harmonics only. We also observed that phase shift didn't change. When k approaches infinity, the amplitude of harmonics approaches $\frac{180}{\pi}\frac{2}{n}$, where n represents n-th harmonic. Eq. (\ref{equ:lim_amp_vrsta}) contains even harmonics only.
+By varying the parameter $k$ from 0 to infinity, was found that, the error specter consists of even harmonics only. It was also observed that phase shift didn't change. When $k$ approaches infinity, the amplitude of harmonics approaches $\frac{180}{\pi}\frac{2}{n}$, where n represents n-th harmonic. Eq. (\ref{equ:lim_amp_vrsta}) contains even harmonics only.
 \begin{equation}
 \label{equ:lim_amp_vrsta}
 \varepsilon(k \rightarrow \infty) = \frac{180}{\pi}\sum_{n=1}^{\infty}\frac{1}{n} \sin 2 n \theta
 \end{equation}
-Because of highest amplitude of second harmonic, function that best approximate waveform was searched first (Figure \ref{fig:amp}).
+Because of highest amplitude of second harmonic, function, that best approximate waveform of second harmonic was searched first (Figure \ref{fig:amp}).
 Best approximation with summed squared error (SSE) $1.18 \cdot 10^{-10}$ degrees was rational function (\ref{equ:drugi_har}).
 
 \begin{figure}[!htb]
@@ -118,7 +118,7 @@ Replacement of $k$ for ratio of amplitudes $\frac{B_1}{A_1}$ presents final equa
 
 \subsection{Defining of error at non-orthogonality}
 
-Amplitudes was fixed to one, eq. (\ref{equ:def_sin}) and (\ref{equ:def_cos}) were depended to phases only. Input signals are presented as:
+Amplitudes ware fixed to one, eq. (\ref{equ:def_sin}) and (\ref{equ:def_cos}) were depended to phases only. Input signals are represented as:
 \begin{eqnarray}
 \label{equ:def_sin_fis}
 &Sin = \sin(\theta + \varphi_{s})\\
@@ -138,11 +138,11 @@ By varying $\varphi_s$ between $0^\circ$ and $90^\circ$ was found correlation of
 \begin{figure}[!htb]
 	\begin{center}
 		\includegraphics[width=\linewidth]{./Slike/fis.eps}
-		\caption{The waveforms of DC component $C_0$, amplitude of second harmonic  $C_2$ and phase of error $\varphi_2$ depend to ideal cosine signal,due to phase shift $\varphi_{s}$} \label{fig:fis}
+		\caption{The waveforms of DC component $C_0$, amplitude of second harmonic  $C_2$ and phase of second harmonic of  error $\varphi_2$ due to ideal cosine signal,depend to phase shift $\varphi_{s}$} \label{fig:fis}
 	\end{center}
 \end{figure}
 
-Same procedure was made for parameter $\varphi_c$. Function that describes correlation of phase shifts of (\ref{equ:def_sin_fis}) and (\ref{equ:def_cos_fis}) to error is represented by Fourier function form (\ref{equ:fis_err}).
+Same procedure was made for parameter $\varphi_c$. Function, that describes correlation of phase shifts of (\ref{equ:def_sin_fis}) and (\ref{equ:def_cos_fis}) to error is presented by Fourier function form (\ref{equ:fis_err}).
 \begin{multline}
 \label{equ:fis_err}
 \varepsilon(\varphi_{s},\varphi_{c}) = \frac{\varphi_{s}+\varphi_{c}}{2}+\\ \frac{180}{\pi}\sum_{n=1}^{\infty}\frac{1}{n} (\mathrm{tan}\frac{\varphi_{s}-\varphi_{c}}{2})^n \sin (2n \theta+n(90^\circ +\varphi_{s}+\varphi_{c}))
@@ -153,29 +153,29 @@ $$ \varphi_{s}-\varphi_{c} \in [ -90^\circ , 90^\circ ] $$
 \subsection{Coure of error for DC component in one input signal only}
 
 Input signals can contain DC component.
-Considering, changing parameters of DC components in (\ref{equ:def_sin}) and (\ref{equ:def_cos}) only, present input signals as:
+Considering, changing parameters of DC components in (\ref{equ:def_sin}) and (\ref{equ:def_cos}) only, represent input signals as:
 \begin{eqnarray}
 &Sin = sin(\theta)+ B_0\\
 &Cos = cos(\theta) + A_0.
 \end{eqnarray}
-First was analyzed offset in $Cos$ signal. 
+First was analyzed offset in $Cos$ signal. Parameter $A_0$ approaches infinity and error was decribed by eq. (\ref{equ:off_lim_vrsta}).
 \begin{equation}
 \label{equ:off_lim_vrsta}
 \varepsilon (A_0 \rightarrow \infty) = \frac{180}{\pi}\sum_{n=1}^{\infty}\frac{2}{n} \sin (n \theta + n 180^\circ).
 \end{equation}
-Error does not include offset component, highest amplitude has first harmonic.
+Error does not contain DC component, highest amplitude has first harmonic.
 \begin{figure}[!htb]
 	\begin{center}
 		\includegraphics[width=\linewidth]{./Slike/off.eps}
-		\caption{The course of amplitude of first harmonic due to offset  $A_0$, where input signals have amplitude of 1 } \label{fig:off}
+		\caption{The waveform of amplitude of first harmonic depending to offset  $A_0$, where input signals have amplitude of 1 } \label{fig:off}
 	\end{center}
 \end{figure}
 The waveform from figure \ref{fig:off}, was split to 3 parts. Expression which best approximate waveform of first harmonic of error with SSE of $1.21 \cdot 10^{-7}$ degrees is in exponential and linear form:
 \begin{multline}
 \label{equ:offc_err}
-\varepsilon(A_0)=\\
+\varepsilon(A_0, A_1)=\\
 \begin{cases}
-\frac{180}{\pi}\sum_{n=1}^{\infty}(-1)^n\frac{1}{n}(2-|\frac{A_0}{A_1}|^{-n}) \sin (n \theta ), & \frac{A_0}{A_1}\leq -1 \\
+\frac{180}{\pi}\sum_{n=1}^{\infty} \frac{1}{n}(2-|\frac{A_0}{A_1}|^{-n}) \sin (n \theta ), & \frac{A_0}{A_1}\leq -1 \\
 \frac{180}{\pi}\sum_{n=1}^{\infty}(-1)^n\frac{1}{n}(\frac{A_0}{A_1})^n \sin (n \theta ), & |\frac{A_0}{A_1}|\leq 1 \\
 \frac{180}{\pi}\sum_{n=1}^{\infty}(-1)^n\frac{1}{n}(2-(\frac{A_0}{A_1})^{-n}) \sin (n \theta ), & \frac{A_0}{A_1}\geq 1
 \end{cases}
@@ -184,7 +184,7 @@ The waveform from figure \ref{fig:off}, was split to 3 parts. Expression which b
 Same procedure was done for DC component in $Sin$ signal. Result is eq. (\ref{equ:offs_err}).
 \begin{multline}
 \label{equ:offs_err}
-\varepsilon(B_0)=\\
+\varepsilon(B_0, B_1)=\\
 \begin{cases}
 \frac{180}{\pi}\sum_{n=1}^{\infty}\frac{1}{n}(2-|\frac{B_0}{B_1}|^{-n}) \sin (n \theta -  90^\circ n), & \frac{B_0}{B_1}\leq -1 \\
 \frac{180}{\pi}\sum_{n=1}^{\infty}\frac{1}{n}(\frac{B_0}{B_1})^n \sin (n \theta + 90^\circ n), & |\frac{B_0}{B_1}|\leq 1 \\
@@ -193,31 +193,33 @@ Same procedure was done for DC component in $Sin$ signal. Result is eq. (\ref{eq
 \end{multline}
 
 \subsection{Curse of error for same DC component in both input signals}
-
-Signals from encoder or resolver can contain equal DC component. 
+Input signals can also contain same DC component. Same analysis was made and result is presented in eq. (\ref{equ:offsc_err}).
 \begin{multline}
 \label{equ:offsc_err}
-\varepsilon(A_0,B_0=A_0)=\\
+\varepsilon(A_0,B_0=A_0, A_1)=\\
 \begin{cases}
-\frac{180}{\pi}\sum_{n=1}^{\infty}\frac{1}{n}(2-|\sqrt{2}\frac{A_0}{A_1}|^{-n}) \sin (n \theta + 90^\circ n), & \frac{A_0}{A_1}\leq -\frac{\sqrt{2}}{2} \\
-\frac{180}{\pi}\sum_{n=1}^{\infty}\frac{1}{n}(\sqrt{2}\frac{A_0}{A_1})^n \sin (n \theta - 90^\circ n), & |\frac{A_0}{A_1}|\leq \frac{\sqrt{2}}{2} \\
-\frac{180}{\pi}\sum_{n=1}^{\infty}\frac{1}{n}(2-(\sqrt{2}\frac{A_0}{A_1})^{-n}) \sin (n \theta - 90^\circ n), & \frac{A_0}{A_1}\geq \frac{\sqrt{2}}{2}
+\frac{180}{\pi}\sum_{n=1}^{\infty}\frac{1}{n}(2-|\sqrt{2}\frac{A_0}{A_1}|^{-n}) \sin (n \theta - 45^\circ n), & \frac{A_0}{A_1}\leq -\frac{\sqrt{2}}{2} \\
+\frac{180}{\pi}\sum_{n=1}^{\infty}\frac{1}{n}(\sqrt{2}\frac{A_0}{A_1})^n \sin (n \theta + 135^\circ n), & |\frac{A_0}{A_1}|\leq \frac{\sqrt{2}}{2} \\
+\frac{180}{\pi}\sum_{n=1}^{\infty}\frac{1}{n}(2-(\sqrt{2}\frac{A_0}{A_1})^{-n}) \sin (n \theta +135^\circ n), & \frac{A_0}{A_1}\geq \frac{\sqrt{2}}{2}
 \end{cases}
 \end{multline}
 
-\subsection{Impact of different amplitude and phase due to one parameter}
-Transform to Fourier series  of limit (\ref{equ:def_err}) to infinity of  $\Delta_c$, where inputs are  (\ref{equ:def_eks_sin}) and (\ref{equ:def_eks_cos}) is
+\subsection{Impact of CCM signal to error}
+
+Added common mode signal to input signals was analyzed for each parameter individually. This paper presents procedure for CCM of cosinu signal only. Result of CCM sinusoidal form is added only. Procedure to achieve result was the same.
+
+Procedure started by limitation of error of $\Delta_c$ to infinity. CCM effects to amplitudes and phasese of input signals, so was expected that error will contain DC component and even harmonics only.
+Error when $\Delta_c$ approaches infinity can be represented in Fourier series form (\ref{equ:lim_dc_vrsta}).
 \begin{equation}
 \label{equ:lim_dc_vrsta}
 \varepsilon = 45^\circ -\frac{180}{\pi}\sum_{n=1}^{\infty}\frac{1}{n} \sin( 2 n \theta).
 \end{equation}
-
-The course of second harmonic due to $\Delta_c$, can be express as sum of sine and cosine signal. Each signal is presented in figure  \ref{fig:dc}.
-
+By varying $\Delta_c$ and analyzing error specter, none result was found.
+Than error specter was split to sine and cosine part. In that case waveform of amplitude of second harmonic of error was presented as:
 \begin{equation}
-C_{1s}(\Delta_c) \cdot\sin(2\theta)+C_{1c}(\Delta_c) \cdot\cos(2\theta)
+C_{2s}(\Delta_c) \cdot\sin(2\theta)+C_{2c}(\Delta_c) \cdot\cos(2\theta)
 \end{equation}
-
+Figure \ref{fig:dc} represents waveforms of DC component and split waveform of second harmonic of error.
 \begin{figure}[!htb]
 	\begin{center}
 		\includegraphics[width=\linewidth]{./Slike/dc.eps}
@@ -225,12 +227,12 @@ C_{1s}(\Delta_c) \cdot\sin(2\theta)+C_{1c}(\Delta_c) \cdot\cos(2\theta)
 	\end{center}
 \end{figure}
 
-Offset of error is fitted to invert tangent function. $C_{1s}$ and $C_{1c}$ are best fitted to rational function. Total amplitude is geometrical summation $C_n = \sqrt{C_{ns}^2+C_{nc}^2}$, phase fitted to sine signal is calculated by  $\varphi_{n} = atan(\frac{C_{nc}}{C_{ns}})$.
-Final equation due to $\Delta_c$ and $\Delta_s$is expressed in (\ref{equ:dc_err}) and (\ref{equ:ds_err})
+DC component was approximated with SSE of $1.94 \cdot 10^{-22}$ degrees with atan function. Waveform of $C_{2s}$ and $C_{2c}$ ware approximated with SSE less then $1.15 \cdot 10^{-9}$ degrees. Functions were  merged to function that represent course of amplitude as $\sqrt{C_{2s}^2+C_{2c}^2}$ and course of phase as $atan \frac{C_{2c}}{C_{2s}}$. It was assumed that same correlation applies to higher harmonics. 
+Final function that described error depending on $\Delta_c$ is presented in Fourier series form (\ref{equ:dc_err}).
 
 \begin{multline}
 \label{equ:dc_err}
-\varepsilon(\Delta_c) =\\ \mathrm{atand}\frac{\Delta_c}{\Delta_c+2 A_1}+\frac{180}{\pi} \sum_{n=1}^{\infty}\frac{1}{n} (\frac{\Delta_c}{\sqrt{\Delta_c^2+2 A_1 \Delta_c+2 A_1}})^n\\ \sin (2n \theta+n (90^\circ+ \mathrm{ atan}(\frac{\Delta_c+A_1}{A_1})))
+\varepsilon(\Delta_c) =\\ \mathrm{atan}\frac{\Delta_c}{\Delta_c+2 A_1}+\frac{180}{\pi} \sum_{n=1}^{\infty}\frac{1}{n} (\frac{\Delta_c}{\sqrt{\Delta_c^2+2 A_1 \Delta_c+2 A_1}})^n\\ \sin (2n \theta+n (90^\circ+ \mathrm{ atan}(\frac{\Delta_c+A_1}{A_1})))
 \end{multline}
 \begin{multline}
 \label{equ:ds_err}
