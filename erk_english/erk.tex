@@ -17,32 +17,23 @@
 \begin{document}
 %make title
 \title{The impact of input signal deformation on atan2 angle calculation error}
-
 \author{Mitja Alič}
-
 \affiliation{Faculty of Electrical Enginering, University of Ljubljana, Tržaška cesta 25, 1000 Ljubljana}
-
 \email{E-mail: mitja1357@gmail.com}
-
 \maketitle
 
-
 \begin{abstract}{}
-In position sensing encoders and resolvers are used, whose output is a pair of quadrature sine and cosine signals. Angle calculation can be done with atan2 function. Due to improper installation of sensor, sine and cosine signal can be deformed. In that case calculated angle includes error. Error was analyzed for non-equal amplitudes, non-orthogonality, DC offset and common mode signal. Error was analyzed in frequency specter, that yielded a function of error based on input signal deformation. Error is presented in Fourier series form. 	` 
+In position sensing encoders and resolvers are used, whose output is a pair of quadrature sine and cosine signals. Angle calculation can be done with atan2 function. Due to improper installation of sensor, sine and cosine signal can be deformed. In that case calculated angle includes error. Error was analyzed for non-equal amplitudes, non-orthogonality, DC offset and common mode signal. Error was analyzed in frequency specter, that yielded a function of error based on input signal deformation. Error is presented in Fourier series form.
 \end{abstract}
-
 
 \selectlanguage{English}
 
 \section{Introduction}
-
-
-These days the need for high quality motor regulation is present in numerous applications and has as a result become unavoidable. For a consistent and reliable measurement of rotation, position sensors are used \cite{uporaba_senzorjev}, such as encoders and resolvers \cite{inkrementalni}\cite{resolver}\cite{enkoder}. Because the output of such sensors is a pair of quadrature sine and cosine signals, angle must first be calculated. The easiest way of doing so is by directly calculating atan2, which returns a value between $[-\pi, \pi]$ \cite{atan}.
+These days the need for high quality motor regulation is present in numerous applications and has as a result become unavoidable. For a consistent and reliable measurement of rotation, position sensors are used \cite{uporaba_senzorjev}, such as encoders and resolvers \cite{inkrementalni}\cite{resolver}\cite{enkoder}. Because the output of such sensors is a pair of quadrature sine and cosine signals, angle must first be calculated. The easiest way of doing so is by directly calculating atan2, which returns a value between $[-\pi, \pi]$.
 
 Because position sensors are not ideal, obtained sine and cosine signal can be deformed, phase shifted and DC offset. All of these imperfections cause the calculated angle to also include error.
 
 Literature  \cite{orbis}, \cite{RLS1}, \cite{RLS2} and \cite{RLS3} analyses the impact of such imperfection for lower harmonics only and states that error of imperfections scale linearly. During our research we found, that the error specter also contains higher harmonics. The paper examines error waveform dependent on input signal mismatch with Fourier analysis. 
-
 
 \section{Methodology and results}
 Output from a position sensor can be represented with
@@ -141,7 +132,7 @@ By varying $\varphi_s$ between $0^\circ$ and $90^\circ$ was found correlation of
 	\end{center}
 \end{figure}
 
-Same procedure was made for parameter $\varphi_c$. Function, that describes correlation of phase shifts of (\ref{equ:def_sin_fis}) and (\ref{equ:def_cos_fis}) to error is presented by Fourier function form (\ref{equ:fis_err}).
+Same procedure was made for parameter $\varphi_c$. Function, that describes correlation of phase shifts of (\ref{equ:def_sin_fis}) and (\ref{equ:def_cos_fis}) to error is represented by Fourier function form (\ref{equ:fis_err}).
 \begin{multline}
 \label{equ:fis_err}
 \varepsilon(\varphi_{s},\varphi_{c}) = \frac{\varphi_{s}+\varphi_{c}}{2}+\\ \frac{180}{\pi}\sum_{n=1}^{\infty}\frac{1}{n} (\mathrm{tan}\frac{\varphi_{s}-\varphi_{c}}{2})^n \sin (2n \theta+n(90^\circ +\varphi_{s}+\varphi_{c}))
@@ -150,14 +141,14 @@ Expression (\ref{equ:fis_err}) is valid only for:
 $$ \varphi_{s}-\varphi_{c} \in [ -90^\circ , 90^\circ ] $$
 
 \subsection{Defining of error for DC component in one input signal only}
-
+\label{DCoff}
 Input signals can contain DC component.
 Considering, changing parameters of DC components in (\ref{equ:def_sin}) and (\ref{equ:def_cos}) only, represent input signals as:
 \begin{eqnarray}
 &Sin = sin(\theta)+ B_0\\
 &Cos = cos(\theta) + A_0.
 \end{eqnarray}
-First was analyzed offset in $Cos$ signal. Parameter $A_0$ approaches infinity and error was decribed by eq. (\ref{equ:off_lim_vrsta}).
+First was analyzed offset in $Cos$ signal. Parameter $A_0$ approaches infinity and error was described by eq. (\ref{equ:off_lim_vrsta}).
 \begin{equation}
 \label{equ:off_lim_vrsta}
 \varepsilon (A_0 \rightarrow \infty) = \frac{180}{\pi}\sum_{n=1}^{\infty}\frac{2}{n} \sin (n \theta + n 180^\circ).
@@ -192,7 +183,7 @@ Same procedure was done for DC component in $Sin$ signal. Result is eq. (\ref{eq
 \end{multline}
 
 \subsection{Defining of error for same DC component in both input signals}
-Input signals can also contain same DC component. This happen to resolver signals acquired at improper installation of stator coils. Same analysis was made and result is presented in eq. (\ref{equ:offsc_err}).
+Input signals can also contain same DC component. This happen to resolver signals acquired at improper installation of stator coils. Same analysis as in \ref{DCoff} was made and result is presented in eq. (\ref{equ:offsc_err}).
 \begin{multline}
 \label{equ:offsc_err}
 \varepsilon(A_0,B_0=A_0, A_1)=\\
@@ -205,10 +196,10 @@ Input signals can also contain same DC component. This happen to resolver signal
 
 \subsection{Impact of CCM signal to error}
 CCM signal can be acquired at improper installation of rotor part of resolver.
-Added common mode signal to input signals was analyzed for each parameter individually. This paper presents procedure for CCM of cosinu signal only. Result of CCM sinusoidal form is appended. Procedure to achieve result was the same.
+Added common mode signal to input signals was analyzed for each parameter individually. This paper presents procedure for CCM of cosine signal only. Result of CCM sinusoidal form is appended. Procedure to achieve result was the same.
 
-Procedure started by limitation of error of $\Delta_c$ to infinity. CCM effects to amplitudes and phasese of input signals, so was expected that error will contain DC component and even harmonics only.
-Error when $\Delta_c$ approaches infinity can be represented in Fourier series form (\ref{equ:lim_dc_vrsta}).
+Procedure started by limitation of error of $\Delta_c$ to infinity. CCM effects to amplitudes and phases of input signals, so was expected that error will contain DC component and even harmonics only.
+Error when $\Delta_c$ approaching infinity can be represented in Fourier series form (\ref{equ:lim_dc_vrsta}).
 \begin{equation}
 \label{equ:lim_dc_vrsta}
 \varepsilon(\Delta_c \rightarrow \infty) = 45^\circ -\frac{180}{\pi}\sum_{n=1}^{\infty}\frac{1}{n} \sin( 2 n \theta).
@@ -228,16 +219,16 @@ Figure \ref{fig:dc} represents waveforms of DC component and split waveform of s
 
 DC component was approximated with SSE of $1.94 \cdot 10^{-22}$ degrees with atan function. Waveform of $C_{2s}$ and $C_{2c}$ ware approximated with SSE less then $1.15 \cdot 10^{-9}$ degrees. Functions were  merged to function, that represent course of amplitude as $\sqrt{C_{2s}^2+C_{2c}^2}$ and course of phase as $atan \frac{C_{2c}}{C_{2s}}$. It was assumed, that higher order harmonics were correlated with base harmonic.
 Final function that described error depending on $\Delta_c$ is presented in Fourier series form (\ref{equ:dc_err}).
-
 \begin{multline}
 \label{equ:dc_err}
-\varepsilon(A_1, \Delta_c) = \mathrm{atan}\frac{\Delta_c}{\Delta_c+2 A_1}+\\+\frac{180}{\pi} \sum_{n=1}^{\infty}\frac{1}{n} (\frac{\Delta_c}{\sqrt{\Delta_c^2+2 A_1 \Delta_c+2 A_1}})^n\\ \sin (2n \theta+n (90^\circ+ \mathrm{ atan}(\frac{\Delta_c+A_1}{A_1})))
+\qquad\varepsilon(A_1, \Delta_c) = \mathrm{atan}\frac{\Delta_c}{\Delta_c+2 A_1}+\\
+\qquad+\frac{180}{\pi} \sum_{n=1}^{\infty}\frac{1}{n} (\frac{\Delta_c}{\sqrt{\Delta_c^2+2 A_1 \Delta_c+2 A_1}})^n\\ \sin (2n \theta+n (90^\circ+ \mathrm{ atan}(\frac{\Delta_c+A_1}{A_1})))
 \end{multline}
 
 Same procedure was made for $\Delta_s$. Result is in eq. (\ref{equ:ds_err})
 \begin{multline}
 \label{equ:ds_err}
-\varepsilon(A_1, \Delta_s) = \mathrm{atand}\frac{-\Delta_s}{\Delta_s+2 A_1}+\\+\frac{180}{\pi} \sum_{n=1}^{\infty}\frac{1}{n} (\frac{\Delta_s}{\sqrt{\Delta_s^2+2 A_1 \Delta_s+2A_1}})^n\\ \sin (2n \theta+n (90^\circ+ \mathrm{ atan}(\frac{\Delta_s+A_1}{A_1})))
+\varepsilon(A_1, \Delta_s) = -\mathrm{atan}\frac{\Delta_s}{\Delta_s+2 A_1}+\\+\frac{180}{\pi} \sum_{n=1}^{\infty}\frac{1}{n} (\frac{\Delta_s}{\sqrt{\Delta_s^2+2 A_1 \Delta_s+2A_1}})^n\\ \sin (2n \theta+n (90^\circ- \mathrm{ atan}(\frac{\Delta_s+A_1}{A_1})))
 \end{multline}
 
 Eq. (\ref{equ:dc_err}) and (\ref{equ:ds_err}) are valid for only: 
@@ -245,14 +236,10 @@ Eq. (\ref{equ:dc_err}) and (\ref{equ:ds_err}) are valid for only:
 \Delta_s, \Delta_c > -A_1
 \end{equation*}
 
-
-
 \section{Comment on results}
-
-After defining error due to deformation parameter in input signal, comparison between error in (\ref{equ:def_err}) and approximated functions defined in this paper was made. Approximated functions were defined with infinity series, during comparison were used first 15 components only. In example input signals have amplitudes $A_1 = 1$ and $B_1 = 1.1$. Difference between error calculated with (\ref{equ:amp_err2}) and error from (\ref{equ:def_err})  is presented in figure \ref{fig:razlika}. Difference between subtracted error is in numerical range. Comparing those two errors in frequency specter, showed minimum deviations between harmonics of same frequency.
+After defining error due to deformation parameter in input signal, a fault of approximation (\ref{equ:def_err}) was made. Approximated functions were defined with infinite series, during analysis of fault were used first 15 components only. In example input signals have amplitudes $A_1 = 1$ and $B_1 = 1.1$. Difference between error calculated with (\ref{equ:amp_err2}) and error from (\ref{equ:def_err})  is presented in figure \ref{fig:razlika}. Fault of approximation is in the vicinity of a numeric error. Comparing errors in frequency specter, showed minimum deviations between harmonics of same frequency.
 
 It is necessary to mention that despite the derivation, the presented types of errors of individual deformations still depends on each other.
-
 \begin{figure}[!htb]
 	\begin{center}
 		\includegraphics[width=\linewidth]{./Slike/razlika_amp.eps}
@@ -261,15 +248,15 @@ It is necessary to mention that despite the derivation, the presented types of e
 \end{figure}
 
 \section{Conclusion}
-
-This paper examines the impact of improper installation of magnetic encoders and resolvers on angle error. With methods described in this paper, improper installation of encoders and resolvers can be uncovered from analyzing error only. This paper presented content of higher harmonics in error, which become non-negligible at major mismatches. This paper present impact of signal mismatch, non-orthogonality, DC offset and common mode signal to output error of atan2 function.
+With methods described in this paper, improper installation of encoders and resolvers can be uncovered from analyzing error only.
+Content of higher harmonics in error become non-negligible at major mismatches. This paper presents impact of signal mismatch, non-orthogonality, DC offset and common mode signal to output error of atan2 function.
 
 Input signals can include higher harmonics distortion, which is not described in this paper. The impact of distortion of the input signals in the atan2 function to the output error offers many challenges for further work. 
-
-%\section*{Acknowledgment}
-%This paper could not be possible without the help of some of my mentor and my professional colleagues. I am deeply grateful to their generous help in the design and experiment.
-
 \small
+%\section*{Acknowledgment}
+%This paper could not be possible without the help of my friend and colleague Draš Kunšič. I am deeply grateful for his generous help and encouragement.
+
+
 \begin{thebibliography}{1}
 \bibitem{uporaba_senzorjev} Gachter J., Hirz M.,Seebacher R., "Impact of Rotor Position Sensor Errors on Speed
 Controlled Permanent Magnetized Synchronous
@@ -278,12 +265,8 @@ Machines", IEEE 12th International Conference on Power Electronics and Drive Sys
 \bibitem{inkrementalni} Brugnano F., Concari C., Imamovic E., Savi F., Toscani  A., Zanichelli R., "A simple and accurate algorithm for speed measurement in electric drives using incremental encoder",
 IECON 2017 - 43rd Annual Conference of the IEEE Industrial Electronics Society, pp. 8551-8556, 29 Oct.-1 Nov. 2017
 
-
 \bibitem{resolver} Reddy B.P., Murali A., Shaga G., "Low Cost Planar Coil Structure for Inductive Sensors to Measure Absolute Angular
 Position", 2017 2nd International Conference on Frontiers of Sensors Technologies (ICFST), pp.14-18, 14-16 April 2017
-
-
-
 
 \bibitem{enkoder} Zhang Z., Ni F., Liu H., Jin M., "Theory analysis of a new absolute position sensor based on electromagnetism", International Conference on Automatic Control and Artificial Intelligence, pp.2204-208, 3-5 Mar. 2012
 
@@ -294,19 +277,15 @@ Optimization Algorithm",  IECON 2014 - 40th Annual Conference of the IEEE Indust
 \bibitem{RLS1} Qi Lin, T. Li, Z. Zhou, "Error Analysis and Compensation
 of the Orthogonal Magnetic Encoder", Proceedings of IEEE ICMCC
 Conference, pp.11-14, 21-23 Oct. 2011
+
 \bibitem{RLS2} Hanselman D.C., "Resolver Signal Requirements for High Accuracy
 Resolver-to-Digital Conversion", IEEE Transactions on Industrial
 Electronics, vol.37, no.6, pp.556-561, Dec. 1990 
+
 \bibitem{RLS3} Demierre M., “Improvements of CMOS Hall Microsystems and
 Application for Absolute Angular Position Measurements”, PhD. thesis,
 pp. 152-161, Federal Polytechnic School of Lausanne, Switzerland, 2003
-
 %\bibitem{mat1} Dolinar G. "Matematika 1", Fakulteta za elektrotehniko, Založba FE in FRI, 2010
-
-\bibitem{atan} https://www.mathworks.com/help/matlab/ref/atan2.html, dostop junij 2018
-
-
-
+%\bibitem{atan} https://www.mathworks.com/help/matlab/ref/atan2.html, dostop junij 2018
 \end{thebibliography}
-
 \end{document}
