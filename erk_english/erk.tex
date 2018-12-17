@@ -130,7 +130,7 @@ Correlation between amplitudes and $\varphi_{s}$ yields tangent function (Figure
 	\end{center}
 \end{figure}
 
-Same procedure be applied for parameter $\varphi_c$ as well.
+Same procedure can be applied for parameter $\varphi_c$ as well.
 Because error from (\ref{equ:def_sin_fis}) and (\ref{equ:def_cos_fis}) is independent, their contribution can be combined into (\ref{equ:fis_err}).
 \begin{multline}
 \label{equ:fis_err}
@@ -151,11 +151,11 @@ When parameter $A_0$ approaches infinity, error is described by eq. (\ref{equ:of
 \label{equ:off_lim_vrsta}
 \varepsilon (A_0 \rightarrow \infty) = \frac{180}{\pi}\sum_{n=1}^{\infty}\frac{2}{n} \sin (n \theta + n 180^\circ).
 \end{equation}
-Error does not contain DC component and with the first harmonic being the highest.
+Error does not contain DC component and the highest harmonic is the first.
 \begin{figure}[!htb]
 	\begin{center}
 		\includegraphics[width=\linewidth]{./Slike/off.eps}
-		\caption{Waveform of amplitude of first harmonic depending on  $\frac{A_0}{A_1}$} \label{fig:off}
+		\caption{Amplitude of first harmonic depending on  $\frac{A_0}{A_1}$} \label{fig:off}
 	\end{center}
 \end{figure}
 The waveform from figure \ref{fig:off}, was split into 3 parts based on ratio between offset and amplitude. Expression which best approximate waveform of first harmonic of error with SSE of $1.21 \cdot 10^{-7}$ degrees is in exponential and linear form (\ref{equ:offc_err}):
@@ -168,7 +168,7 @@ The waveform from figure \ref{fig:off}, was split into 3 parts based on ratio be
 \frac{180}{\pi}\sum_{n=1}^{\infty}(-1)^n\frac{1}{n}(2-(\frac{A_0}{A_1})^{-n}) \sin (n \theta ), & \frac{A_0}{A_1}\geq 1
 \end{cases}
 \end{multline}
-Same procedure be applied for parameter $B_0$ as well. Result is eq. (\ref{equ:offs_err}).
+Same procedure can be applied for parameter $B_0$ as well. Result is eq. (\ref{equ:offs_err}).
 \begin{multline}
 \label{equ:offs_err}
 \varepsilon(B_0, B_1)=\\
@@ -179,8 +179,9 @@ Same procedure be applied for parameter $B_0$ as well. Result is eq. (\ref{equ:o
 \end{cases}
 \end{multline}
 
-\subsection{Defining of error for same DC component in both input signals}
-Input signals can also contain same DC component. This happen to resolver signals acquired at improper installation of stator coils. Same analysis as in \ref{DCoff} was made and result is presented in eq. (\ref{equ:offsc_err}).
+\subsection{Defining of error for common DC component in both input signals}
+Input signals can also contain common DC component. 
+This happens when resolvers stator coils are improperly install. Same analysis as in subsection \ref{DCoff} can be applied in this case as well. Result is presented in eq. (\ref{equ:offsc_err}).
 \begin{multline}
 \label{equ:offsc_err}
 \varepsilon(A_0,B_0=A_0, A_1)=\\
@@ -191,38 +192,38 @@ Input signals can also contain same DC component. This happen to resolver signal
 \end{cases}
 \end{multline}
 
-\subsection{Impact of CCM signal to error}
-CCM signal can be acquired at improper installation of rotor part of resolver.
-Added common mode signal to input signals was analyzed for each parameter individually. This paper presents procedure for CCM of cosine signal only. Result of CCM sinusoidal form is appended. Procedure to achieve result was the same.
+\subsection{Impact of CMM signal on error}
+CMM signal is the result of  improper resolvers rotor part installation.
 
-Procedure started by limitation of error of $\Delta_c$ to infinity. CCM effects to amplitudes and phases of input signals, so was expected that error will contain DC component and even harmonics only.
-Error when $\Delta_c$ approaching infinity can be represented in Fourier series form (\ref{equ:lim_dc_vrsta}).
+By limiting error of $\Delta_c$ to infinity.
+Because CMM effects amplitude mismatch and non-orthogonality of input signals, error was expected to contain DC component and even harmonics only.
+Error when $\Delta_c$ approaches infinity, is presented in (\ref{equ:lim_dc_vrsta}).
 \begin{equation}
 \label{equ:lim_dc_vrsta}
 \varepsilon(\Delta_c \rightarrow \infty) = 45^\circ -\frac{180}{\pi}\sum_{n=1}^{\infty}\frac{1}{n} \sin( 2 n \theta).
 \end{equation}
-By varying $\Delta_c$ and analyzing error specter, none result was found.
-Than error specter was split to sine and cosine part. In that case waveform of amplitude of second harmonic of error was presented as:
+Because general approximation was not found, error specter was split into sine and cosine part (\ref{sincospart}).
 \begin{equation}
-C_{2s}(\Delta_c) \cdot\sin(2\theta)+C_{2c}(\Delta_c) \cdot\cos(2\theta)
+\label{sincospart}
+C_{ns}(\Delta_c) \cdot\sin(n\theta)+C_{nc}(\Delta_c) \cdot\cos(n\theta)
 \end{equation}
-Figure \ref{fig:dc} represents waveforms of DC component and split waveform of second harmonic of error.
+Figure \ref{fig:dc} presents split second harmonic and DC component.
 \begin{figure}[!htb]
 	\begin{center}
 		\includegraphics[width=\linewidth]{./Slike/dc.eps}
-		\caption{The course of offset and amplitude of second harmonic of error due to $\Delta_{c}$} \label{fig:dc}
+		\caption{Waveform of DC component and split second harmonic depending on $\frac{\Delta_{c}}{A_1}$} \label{fig:dc}
 	\end{center}
 \end{figure}
 
-DC component was approximated with SSE of $1.94 \cdot 10^{-22}$ degrees with atan function. Waveform of $C_{2s}$ and $C_{2c}$ ware approximated with SSE less then $1.15 \cdot 10^{-9}$ degrees. Functions were  merged to function, that represent course of amplitude as $\sqrt{C_{2s}^2+C_{2c}^2}$ and course of phase as $atan \frac{C_{2c}}{C_{2s}}$. It was assumed, that higher order harmonics were correlated with base harmonic.
-Final function that described error depending on $\Delta_c$ is presented in Fourier series form (\ref{equ:dc_err}).
+DC component was approximated with SSE of $1.94 \cdot 10^{-22}$ degrees with atan function. Waveform of $C_{2s}$ and $C_{2c}$ were approximated with SSE to less then $1.15 \cdot 10^{-9}$ degrees.
+Final function, that described error depending on $\Delta_c$ is presented in Fourier series form (\ref{equ:dc_err}).
 \begin{multline}
 \label{equ:dc_err}
 \qquad\varepsilon(A_1, \Delta_c) = \mathrm{atan}\frac{\Delta_c}{\Delta_c+2 A_1}+\\
 \qquad+\frac{180}{\pi} \sum_{n=1}^{\infty}\frac{1}{n} (\frac{\Delta_c}{\sqrt{\Delta_c^2+2 A_1 \Delta_c+2 A_1}})^n\\ \sin (2n \theta+n (90^\circ+ \mathrm{ atan}(\frac{\Delta_c+A_1}{A_1})))
 \end{multline}
 
-Same procedure was made for $\Delta_s$. Result is in eq. (\ref{equ:ds_err})
+Same procedure can be applied for parameter $\Delta_s$ as well. Result is eq.(\ref{equ:ds_err})
 \begin{multline}
 \label{equ:ds_err}
 \varepsilon(A_1, \Delta_s) = -\mathrm{atan}\frac{\Delta_s}{\Delta_s+2 A_1}+\\+\frac{180}{\pi} \sum_{n=1}^{\infty}\frac{1}{n} (\frac{\Delta_s}{\sqrt{\Delta_s^2+2 A_1 \Delta_s+2A_1}})^n\\ \sin (2n \theta+n (90^\circ- \mathrm{ atan}(\frac{\Delta_s+A_1}{A_1})))
