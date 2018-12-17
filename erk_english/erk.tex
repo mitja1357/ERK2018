@@ -115,52 +115,50 @@ In second case, it was examined the impact of phase deformation. Input signals a
 \label{equ:def_cos_fis}
 &Cos =\cos(\theta+\varphi_{c})
 \end{eqnarray}
-Error was analyzed for each parameter individually and in the end results have been merged.
+Error was analyzed for $\varphi_s$ and $\varphi_c$ individually, in the end equations were combined.
 
-First analysis was made for parameter $\varphi_s$.
-Worst case of error is, when phase parameter approaches $90^\circ$. Error can be presented as Fourier series (\ref{equ:lim_fis_vrsta}). Error contains DC component and even harmonics only.
+Worst case of error is, when $\varphi_s$ approaches $90^\circ$ and can be presented as Fourier series (\ref{equ:lim_fis_vrsta}). Error consists of DC component and even harmonics only.
 \begin{equation}
 \label{equ:lim_fis_vrsta}
 \varepsilon(\varphi_{s} \rightarrow 90^\circ) = 45^\circ - \frac{180}{\pi}\sum_{n=1}^{\infty}\frac{1}{n} \sin (2n \theta)
 \end{equation}
-
-By varying $\varphi_s$ between $0^\circ$ and $90^\circ$ was found correlation of amplitudes of harmonics with tangent function (Figure \ref{fig:fis}). DC component and phase of error were changed linearly. Tangent function approximate second harmonic with SSE of $1.18 \cdot 10^{-10}$ degrees.
+Correlation between amplitudes and $\varphi_{s}$ yields tangent function (Figure \ref{fig:fis}). DC component and phase of error were being changed linearly. Tangent function approximate second harmonic with SSE of $1.18 \cdot 10^{-10}$ degrees.
 \begin{figure}[!htb]
 	\begin{center}
 		\includegraphics[width=\linewidth]{./Slike/fis.eps}
-		\caption{The waveforms of DC component $C_0$, amplitude of second harmonic  $C_2$ and phase of second harmonic of  error $\varphi_2$ due to ideal cosine signal,depend to phase shift $\varphi_{s}$} \label{fig:fis}
+		\caption{Waveforms of DC component $C_0$, amplitude of second harmonic  $C_2$ and phase of second harmonic $\varphi_2$ compared to ideal cosine signal, due to phase shift $\varphi_{s}$} \label{fig:fis}
 	\end{center}
 \end{figure}
 
-Same procedure was made for parameter $\varphi_c$. Function, that describes correlation of phase shifts of (\ref{equ:def_sin_fis}) and (\ref{equ:def_cos_fis}) to error is represented by Fourier function form (\ref{equ:fis_err}).
+Same procedure be applied for parameter $\varphi_c$ as well.
+Because error from (\ref{equ:def_sin_fis}) and (\ref{equ:def_cos_fis}) is independent, their contribution can be combined into (\ref{equ:fis_err}).
 \begin{multline}
 \label{equ:fis_err}
 \varepsilon(\varphi_{s},\varphi_{c}) = \frac{\varphi_{s}+\varphi_{c}}{2}+\\ \frac{180}{\pi}\sum_{n=1}^{\infty}\frac{1}{n} (\mathrm{tan}\frac{\varphi_{s}-\varphi_{c}}{2})^n \sin (2n \theta+n(90^\circ +\varphi_{s}+\varphi_{c}))
 \end{multline}
-Expression (\ref{equ:fis_err}) is valid only for:
+Expression (\ref{equ:fis_err}) is valid only for range:
 $$ \varphi_{s}-\varphi_{c} \in [ -90^\circ , 90^\circ ] $$
 
 \subsection{Defining of error for DC component in one input signal only}
 \label{DCoff}
-Input signals can contain DC component.
-Considering, changing parameters of DC components in (\ref{equ:def_sin}) and (\ref{equ:def_cos}) only, represent input signals as:
+By varying DC component in (\ref{equ:def_sin}) and (\ref{equ:def_cos}) equations are:
 \begin{eqnarray}
 &Sin = sin(\theta)+ B_0\\
 &Cos = cos(\theta) + A_0.
 \end{eqnarray}
-First was analyzed offset in $Cos$ signal. Parameter $A_0$ approaches infinity and error was described by eq. (\ref{equ:off_lim_vrsta}).
+When parameter $A_0$ approaches infinity, error is described by eq. (\ref{equ:off_lim_vrsta}).
 \begin{equation}
 \label{equ:off_lim_vrsta}
 \varepsilon (A_0 \rightarrow \infty) = \frac{180}{\pi}\sum_{n=1}^{\infty}\frac{2}{n} \sin (n \theta + n 180^\circ).
 \end{equation}
-Error does not contain DC component, highest amplitude has first harmonic.
+Error does not contain DC component and with the first harmonic being the highest.
 \begin{figure}[!htb]
 	\begin{center}
 		\includegraphics[width=\linewidth]{./Slike/off.eps}
-		\caption{The waveform of amplitude of first harmonic depending to offset  $A_0$, where input signals have amplitude of 1 } \label{fig:off}
+		\caption{Waveform of amplitude of first harmonic depending on  $\frac{A_0}{A_1}$} \label{fig:off}
 	\end{center}
 \end{figure}
-The waveform from figure \ref{fig:off}, was split to 3 parts. Expression which best approximate waveform of first harmonic of error with SSE of $1.21 \cdot 10^{-7}$ degrees is in exponential and linear form:
+The waveform from figure \ref{fig:off}, was split into 3 parts based on ratio between offset and amplitude. Expression which best approximate waveform of first harmonic of error with SSE of $1.21 \cdot 10^{-7}$ degrees is in exponential and linear form (\ref{equ:offc_err}):
 \begin{multline}
 \label{equ:offc_err}
 \varepsilon(A_0, A_1)=\\
@@ -170,8 +168,7 @@ The waveform from figure \ref{fig:off}, was split to 3 parts. Expression which b
 \frac{180}{\pi}\sum_{n=1}^{\infty}(-1)^n\frac{1}{n}(2-(\frac{A_0}{A_1})^{-n}) \sin (n \theta ), & \frac{A_0}{A_1}\geq 1
 \end{cases}
 \end{multline}
-
-Same procedure was done for DC component in $Sin$ signal. Result is eq. (\ref{equ:offs_err}).
+Same procedure be applied for parameter $B_0$ as well. Result is eq. (\ref{equ:offs_err}).
 \begin{multline}
 \label{equ:offs_err}
 \varepsilon(B_0, B_1)=\\
