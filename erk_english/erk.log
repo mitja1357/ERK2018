@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6800 64-bit) (preloaded format=pdflatex 2018.10.22)  18 DEC 2018 08:06
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6800 64-bit) (preloaded format=pdflatex 2018.10.22)  18 DEC 2018 08:33
 entering extended mode
 **./erk.tex
 (erk.tex
@@ -423,37 +423,47 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
 
 ]
 Package epstopdf Info: Source file: <./Slike/amp.eps>
-(epstopdf)                    date: 2018-12-18 08:04:23
-(epstopdf)                    size: 25442 bytes
+(epstopdf)                    date: 2018-12-18 08:32:21
+(epstopdf)                    size: 25369 bytes
 (epstopdf)             Output file: <./Slike/amp-eps-converted-to.pdf>
 (epstopdf)                    date: 2018-12-18 08:04:33
 (epstopdf)                    size: 8553 bytes
 (epstopdf)             Command: <epstopdf --outfile=./Slike/amp-eps-converted-t
 o.pdf ./Slike/amp.eps>
 (epstopdf)             \includegraphics on input line 86.
-Package epstopdf Info: Output file is already uptodate.
-<./Slike/amp-eps-converted-to.pdf, id=87, 1445.4pt x 848.16875pt>
+runsystem(epstopdf --outfile=./Slike/amp-eps-converted-to.pdf ./Slike/amp.eps).
+..executed (allowed).
+
+Package epstopdf Info: Result file: <./Slike/amp-eps-converted-to.pdf>
+(epstopdf)                    date: 2018-12-18 08:33:34
+(epstopdf)                    size: 9832 bytes.
+<./Slike/amp-eps-converted-to.pdf, id=87, 1267.73625pt x 784.9325pt>
 File: ./Slike/amp-eps-converted-to.pdf Graphic file (type pdf)
 <use ./Slike/amp-eps-converted-to.pdf>
 Package pdftex.def Info: ./Slike/amp-eps-converted-to.pdf  used on input line 8
 6.
-(pdftex.def)             Requested size: 227.62206pt x 133.5614pt.
+(pdftex.def)             Requested size: 227.62206pt x 140.93442pt.
 Package epstopdf Info: Source file: <./Slike/fis.eps>
-(epstopdf)                    date: 2018-12-18 08:04:15
-(epstopdf)                    size: 84116 bytes
+(epstopdf)                    date: 2018-12-18 08:32:21
+(epstopdf)                    size: 84502 bytes
 (epstopdf)             Output file: <./Slike/fis-eps-converted-to.pdf>
 (epstopdf)                    date: 2018-12-18 08:04:34
 (epstopdf)                    size: 31795 bytes
 (epstopdf)             Command: <epstopdf --outfile=./Slike/fis-eps-converted-t
 o.pdf ./Slike/fis.eps>
 (epstopdf)             \includegraphics on input line 128.
-Package epstopdf Info: Output file is already uptodate.
-<./Slike/fis-eps-converted-to.pdf, id=92, 1445.4pt x 848.16875pt>
+runsystem(epstopdf --outfile=./Slike/fis-eps-converted-to.pdf ./Slike/fis.eps).
+..executed (allowed).
+
+Package epstopdf Info: Result file: <./Slike/fis-eps-converted-to.pdf>
+(epstopdf)                    date: 2018-12-18 08:33:34
+(epstopdf)                    size: 32011 bytes.
+<./Slike/fis-eps-converted-to.pdf, id=92, 1265.72874pt x 793.96625pt>
 File: ./Slike/fis-eps-converted-to.pdf Graphic file (type pdf)
 <use ./Slike/fis-eps-converted-to.pdf>
 Package pdftex.def Info: ./Slike/fis-eps-converted-to.pdf  used on input line 1
 28.
-(pdftex.def)             Requested size: 227.62206pt x 133.5614pt.
+(pdftex.def)             Requested size: 227.62206pt x 142.77449pt.
 
 Overfull \hbox (1.14017pt too wide) detected at line 138
  []$[][] [] []\OT1/cmr/m/n/10 ([][])[] [](2\OML/cmm/m/it/10 n \OT1/cmr/m/n/10 
@@ -468,11 +478,11 @@ aches in-fin-ity, er-ror is de-scribed
  []
 
 Package epstopdf Info: Source file: <./Slike/off.eps>
-(epstopdf)                    date: 2018-12-18 08:06:32
-(epstopdf)                    size: 24244 bytes
+(epstopdf)                    date: 2018-12-18 08:32:22
+(epstopdf)                    size: 26557 bytes
 (epstopdf)             Output file: <./Slike/off-eps-converted-to.pdf>
-(epstopdf)                    date: 2018-12-18 08:04:34
-(epstopdf)                    size: 7317 bytes
+(epstopdf)                    date: 2018-12-18 08:06:55
+(epstopdf)                    size: 7366 bytes
 (epstopdf)             Command: <epstopdf --outfile=./Slike/off-eps-converted-t
 o.pdf ./Slike/off.eps>
 (epstopdf)             \includegraphics on input line 157.
@@ -480,14 +490,14 @@ runsystem(epstopdf --outfile=./Slike/off-eps-converted-to.pdf ./Slike/off.eps).
 ..executed (allowed).
 
 Package epstopdf Info: Result file: <./Slike/off-eps-converted-to.pdf>
-(epstopdf)                    date: 2018-12-18 08:06:55
-(epstopdf)                    size: 7366 bytes.
-<./Slike/off-eps-converted-to.pdf, id=100, 1445.4pt x 779.91376pt>
+(epstopdf)                    date: 2018-12-18 08:33:35
+(epstopdf)                    size: 8907 bytes.
+<./Slike/off-eps-converted-to.pdf, id=100, 1223.57124pt x 790.955pt>
 File: ./Slike/off-eps-converted-to.pdf Graphic file (type pdf)
 <use ./Slike/off-eps-converted-to.pdf>
 Package pdftex.def Info: ./Slike/off-eps-converted-to.pdf  used on input line 1
 57.
-(pdftex.def)             Requested size: 227.62206pt x 122.81326pt.
+(pdftex.def)             Requested size: 227.62206pt x 147.133pt.
 
 Overfull \hbox (10.31493pt too wide) detected at line 170
  []$[] []$ []  
@@ -510,11 +520,11 @@ r
  []
 
 Package epstopdf Info: Source file: <./Slike/dc.eps>
-(epstopdf)                    date: 2018-12-18 08:06:36
-(epstopdf)                    size: 25954 bytes
+(epstopdf)                    date: 2018-12-18 08:32:22
+(epstopdf)                    size: 25933 bytes
 (epstopdf)             Output file: <./Slike/dc-eps-converted-to.pdf>
-(epstopdf)                    date: 2018-12-18 08:04:35
-(epstopdf)                    size: 9387 bytes
+(epstopdf)                    date: 2018-12-18 08:06:56
+(epstopdf)                    size: 9075 bytes
 (epstopdf)             Command: <epstopdf --outfile=./Slike/dc-eps-converted-to
 .pdf ./Slike/dc.eps>
 (epstopdf)             \includegraphics on input line 213.
@@ -522,20 +532,20 @@ runsystem(epstopdf --outfile=./Slike/dc-eps-converted-to.pdf ./Slike/dc.eps)...
 executed (allowed).
 
 Package epstopdf Info: Result file: <./Slike/dc-eps-converted-to.pdf>
-(epstopdf)                    date: 2018-12-18 08:06:56
-(epstopdf)                    size: 9075 bytes.
-<./Slike/dc-eps-converted-to.pdf, id=141, 1445.4pt x 848.16875pt>
+(epstopdf)                    date: 2018-12-18 08:33:36
+(epstopdf)                    size: 9074 bytes.
+<./Slike/dc-eps-converted-to.pdf, id=141, 1231.60126pt x 793.96625pt>
 File: ./Slike/dc-eps-converted-to.pdf Graphic file (type pdf)
 <use ./Slike/dc-eps-converted-to.pdf>
 Package pdftex.def Info: ./Slike/dc-eps-converted-to.pdf  used on input line 21
 3.
-(pdftex.def)             Requested size: 227.62206pt x 133.5614pt.
+(pdftex.def)             Requested size: 227.62206pt x 146.73607pt.
 Package epstopdf Info: Source file: <./Slike/razlika_amp.eps>
-(epstopdf)                    date: 2018-12-18 08:05:10
-(epstopdf)                    size: 95977 bytes
+(epstopdf)                    date: 2018-12-18 08:32:23
+(epstopdf)                    size: 95956 bytes
 (epstopdf)             Output file: <./Slike/razlika_amp-eps-converted-to.pdf>
-(epstopdf)                    date: 2018-12-18 08:04:36
-(epstopdf)                    size: 31331 bytes
+(epstopdf)                    date: 2018-12-18 08:06:56
+(epstopdf)                    size: 31135 bytes
 (epstopdf)             Command: <epstopdf --outfile=./Slike/razlika_amp-eps-con
 verted-to.pdf ./Slike/razlika_amp.eps>
 (epstopdf)             \includegraphics on input line 243.
@@ -543,14 +553,14 @@ runsystem(epstopdf --outfile=./Slike/razlika_amp-eps-converted-to.pdf ./Slike/r
 azlika_amp.eps)...executed (allowed).
 
 Package epstopdf Info: Result file: <./Slike/razlika_amp-eps-converted-to.pdf>
-(epstopdf)                    date: 2018-12-18 08:06:56
-(epstopdf)                    size: 31135 bytes.
-<./Slike/razlika_amp-eps-converted-to.pdf, id=150, 1445.4pt x 848.16875pt>
+(epstopdf)                    date: 2018-12-18 08:33:36
+(epstopdf)                    size: 31177 bytes.
+<./Slike/razlika_amp-eps-converted-to.pdf, id=150, 1248.665pt x 833.1125pt>
 File: ./Slike/razlika_amp-eps-converted-to.pdf Graphic file (type pdf)
 <use ./Slike/razlika_amp-eps-converted-to.pdf>
 Package pdftex.def Info: ./Slike/razlika_amp-eps-converted-to.pdf  used on inpu
 t line 243.
-(pdftex.def)             Requested size: 227.62206pt x 133.5614pt.
+(pdftex.def)             Requested size: 227.62206pt x 151.86061pt.
 [3 <./Slike/off-eps-converted-to.pdf> <./Slike/dc-eps-converted-to.pdf>]
 Underfull \hbox (badness 1931) in paragraph at lines 259--262
 \OT1/ptm/m/n/9 Con-fer-ence on Power Elec-tron-ics and Drive Sys-tems
@@ -569,7 +579,7 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 289.
 Here is how much of TeX's memory you used:
  6764 strings out of 492973
  99994 string characters out of 3127134
- 221234 words of memory out of 3000000
+ 219234 words of memory out of 3000000
  10504 multiletter control sequences out of 15000+200000
  19387 words of font info for 46 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -592,7 +602,7 @@ fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/alic/AppData/Local/Programs
 al/Programs/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Users/alic/AppData/
 Local/Programs/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Users/alic/AppDa
 ta/Local/Programs/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
-Output written on erk.pdf (4 pages, 270416 bytes).
+Output written on erk.pdf (4 pages, 273720 bytes).
 PDF statistics:
  246 PDF objects out of 1000 (max. 8388607)
  49 named destinations out of 1000 (max. 500000)
