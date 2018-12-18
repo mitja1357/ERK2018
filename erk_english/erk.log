@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.10.19)  18 DEC 2018 18:14
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.10.19)  18 DEC 2018 19:53
 entering extended mode
 **./erk.tex
 (erk.tex
@@ -817,53 +817,48 @@ File: ./Slike/dc-eps-converted-to.pdf Graphic file (type pdf)
 Package pdftex.def Info: ./Slike/dc-eps-converted-to.pdf used on input line 213
 .
 (pdftex.def)             Requested size: 227.62206pt x 183.23615pt.
-
-Overfull \hbox (3.20601pt too wide) in paragraph at lines 238--239
-\OT1/ptm/m/n/10 made. Ap-prox-i-ma-tion func-tions were de-fined with Fourier
- []
-
-[3 <./Slike/off-eps-converted-to.pdf> <./Slike/dc-eps-converted-to.pdf>]
+ [3 <./Slike/off-eps-converted-to.pdf> <./Slike/dc-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <./Slike/razlika_amp.eps>
-(epstopdf)                    date: 2018-12-18 17:52:27
-(epstopdf)                    size: 134766 bytes
+(epstopdf)                    date: 2018-12-18 18:53:33
+(epstopdf)                    size: 135568 bytes
 (epstopdf)             Output file: <./Slike/razlika_amp-eps-converted-to.pdf>
-(epstopdf)                    date: 2018-12-18 17:52:41
-(epstopdf)                    size: 24652 bytes
+(epstopdf)                    date: 2018-12-18 18:58:46
+(epstopdf)                    size: 25124 bytes
 (epstopdf)             Command: <epstopdf --outfile=./Slike/razlika_amp-eps-con
 verted-to.pdf ./Slike/razlika_amp.eps>
-(epstopdf)             \includegraphics on input line 243.
+(epstopdf)             \includegraphics on input line 246.
 Package epstopdf Info: Output file is already uptodate.
 
-<./Slike/razlika_amp-eps-converted-to.pdf, id=202, 547.04375pt x 437.635pt>
+<./Slike/razlika_amp-eps-converted-to.pdf, id=209, 1027.84pt x 523.9575pt>
 File: ./Slike/razlika_amp-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./Slike/razlika_amp-eps-converted-to.pdf>
 Package pdftex.def Info: ./Slike/razlika_amp-eps-converted-to.pdf used on input
- line 243.
-(pdftex.def)             Requested size: 227.62206pt x 182.09593pt.
+ line 246.
+(pdftex.def)             Requested size: 227.62206pt x 116.03052pt.
 
-Underfull \hbox (badness 1931) in paragraph at lines 259--262
+Underfull \hbox (badness 1931) in paragraph at lines 264--267
 \OT1/ptm/m/n/9 Con-fer-ence on Power Elec-tron-ics and Drive Sys-tems
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 289.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 294.
 [4 <./Slike/razlika_amp-eps-converted-to.pdf>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 289.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 294.
  (erk.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 289.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 289.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 294.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 294.
 Package rerunfilecheck Info: File `erk.out' has not changed.
 (rerunfilecheck)             Checksum: 1EB77143D69E69BC9BA25B42456B6E02;687.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 289.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 294.
  ) 
 Here is how much of TeX's memory you used:
- 7057 strings out of 493323
- 99892 string characters out of 3139065
- 218431 words of memory out of 3000000
+ 7058 strings out of 493323
+ 99902 string characters out of 3139065
+ 218448 words of memory out of 3000000
  10452 multiletter control sequences out of 15000+200000
  19387 words of font info for 46 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 28i,14n,28p,649b,350s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 28i,14n,28p,573b,350s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc}<C:/Program Files/Mi
 KTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX 2.9
 /fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9/fonts/t
@@ -878,9 +873,9 @@ ts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1
 /public/amsfonts/cm/cmsy7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/time
 s/utmb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/
 Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
-Output written on erk.pdf (4 pages, 248693 bytes).
+Output written on erk.pdf (4 pages, 251818 bytes).
 PDF statistics:
- 288 PDF objects out of 1000 (max. 8388607)
- 49 named destinations out of 1000 (max. 500000)
+ 301 PDF objects out of 1000 (max. 8388607)
+ 50 named destinations out of 1000 (max. 500000)
  98 words of extra memory for PDF output out of 10000 (max. 10000000)
 

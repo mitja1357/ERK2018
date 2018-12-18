@@ -235,24 +235,29 @@ Eq. (\ref{equ:dc_err}) and (\ref{equ:ds_err}) are valid for only:
 \end{equation*}
 
 \section{Comment on results}
-After defining approximation funtions of error due to deformation parameter in input signal, a fault to (\ref{equ:def_err}) was made. Approximation functions were defined with Fourier series, during analysis of fault were used first 15 components only. Example, input signals have amplitudes $A_1 = 1$ and $B_1 = 1.1$. Difference between calculated error in (\ref{equ:amp_err2}) and error in (\ref{equ:def_err})  is presented in figure \ref{fig:razlika}. Fault of approximation is in the vicinity of a numeric error. Comparing errors in frequency specter, showed minimum deviations between harmonics of same frequency.
+After determining approximated error functions (\ref{equ:amp_err2}) (\ref{equ:fis_err}) (\ref{equ:offc_err}) (\ref{equ:offs_err}) (\ref{equ:offsc_err}) (\ref{equ:dc_err}) (\ref{equ:ds_err}),
+the error difference was analyzed against (\ref{equ:def_err}). Approximated functions were defined with Fourier series, with the first 20 components.
+Difference between calculated error in (\ref{equ:amp_err2}) and error in (\ref{equ:def_err})  is presented in figure \ref{fig:razlika}, where $A_1 = 1$ and $B_1 = 1.1$ were used.
+Approximation fault is in the vicinity of a numeric error.
+A comparison of the errors in the frequency spectrum showed a minimum deviation between harmonics of the same frequency.
 
-It is necessary to mention that despite the derivation, the presented types of error of individual deformations are still depend on one other.
 \begin{figure}[!htb]
 	\begin{center}
 		\includegraphics[width=\linewidth]{./Slike/razlika_amp.eps}
-		\caption{Difference between predicted (\ref{equ:amp_err2}) and actual error} \label{fig:razlika}
+		\caption{Difference between predicted (\ref{equ:amp_err2}) and actual error (\ref{equ:def_err})} \label{fig:razlika}
 	\end{center}
 \end{figure}
 
 \section{Conclusion}
-With methods described in this paper, improper installation of encoders and resolvers can be uncovered from analyzing error only.
-Content of higher harmonics in error become non-negligible at major mismatches. This paper presents impact of signal mismatch, non-orthogonality, DC offset and common mode signal to output error of atan2 function.
+With methods described in this paper improper installation of encoders and resolvers can be uncovered. By analyzing full specter of angle error, contribution of individual harmonics can be observed. Impact of signal mismatch, non-orthogonality, DC offset and common mode signal is examined on specter of angle error. This paper extends findings of literature by exploring larger deformations with a more accurate approximation of whole specter.
 
-Input signals can include higher harmonics distortion, which is not described in this paper. The impact of distortion of the input signals in the atan2 function to the output error offers many challenges for further work. 
+Input signals can also include higher harmonics distortion, which was not examined in this paper.
+
+The resulting approximations of the equation of error are interacting, which makes their individual errors impossible to add up. Function that define error for all deformations in (\ref{equ:def_sin}) and (\ref{equ:def_cos}) and impact  of high harmonics distortion on input signals in the atan2 function is a challenge for further work. 
+
 \small
-%\section*{Acknowledgment}
-%This paper could not be possible without the help of my friend and colleague Draš Kunšič. I am deeply grateful for his generous help and encouragement.
+\section*{Acknowledgment}
+This paper could not be possible without the help of my friend and colleague Draš Kunšič. I am deeply grateful for his generous help and encouragement.
 
 
 \begin{thebibliography}{1}
