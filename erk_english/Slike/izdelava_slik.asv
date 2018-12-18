@@ -1,5 +1,4 @@
-close all
-fontsize = 24;
+fontsize = 40;
 linewidth = 3;
 %% slika 1
 
@@ -23,19 +22,8 @@ C2 = 180/pi .* tand(fis./2);
 fi2 = fis;
 figure(2);
 set(gcf, 'Position', get(0, 'Screensize'));
-axes1 = axes('Parent',gcf);
-plot(fis,C0, 'LineWidth',linewidth, 'Color', [215,25,28]/255);
-hold on
-plot(fis, C2, 'LineWidth',linewidth, 'Color', [253,174,97]/255);
-plot(fis, fi2, 'LineWidth',linewidth, 'Color', [44,123,182]/255);
+plot(fis,C0,fis,C2,fis,fi2,'Linewidth',linewidth);
 xlim([0,90]);
-ylim([0,90]);
-set(axes1,'FontSize',fontsize,'XTick',linspace(0,90,7),'XTickLabel',...
-    {'0', '15', '30', '45', '60', '75', '90'});
-ylabel('$/ ^\circ$','interpreter', 'latex','FontSize',fontsize)
-set(axes1,'FontSize',fontsize,'YTick',linspace(0,90,4),'YTickLabel',...
-    {'0', '30', '60', '90'});
-
 grid on;
 set(gca,'FontSize',fontsize);
 xlabel('$\mathrm{\varphi_{s}/^\circ}$','Interpreter','latex','FontSize',fontsize);
@@ -45,7 +33,7 @@ set(leg1,'Interpreter','latex');
 set(leg1,'location','NorthWest');
 saveas(gcf,'fis','epsc')
 
-clear C0 C2 fi2 fis leg1 axes1
+clear C0 C2 fi2 fis leg1
 %% slika 3
 
 off = -5:0.1:5;
@@ -55,10 +43,10 @@ h2off(off>1) = -(2 -off(off>1).^-1);
 figure(3);
 axes1 = axes('Parent',gcf);
 set(gcf, 'Position', get(0, 'Screensize'));
-plot(off,h2off,'-r', 'linewidth',linewidth*0.8);
+plot(off,h2off,'-r', 'linewidth',linewidth);
 grid on;
 legend('C_1');
-set(axes1,'FontSize',fontsize,'XTick',[-5 -4 -3 -2 -1 0 1 2 3 4 5],'XTickLabel',...
+set(axes1,'FontSize',40,'XTick',[-5 -4 -3 -2 -1 0 1 2 3 4 5],'XTickLabel',...
     {'-5','-4','-3','-2','-1','0','1','2','3','4','5'});
 set(gca,'FontSize',fontsize);
 xlabel('A_0 / A_1','FontSize',fontsize);
@@ -130,11 +118,8 @@ grid on
 set(gca,'FontSize',fontsize);
 xlabel('$\theta/ ^\circ$','interpreter', 'latex','FontSize',fontsize)
 
-set(axes1,'FontSize',fontsize,'XTick',linspace(0,360,7),'XTickLabel',...
-    {'0', '60', '120', '180', '240', '300', '360'});
-set(axes1,'FontSize',fontsize,'XTick',linspace(0,360,7),'XTickLabel',...
-    {'0', '60', '120', '180', '240', '300', '360'});
-ylabel('$/ ^\circ$','interpreter', 'latex','FontSize',fontsize)
+set(axes1,'FontSize',40,'XTick',linspace(0,360,7),'XTickLabel',...
+    {'0', '60', '120', '180', '240',  300   360'});ylabel('$/ ^\circ$','interpreter', 'latex','FontSize',fontsize)
 saveas(gcf,'razlika_amp','epsc')    
 clear error k n predict_e theta fontsize axes1
 
