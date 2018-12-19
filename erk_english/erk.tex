@@ -23,15 +23,16 @@
 \maketitle
 
 \begin{abstract}{}
-In position sensing encoders and resolvers are used, whose output is a pair of quadrature sine and cosine signals. Angle calculation can be done with atan2 function. Due to improper installation of sensor, sine and cosine signal can be deformed. In that case calculated angle includes error. Error was analyzed for non-equal amplitudes, non-orthogonality, DC offset and common mode signal. Error was analyzed in frequency specter, that yielded a function of error based on input signal deformation. Error is presented in Fourier series form.
+The output of position sensors such as encoders and resolvers is a pair of quadrature sine and cosine signals.
+Angle calculation can be done with atan2 function. Due to improper installation of sensor, sine and cosine signal can be deformed. In that case calculated angle includes error. Error was analyzed for non-equal amplitudes, non-orthogonality, DC offset and common mode signal. Error was analyzed in frequency specter, that yielded a function of error based on input signal deformation. Error is presented in Fourier series form.
 \end{abstract}
 
 \selectlanguage{English}
 
 \section{Introduction}
-These days the need for high quality motor regulation is present in numerous applications and has as a result become unavoidable. For a consistent and reliable measurement of rotation, position sensors are used \cite{uporaba_senzorjev}, such as encoders and resolvers \cite{inkrementalni}\cite{resolver}\cite{enkoder}. Because the output of such sensors is a pair of quadrature sine and cosine signals, angle must first be calculated. The easiest way of doing so is by directly calculating atan2, which returns a value between $[-\pi, \pi]$.
+High quality motor regulation is present in numerous applications and become unavoidable. For a consistent and reliable measurement of rotation, position sensors are used \cite{uporaba_senzorjev}, such as encoders and resolvers \cite{inkrementalni}\cite{resolver}\cite{enkoder}. Because the output of such sensors is a pair of quadrature sine and cosine signals, angle must first be calculated. The easiest way of doing so is by directly calculating atan2, which returns a value between $[-\pi, \pi]$.
 
-Because position sensors are not ideal, obtained sine and cosine signal can be deformed, phase shifted and DC offset. All of these imperfections cause the calculated angle to also include error.
+Position sensors are not ideal, their acquired sine and cosine signal can be deformed, phase shifted and DC offset. All of these imperfections cause the calculated angle to also include error.
 
 Literature  \cite{orbis}, \cite{RLS1}, \cite{RLS2} and \cite{RLS3} analyses the impact of such imperfection for lower harmonics only and states that error of imperfections scale linearly. During our research we found, that the error specter also contains higher harmonics. The paper examines error waveform dependent on input signal mismatch with Fourier analysis. 
 
@@ -55,17 +56,17 @@ By calculating atan2 for eq. (\ref{equ:def_sin}) and (\ref{equ:def_cos})
 \label{equ:def_kot}
 \varphi = \mathrm{atan2}(Sin,Cos)
 \end{equation}
-and then subtracting it with an unaltered signal
+and then subtract (\ref{equ:def_kot}) from an unaltered signal
 \begin{equation}
 \label{equ:def_err}
 \varepsilon =\varphi - \mathrm{atan2}(\sin(\theta),\cos(\theta))
 \end{equation}
-we get error based on deformation. Because  AC signal analysis is simpler in frequency domain, error was converted with Fast Fourier Transform(FFT). By varying each parameter individually we examined the impact of the parameter in question on specter of error. Output of atan2 was examined by sending each parameter in eq. (\ref{equ:def_sin}) and (\ref{equ:def_cos}) to infinity or worst case with phase shift.
+error based on deformation parameter.  Because AC signal analysis is simpler in frequency domain, error was converted with Fast Fourier Transform. By varying each parameter individually we examined the impact of the parameter in question on specter of error. Output of atan2 was examined by sending each parameter in eq. (\ref{equ:def_sin}) and (\ref{equ:def_cos}) to infinity or worst case with phase shift.
 In this case amplitude and phase of each harmonic approaches to a limit value.
 
-The course of the amplitude and phase in dependence on the changing parameter was approximated by a function, that best suited numerical waveform obtained from the error spectrum. The set of functions decreases by checking the limit value to which each amplitude and phase approach. We were looking for the best approximation with polynomials, rational functions, exponential, trigonometric and cyclometric functions. The best approximation was sought using the minimum squares method.
+Amplitude and phase of error  in dependence on the changing parameter were approximated by a functiosn, that best suited numerical waveform obtained from the error spectrum. The set of functions decreases by checking the limit value to which each amplitude and phase approach. We were looking for the best approximation with polynomials, rational functions, exponential, trigonometric and cyclometric functions. The best approximation was sought using the minimum squares method.
 
-\subsection{Defining of error at different amplitudes}
+\subsection{Error definition at amplitude mismatch}
 In the first case was observed the impact of different amplitudes on error. The output of the atan2 function is determined by the eq. (\ref{equ:def_sin}) and (\ref{equ:def_cos}) quotient. Since only the ratio of the amplitudes needs to be preserved, we multiplied both signals by $\frac{1}{A_1}$. By changing only the amplitudes in (\ref{equ:def_sin}) and (\ref{equ:def_cos}), input signals are:
 	\begin{eqnarray}
 	\label{equ:def_sin_ama}
@@ -75,7 +76,7 @@ In the first case was observed the impact of different amplitudes on error. The 
 	\end{eqnarray}
 where $k$ represents $\frac{B_1}{A_1}$.
 
-By varying the parameter $k$ from 0 to infinity, it was found that, the error specter consists of even harmonics only. It was also observed that phase shift didn't change. When $k$ approaches infinity, the amplitude of harmonics approaches $\frac{180}{\pi}\frac{2}{n}$, where n represents n-th harmonic. Eq. (\ref{equ:lim_amp_vrsta}) which contains even harmonics only.
+By varying the parameter $k$ from 0 to infinity, it was found that, the error specter consists of even harmonics only. It was also observed that phase shift did not change. When $k$ approaches infinity, the amplitude of harmonics approaches $\frac{180}{\pi}\frac{2}{n}$, where n represents n-th harmonic. Eq. (\ref{equ:lim_amp_vrsta}) which contains even harmonics only.
 \begin{equation}
 \label{equ:lim_amp_vrsta}
 \varepsilon(k \rightarrow \infty) = \frac{180}{\pi}\sum_{n=1}^{\infty}\frac{1}{n} \sin 2 n \theta
@@ -107,7 +108,7 @@ By replacing $k$ with ratio of amplitudes $\frac{B_1}{A_1}$, we get final equati
 which is valid for positive ratio of amplitudes only.
  $$\frac{B_1}{A_1} \geq 0.$$
 
-\subsection{Defining of error at non-orthogonality}
+\subsection{Error definition at non-orthogonality}
 In second case, it was examined the impact of phase deformation. Input signals are represented as:
 \begin{eqnarray}
 \label{equ:def_sin_fis}
@@ -131,7 +132,7 @@ Correlation between amplitudes and $\varphi_{s}$ yields tangent function (Figure
 \end{figure}
 
 Same procedure can be applied for parameter $\varphi_c$ as well.
-Because error from (\ref{equ:def_sin_fis}) and (\ref{equ:def_cos_fis}) is independent, their contribution can be combined into (\ref{equ:fis_err}).
+Errors from (\ref{equ:def_sin_fis}) and  (\ref{equ:def_cos_fis}) are independent and their contribution can be combined into (\ref{equ:fis_err}).
 \begin{multline}
 \label{equ:fis_err}
 \varepsilon(\varphi_{s},\varphi_{c}) = \frac{\varphi_{s}+\varphi_{c}}{2}+\\ \frac{180}{\pi}\sum_{n=1}^{\infty}\frac{1}{n} (\mathrm{tan}\frac{\varphi_{s}-\varphi_{c}}{2})^n \sin (2n \theta+n(90^\circ +\varphi_{s}+\varphi_{c}))
@@ -139,7 +140,7 @@ Because error from (\ref{equ:def_sin_fis}) and (\ref{equ:def_cos_fis}) is indepe
 Expression (\ref{equ:fis_err}) is valid only for range:
 $$ \varphi_{s}-\varphi_{c} \in [ -90^\circ , 90^\circ ] $$
 
-\subsection{Defining of error for DC component in one input signal only}
+\subsection{Error definition at DC component in one input signal only}
 \label{DCoff}
 By varying DC component in (\ref{equ:def_sin}) and (\ref{equ:def_cos}) equations are:
 \begin{eqnarray}
@@ -158,7 +159,7 @@ Error does not contain DC component and the highest harmonic is the first.
 		\caption{Amplitude of first harmonic depending on  $\frac{A_0}{A_1}$} \label{fig:off}
 	\end{center}
 \end{figure}
-The waveform from figure \ref{fig:off}, was split into 3 parts based on ratio between offset and amplitude. Expression which best approximate waveform of first harmonic of error with SSE of $1.21 \cdot 10^{-7}$ degrees is in exponential and linear form (\ref{equ:offc_err}):
+The waveform from figure \ref{fig:off}, was split into 3 parts based on ratio between offset and amplitude. Expression which best approximates waveform of first harmonic of error with SSE of $1.21 \cdot 10^{-7}$ degrees is in exponential and linear form (\ref{equ:offc_err}):
 \begin{multline}
 \label{equ:offc_err}
 \varepsilon(A_0, A_1)=\\
@@ -179,7 +180,7 @@ Same procedure can be applied for parameter $B_0$ as well. Result is eq. (\ref{e
 \end{cases}
 \end{multline}
 
-\subsection{Defining of error for common DC component in both input signals}
+\subsection{Error definition at common DC component in both input signals}
 Input signals can also contain common DC component. 
 This happens when resolvers stator coils are improperly install. Same analysis as in subsection \ref{DCoff} can be applied in this case as well. Result is presented in eq. (\ref{equ:offsc_err}).
 \begin{multline}
@@ -249,11 +250,11 @@ A comparison of the errors in the frequency spectrum showed a minimum deviation 
 \end{figure}
 
 \section{Conclusion}
-With methods described in this paper improper installation of encoders and resolvers can be uncovered. By analyzing full specter of angle error, contribution of individual harmonics can be observed. Impact of signal mismatch, non-orthogonality, DC offset and common mode signal is examined on specter of angle error. This paper extends findings of literature by exploring larger deformations with a more accurate approximation of whole specter.
+With methods described in this paper improper installation of encoders and resolvers can be uncovered. By analyzing full specter of angle error, contribution of individual harmonics can be observed. The influence  of signal mismatch, non-orthogonality, DC offset and common mode signal is studied in the spectrum of the  angle error.. This paper extends findings of literature by exploring larger deformations with a more accurate approximation of whole specter.
 
 Input signals can also include higher harmonics distortion, which was not examined in this paper.
 
-Because obtained approximation of errors are interdependent, their individual errors can not be summed up. Function that define error for all deformations in (\ref{equ:def_sin}) and (\ref{equ:def_cos}) and impact  of high harmonics distortion is a challenge for further work. 
+Individual errors cannot be summed up, because obtained approximations of errors are interdependent. Function that define error for all deformations in (\ref{equ:def_sin}) and (\ref{equ:def_cos}) and impact  of high harmonics distortion is a challenge for further work. 
 
 \small
 \section*{Acknowledgment}

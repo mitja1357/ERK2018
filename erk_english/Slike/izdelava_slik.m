@@ -1,5 +1,5 @@
 close all
-fontsize = 24;
+fontsize = 44;
 linewidth = 3;
 %% slika 1
 
@@ -117,7 +117,7 @@ error(error < -180) = error(error < -180) +360;
 error(error >  180) = error(error >  180) -360;
 predict_e = 0.*theta;
 
-for n = 1:15
+for n = 1:20
     predict_e = predict_e +180/pi .* 1/n .* ((k-1)/(k+1))^n .*sind(2*n.*theta);
 end
 
